@@ -14,19 +14,23 @@
     @stack('before-styles')
 
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">    
-    <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">    
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/animate-css/vivify.min.css') }}">
 
-    @stack('after-styles')    
-    @if (trim($__env->yieldContent('page-styles')))    
+    @stack('after-styles')
+    @if (trim($__env->yieldContent('page-styles')))
         @yield('page-styles')
-    @endif    
+    @endif
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{ asset('assets/css/site.min.css') }}">
 </head>
 
-<body class="theme-cyan font-montserrat">
-    
+@if(app()->getLocale() == 'ar')
+    <body class="theme-cyan font-montserrat rtl">
+@else
+    <body class="theme-cyan font-montserrat">
+@endif
+
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -52,6 +56,6 @@
 @if (trim($__env->yieldContent('page-script')))
     @yield('page-script')
 @endif
-    
+
 </body>
 </html>

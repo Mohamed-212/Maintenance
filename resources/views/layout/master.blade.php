@@ -42,7 +42,11 @@
     </style>
 </head>
 
-<body class="theme-blush font-montserrat theme-blush light_version">
+@if(app()->getLocale() == 'ar')
+    <body class="theme-blush font-montserrat theme-blush light_version rtl">
+@else
+    <body class="theme-blush font-montserrat theme-blush light_version">
+@endif
 
     <!-- Page Loader -->
     <div class="page-loader-wrapper">

@@ -14,33 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::group(['namespace' => 'Api'], function ($router) {
-
-    Route::group(['prefix' => 'auth'], function ($router) {
-        Route::post('login', 'AuthController@login');
-        Route::get('check-token', 'AuthController@checkActivation');
-        // Route::post('reset-password', 'AuthController@resetPassword');
-        // Route::post('pin-code', 'AuthController@checkPinCode');
-        // Route::post('new-password', 'AuthController@newPassword');
-        // Route::post('register-token', 'AuthController@RegisterToken');
-        // Route::post('remove-token', 'AuthController@RemoveToken');
-
-        Route::group(['middleware' => 'auth:api'], function ($router) {
-            Route::get('logout', 'AuthController@logout');
-            Route::post('refresh', 'AuthController@refresh');
-            Route::get('me', 'AuthController@me');
-        });
-    });
-    Route::group(['middleware' => 'auth:api'], function ($router) {
-        Route::resource('city', 'CityController');
-        Route::resource('area', 'AreaController');
-        Route::resource('category', 'CategoryController');
-        Route::resource('tax', 'TaxController');
-        Route::resource('tax-type', 'TaxTypeController');
-        Route::resource('item', 'ItemController');
-    });
-});
+//Route::group(['namespace' => 'Api'], function ($router) {
+//
+//    Route::group(['prefix' => 'auth'], function ($router) {
+//        Route::post('login', 'AuthController@login');
+//        Route::get('check-token', 'AuthController@checkActivation');
+//        // Route::post('reset-password', 'AuthController@resetPassword');
+//        // Route::post('pin-code', 'AuthController@checkPinCode');
+//        // Route::post('new-password', 'AuthController@newPassword');
+//        // Route::post('register-token', 'AuthController@RegisterToken');
+//        // Route::post('remove-token', 'AuthController@RemoveToken');
+//
+//        Route::group(['middleware' => 'auth:api'], function ($router) {
+//            Route::get('logout', 'AuthController@logout');
+//            Route::post('refresh', 'AuthController@refresh');
+//            Route::get('me', 'AuthController@me');
+//        });
+//    });
+//    Route::group(['middleware' => 'auth:api'], function ($router) {
+//        Route::resource('city', 'CityController');
+//        Route::resource('area', 'AreaController');
+//        Route::resource('category', 'CategoryController');
+//        Route::resource('tax', 'TaxController');
+//        Route::resource('tax-type', 'TaxTypeController');
+//        Route::resource('item', 'ItemController');
+//    });
+//});

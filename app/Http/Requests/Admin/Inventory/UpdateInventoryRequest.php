@@ -25,7 +25,7 @@ class UpdateInventoryRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'tel_no' => "required|size:10|regex:/0[1-9]{9}/",
+            'tel_no' => "required|size:10|regex:/0[0-9]{9}/",
             'address' => "required",
             'emp_id' => "required|exists:employees,id",
         ];
