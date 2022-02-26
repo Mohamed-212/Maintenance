@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Salary')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.create_salary'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Salary</h2>
+                <h2>@lang('employees.create_new_salary')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.salaries.store')}}" id="advanced-form" data-parsley-validate
@@ -17,10 +17,10 @@
                     <div class="row">
                         <div class="col-10">
                             <div class="form-group">
-                                <label for="emp_id">Employees</label>
+                                <label for="emp_id">@lang('employees.employees')</label>
                                 <select name="emp_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" id="emp_id" aria-hidden="true" required>
-                                    <option value="">Choose Employee </option>
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -29,10 +29,10 @@
                         </div>
                         <div class="col-2">
                             <div class="form-group">
-                                <label for="total">Total Salary</label>
+                                <label for="total">@lang('employees.total_salary')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" id="total" class="form-control key"
                                            value="" disabled>
@@ -43,22 +43,22 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="type_id">Month</label>
+                                <label>@lang('general.month')</label>
                                 <select name="month" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                    <option value="">Choose Month </option>
-                                    <option value="January">January</option>
-                                    <option value="Febuary">Febuary</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="September">September</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="january">@lang('general.january')</option>
+                                    <option value="february">@lang('general.february')</option>
+                                    <option value="march">@lang('general.march')</option>
+                                    <option value="april">@lang('general.april')</option>
+                                    <option value="may">@lang('general.may')</option>
+                                    <option value="june">@lang('general.june')</option>
+                                    <option value="july">@lang('general.july')</option>
+                                    <option value="august">@lang('general.august')</option>
+                                    <option value="september">@lang('general.september')</option>
+                                    <option value="october">@lang('general.october')</option>
+                                    <option value="november">@lang('general.november')</option>
+                                    <option value="december">@lang('general.december')</option>
                                 </select>
                                 @error('month')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="salary_date">Salary Date</label>
+                                <label>@lang('employees.salary_date')</label>
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
                                         name="salary_date" data-date-format="yyyy-mm-dd" required
@@ -82,10 +82,10 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="type_id">bonus</label>
+                                <label>@lang('employees.bonus')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" name="bonus" value="{{old('bonus')}}">
                                 </div>
@@ -93,22 +93,22 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="deduction">deduction</label>
+                                <label>@lang('employees.deduction')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" name="deduction"
-                                        value="{{old('deduction')}}">
+                                           value="{{old('deduction')}}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="loan_deduction">Loan deduction</label>
+                                <label for="loan_deduction">@lang('employees.loan_deduction')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" id="loan_deduction"
                                            value="" disabled>
@@ -119,7 +119,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>comments</label>
+                                <label>@lang('general.comments')</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments')}}</textarea>
                                 @error('comments')
@@ -128,9 +128,7 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

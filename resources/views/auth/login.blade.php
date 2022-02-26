@@ -18,7 +18,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <p class="lead">Login to your account</p>
+                <p class="lead">@lang('auth.login_to_your_account')</p>
                 <form class="form-auth-small m-t-20" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
@@ -46,25 +46,25 @@
                     </span>
                     @enderror
                     </div>
-                    <div class="form-group clearfix">
-                        <label class="fancy-checkbox element-left">
-                            <input class="form-check-input" type="checkbox" name="remember"
-                            id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <span>Remember me</span>
-                        </label>								
-                    </div>
+{{--                    <div class="form-group clearfix">--}}
+{{--                        <label class="fancy-checkbox element-left">--}}
+{{--                            <input class="form-check-input" type="checkbox" name="remember"--}}
+{{--                            id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
+{{--                            <span>Remember me</span>--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
                     <button type="submit" class="btn btn-primary btn-round btn-block">
-                        {{ __('Login') }}
+                        @lang('auth.login')
                     </button>
-                    @if (Route::has('password.request'))
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                    @endif
-                    <div class="bottom">
-                        <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="">Forgot password?</a></span>
-                    <span>Don't have an account? <a href="{{route('register')}}">Register</a></span>
-                    </div>
+{{--                    @if (Route::has('password.request'))--}}
+{{--                    <a class="btn btn-link" href="{{ route('password.request') }}">--}}
+{{--                        {{ __('Forgot Your Password?') }}--}}
+{{--                    </a>--}}
+{{--                    @endif--}}
+{{--                    <div class="bottom">--}}
+{{--                        <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="">Forgot password?</a></span>--}}
+{{--                    <span>Don't have an account? <a href="{{route('register')}}">Register</a></span>--}}
+{{--                    </div>--}}
                 </form>
             </div>
         </div>

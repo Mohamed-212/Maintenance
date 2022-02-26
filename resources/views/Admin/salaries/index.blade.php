@@ -1,78 +1,67 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'salaries')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.salaries'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('salaries/create')}}">
-            <span>Add New Salary</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('salaries/create')}}">
+            <span>@lang('employees.add_new_salary')</span>
         </a>
     </div>
-
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Employee</th>
-                                <th>Month</th>
-                                <th>Salary Date</th>
-                                <th>Bonus</th>
-                                <th>Deduction</th>
-                                <th>Loan Deduction</th>
-                                <th>Total</th>
-                                <th>Options</th>
+                                <th>@lang('employees.employee')</th>
+                                <th>@lang('general.month')</th>
+                                <th>@lang('employees.salary_date')</th>
+                                <th>@lang('employees.bonus')</th>
+                                <th>@lang('employees.deduction')</th>
+                                <th>@lang('employees.loan_deduction')</th>
+                                <th>@lang('employees.total_salary')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach ($salaries as $salary)
-
-
                             <tr>
-                            <td>{{$salary->employee->name}}</td>
-                            <td>{{$salary->month}}</td>
-                            <td>{{$salary->salary_date}}</td>
-                            <td>{{isset($salary->bonus)?$salary->bonus:0}}</td>
-                            <td>{{isset($salary->deduction)?$salary->deduction:0}}</td>
-                            <td>{{isset($salary->loan_deduction)?$salary->loan_deduction:0}}</td>
-                            <td>{{$salary->total}}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                      Options
-                                    </button>
-                                    <div class="dropdown-menu row">
-                                        <div class="col-12 ml-2">
-                                            <a href="{{url("/salaries/{$salary->id}/edit")}}"
-                                                ><i class="fa fa-edit"></i>Edit</a>
+                                <td>{{$salary->employee->name}}</td>
+                                <td>{{$salary->month}}</td>
+                                <td>{{$salary->salary_date}}</td>
+                                <td>{{isset($salary->bonus)?$salary->bonus:0}}</td>
+                                <td>{{isset($salary->deduction)?$salary->deduction:0}}</td>
+                                <td>{{isset($salary->loan_deduction)?$salary->loan_deduction:0}}</td>
+                                <td>{{$salary->total}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                          @lang('general.options')
+                                        </button>
+                                        <div class="dropdown-menu row">
+                                            <div class="col-12 ml-2">
+                                                <a href="{{url("/salaries/{$salary->id}/edit")}}"
+                                                    ><i class="fa fa-edit"></i>@lang('general.edit')</a>
+                                            </div>
+                                            <div class="col-12">
+                                                <form action="{{url("/salaries/{$salary->id}")}}" method="post" class="delete">
+                                                    <button style="background-color: white;border:thick;" class="text-danger">
+                                                        <i class="fa fa-trash-o"></i>@lang('general.delete')
+                                                    </button>
+                                                        @method('DELETE')
+                                                         @csrf
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="col-12">
-                                            <form action="{{url("/salaries/{$salary->id}")}}" method="post" class="delete">
-                                                <button style="background-color: white;border:thick;" class="text-danger">
-                                                    <i class="fa fa-trash-o"></i>Delete
-                                                </button>
-                                                    @method('DELETE')
-                                                     @csrf
-                                            </form>
-                                        </div>
-
-
-                                    </div>
-                                  </div>
-                            </td>
-
+                                      </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

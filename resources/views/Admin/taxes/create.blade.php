@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Tax')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('tax.create_tax'))
 
 
 @section('content')
@@ -8,18 +8,17 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Tax</h2>
+                <h2>@lang('tax.create_new_tax')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.taxes.store')}}" id="advanced-form" data-parsley-validate
                     novalidate class="confirm">
                     @csrf
                     <div class="form-group">
-                        <label for="type_id">Tax Type</label>
+                        <label for="type_id">@lang('tax.tax_type')</label>
                         <select name="type_id" class="form-control select2 select2-hidden-accessible"
                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                            <option value="">Choose Tax Type</option>
-
+                            <option value="">@lang('general.choose_option')</option>
                             @foreach($types as $type)
                             <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
@@ -29,18 +28,18 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <b>percentage</b>
+                        <label>@lang('tax.percentage')</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-percent"></i></span>
                             </div>
-                            <input type="text" class="form-control money-dollar" placeholder="Ex: 9" name="percentage">
+                            <input type="text" class="form-control money-dollar" placeholder="10" name="percentage">
                             @error('percentage')
                             <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.create')</button>
                 </form>
             </div>
         </div>

@@ -1,44 +1,36 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'loans')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.loans'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('loans/create')}}">
-            <span>Add New Loan</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('loans/create')}}">
+            <span>@lang('employees.add_new_loan')</span>
         </a>
     </div>
-
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Employee</th>
-                                <th>Payments</th>
-                                <th>Remaining Payments</th>
-                                <th>Loan Date</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Options</th>
+                                <th>@lang('employees.employee')</th>
+                                <th>@lang('employees.payments')</th>
+                                <th>@lang('employees.remaining_payments')</th>
+                                <th>@lang('employees.loan_date')</th>
+                                <th>@lang('general.total')</th>
+                                <th>@lang('general.status')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach ($loans as $loan)
-
-
                             <tr>
                             <td>{{$loan->employee->name}}</td>
                             <td>{{$loan->payments}}</td>
@@ -46,31 +38,29 @@
                             <td>{{$loan->loan_date}}</td>
                             <td>{{$loan->total}}</td>
                             <td>{{$loan->status}}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                      Options
-                                    </button>
-                                    <div class="dropdown-menu row">
-                                        <div class="col-12 ml-2">
-                                            <a href="{{url("/loans/{$loan->id}/edit")}}"
-                                                ><i class="fa fa-edit"></i>Edit</a>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            @lang('general.options')
+                                        </button>
+                                        <div class="dropdown-menu row">
+                                            <div class="col-12 ml-2">
+                                                <a href="{{url("/loans/{$loan->id}/edit")}}"
+                                                    ><i class="fa fa-edit"></i>@lang('general.edit')</a>
+                                            </div>
+    {{--                                        <div class="col-12">--}}
+    {{--                                            <form action="{{url("/loans/{$loan->id}")}}" method="post" class="delete">--}}
+    {{--                                                <button style="background-color: white;border:thick;" class="text-danger">--}}
+    {{--                                                    <i class="fa fa-trash-o"></i>Delete--}}
+    {{--                                                </button>--}}
+    {{--                                                    @method('DELETE')--}}
+    {{--                                                     @csrf--}}
+    {{--                                            </form>--}}
+    {{--                                        </div>--}}
+
                                         </div>
-{{--                                        <div class="col-12">--}}
-{{--                                            <form action="{{url("/loans/{$loan->id}")}}" method="post" class="delete">--}}
-{{--                                                <button style="background-color: white;border:thick;" class="text-danger">--}}
-{{--                                                    <i class="fa fa-trash-o"></i>Delete--}}
-{{--                                                </button>--}}
-{{--                                                    @method('DELETE')--}}
-{{--                                                     @csrf--}}
-{{--                                            </form>--}}
-{{--                                        </div>--}}
-
-
-                                    </div>
-                                  </div>
-                            </td>
-
+                                      </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

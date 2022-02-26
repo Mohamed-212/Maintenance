@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Loan')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.create_loan'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Loan</h2>
+                <h2>@lang('employees.create_new_loan')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.loans.store')}}" id="advanced-form" data-parsley-validate
@@ -17,10 +17,10 @@
                     <div class="row">
                         <div class="col-10">
                             <div class="form-group">
-                                <label for="emp_id">Employees</label>
+                                <label>@lang('employees.employees')</label>
                                 <select name="emp_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                    <option value="">Choose Employee </option>
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -32,10 +32,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="total">Total</label>
+                                <label>@lang('general.total')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" name="total"
                                            value="{{old('total')}}">
@@ -45,10 +45,9 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="payments">Number of Payments</label>
+                                <label>@lang('employees.number_of_payments')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
@@ -58,14 +57,13 @@
                                     <small class="form-text text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="loan_date">Loan Date</label>
+                                <label>@lang('employees.loan_date')</label>
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
                                            name="loan_date" data-date-format="yyyy-mm-dd" required
@@ -78,7 +76,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="start_date">Start deduction from</label>
+                                <label>@lang('employees.start_deduction_from')</label>
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
                                            name="start_date" data-date-format="yyyy-mm-dd" required
@@ -93,7 +91,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>comments</label>
+                                <label>@lang('general.comments')</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments')}}</textarea>
                                 @error('comments')
@@ -104,7 +102,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

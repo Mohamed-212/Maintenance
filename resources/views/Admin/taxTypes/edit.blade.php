@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit Type')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('tax.edit_type'))
 
 
 @section('content')
@@ -8,16 +8,15 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit Type</h2>
+                <h2>@lang('tax.edit_type')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.taxTypes.update', ['taxType' => $type->id])}}"
                     id="advanced-form" data-parsley-validate novalidate class="edit">
                     @method('PUT')
                     @csrf
-
                     <div class="form-group">
-                        <label for="text-input1"> Name</label>
+                        <label for="text-input1">@lang('general.name')</label>
                         <input type="text" id="text-input1" class="form-control" required name="name"
                             value="{{$type->name}}">
                         @error('name')
@@ -25,7 +24,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>

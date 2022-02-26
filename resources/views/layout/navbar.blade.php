@@ -7,8 +7,8 @@
                 <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="{{url('salesOrders/create')}}" class=" icon-menu" title="Right Menu"><span class="icon-plus text-info font-weight-bolder">New Sales Order</span></a></li>
-                <li><a href="{{url('purchaseOrders/create')}}" class="icon-menu" title="Right Menu"><span class="icon-plus text-info font-weight-bolder">New Purshase Order</span></a></li>
+                <li><a href="{{url('salesOrders/create')}}" class=" icon-menu" title="Right Menu"><span class="icon-plus text-info font-weight-bolder"> @lang('navbar.new_sales_order') </span></a></li>
+                <li><a href="{{url('purchaseOrders/create')}}" class="icon-menu" title="Right Menu"><span class="icon-plus text-info font-weight-bolder"> @lang('navbar.new_purchase_order') </span></a></li>
                 </li>
             </ul>
         </div>
@@ -24,9 +24,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item pt-2 pb-2" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}">
-                                <img src="../assets/images/flag/us.svg " class="w20 mr-2 rounded-circle"> English</a>
+                                <img src="{{asset('assets/images/flag/us.svg')}}" class="w20 mr-2 rounded-circle"> English</a>
                             <a class="dropdown-item pt-2 pb-2" href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}">
-                                <img src="../assets/images/flag/arabia.svg " class="w20 mr-2 rounded-circle"> العربية</a>
+                                <img src="{{asset('assets/images/flag/egypt.svg')}}" class="w20 mr-2 rounded-circle"> العربية</a>
                         </div>
                     </li>
                     @php

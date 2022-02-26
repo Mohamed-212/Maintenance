@@ -11,7 +11,7 @@
                 <img src="{{url('assets/images/user.png')}}" class="user-photo" alt="User Profile Picture">
             </div>
             <div class="dropdown">
-                <span>Welcome,</span>
+                <span>@lang('sidebar.welcome')</span>
                 <a href="javascript:void(0);" class="user-name" data-toggle="dropdown"><strong>
                         {{isset(auth()->user()->name) ? auth()->user()->name : null}}</strong></a>
             </div>
@@ -19,104 +19,98 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu">
 
-                <li class="{{ Request::segment(2) === 'locations' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-anchor"></i><span>Locations</span></a>
+                <li class="{{ in_array(Request::segment(2), ['cities','areas']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-anchor"></i><span>@lang('sidebar.locations')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.cities.index')}}">Cities</a></li>
-                        <li><a href="{{route('admin.areas.index')}}">Areas</a></li>
+                        <li class="{{ Request::segment(2) === 'cities' ? 'active' : null }}"><a href="{{route('admin.cities.index')}}">@lang('sidebar.cities')</a></li>
+                        <li class="{{ Request::segment(2) === 'areas' ? 'active' : null }}"><a href="{{route('admin.areas.index')}}">@lang('sidebar.areas')</a></li>
 
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'taxes' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-book-open"></i><span>Taxes</span></a>
+                <li class="{{ in_array(Request::segment(2), ['taxTypes','taxes']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-book-open"></i><span>@lang('sidebar.taxes')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.taxTypes.index')}}">Types</a></li>
-                        <li><a href="{{route('admin.taxes.index')}}">Taxes</a></li>
+                        <li class="{{ Request::segment(2) === 'taxTypes' ? 'active' : null }}"><a href="{{route('admin.taxTypes.index')}}">@lang('sidebar.types')</a></li>
+                        <li class="{{ Request::segment(2) === 'taxes' ? 'active' : null }}"><a href="{{route('admin.taxes.index')}}">@lang('sidebar.taxes')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'items' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-basket"></i><span>Items</span></a>
+                <li class="{{ in_array(Request::segment(2), ['categories','subCategories','items']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-basket"></i><span>@lang('sidebar.items')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.categories.index')}}">Categories</a></li>
-                        <li><a href="{{route('admin.subCategories.index')}}">SubCategories</a></li>
-
-                        <li><a href="{{route('admin.items.index')}}">Items</a></li>
+                        <li class="{{ Request::segment(2) === 'categories' ? 'active' : null }}"><a href="{{route('admin.categories.index')}}">@lang('sidebar.categories')</a></li>
+                        <li class="{{ Request::segment(2) === 'subCategories' ? 'active' : null }}"><a href="{{route('admin.subCategories.index')}}">@lang('sidebar.subCategories')</a></li>
+                        <li class="{{ Request::segment(2) === 'items' ? 'active' : null }}"><a href="{{route('admin.items.index')}}">@lang('sidebar.items')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'customers' ? 'active open' : null }}">
-                    <a href="{{route('admin.customers.index')}}"><i class="icon-users"></i><span>Customers</span></a>
+                <li class="{{ Request::segment(2) === 'customers' ? 'active' : null }}">
+                    <a href="{{route('admin.customers.index')}}"><i class="icon-users"></i><span>@lang('sidebar.customers')</span></a>
                 </li>
-                <li class="{{ Request::segment(2) === 'employees' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-briefcase"></i><span>Employees</span></a>
+                <li class="{{ in_array(Request::segment(2), ['jobs','salaries','loans','employees']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-briefcase"></i><span>@lang('sidebar.employees')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.jobs.index')}}">Jobs</a></li>
-                        <li><a href="{{route('admin.salaries.index')}}">Salaries</a></li>
-                        <li><a href="{{route('admin.loans.index')}}">Loans</a></li>
-                        <li><a href="{{route('admin.employees.index')}}">Employees</a></li>
+                        <li class="{{ Request::segment(2) === 'jobs' ? 'active' : null }}"><a href="{{route('admin.jobs.index')}}">@lang('sidebar.jobs')</a></li>
+                        <li class="{{ Request::segment(2) === 'salaries' ? 'active' : null }}"><a href="{{route('admin.salaries.index')}}">@lang('sidebar.salaries')</a></li>
+                        <li class="{{ Request::segment(2) === 'loans' ? 'active' : null }}"><a href="{{route('admin.loans.index')}}">@lang('sidebar.loans')</a></li>
+                        <li class="{{ Request::segment(2) === 'employees' ? 'active' : null }}"><a href="{{route('admin.employees.index')}}">@lang('sidebar.employees')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'inventories' ? 'active open' : null }}">
-                    <a href="{{route('admin.inventories.index')}}"><i
-                            class="icon-layers"></i><span>Inventories</span></a>
+                <li class="{{ Request::segment(2) === 'inventories' ? 'active' : null }}">
+                    <a href="{{route('admin.inventories.index')}}"><i class="icon-layers"></i><span>@lang('sidebar.inventories')</span></a>
                 </li>
-                <li class="{{ Request::segment(2) === 'suppliers' ? 'active open' : null }}">
-                    <a href="{{route('admin.suppliers.index')}}"><i class="icon-loop"></i><span>suppliers</span></a>
+                <li class="{{ Request::segment(2) === 'suppliers' ? 'active' : null }}">
+                    <a href="{{route('admin.suppliers.index')}}"><i class="icon-loop"></i><span>@lang('sidebar.suppliers')</span></a>
                 </li>
-                <li class="{{ Request::segment(2) === 'orders' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-paper-plane"></i><span>Orders</span></a>
+                <li class="{{ in_array(Request::segment(2), ['purchaseOrders','salesOrders']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-paper-plane"></i><span>@lang('sidebar.orders')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.purchaseOrders.index')}}">Purchase Orders</a></li>
-                        <a href="{{route('admin.salesOrders.index')}}"><span>Sales Orders</span></a>
+                        <li class="{{ Request::segment(2) === 'purchaseOrders' ? 'active' : null }}"><a href="{{route('admin.purchaseOrders.index')}}">@lang('sidebar.purchase_orders')</a></li>
+                        <li class="{{ Request::segment(2) === 'salesOrders' ? 'active' : null }}"><a href="{{route('admin.salesOrders.index')}}">@lang('sidebar.sales_orders')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'return' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-paper-plane"></i><span>Returns</span></a>
+                <li class="{{ in_array(Request::segment(2), ['returns']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-paper-plane"></i><span>@lang('sidebar.returns')</span></a>
                     <ul>
-                        <a href="{{route('admin.returns.index')}}"><span>Purchase Orders</span></a>
+                        <li class="{{ Request::segment(2) === 'returns' ? 'active' : null }}"><a href="{{route('admin.returns.index')}}">@lang('sidebar.purchase_orders')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'expense' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-wallet"></i><span>Expenses</span></a>
+                <li class="{{ in_array(Request::segment(2), ['expensesType','expenses']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-wallet"></i><span>@lang('sidebar.expenses')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.expensesType.index')}}">Types</a></li>
-                        <li><a href="{{route('admin.expenses.index')}}">Expenses</a></li>
+                        <li class="{{ Request::segment(2) === 'expensesType' ? 'active' : null }}"><a href="{{route('admin.expensesType.index')}}">@lang('sidebar.types')</a></li>
+                        <li class="{{ Request::segment(2) === 'expenses' ? 'active' : null }}"><a href="{{route('admin.expenses.index')}}">@lang('sidebar.expenses')</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::segment(2) === 'offers' ? 'active open' : null }}">
-                    <a href="{{route('admin.offers.index')}}"><i class="icon-calculator"></i><span>Offers</span></a>
+                <li class="{{ Request::segment(2) === 'offers' ? 'active' : null }}">
+                    <a href="{{route('admin.offers.index')}}"><i class="icon-calculator"></i><span>@lang('sidebar.offers')</span></a>
                 </li>
-                <li class="{{ Request::segment(2) === 'payments' ? 'active open' : null }}">
-                    <a href="{{route('admin.payments.index')}}"><i class="icon-arrow-down"></i><span>Purchase
-                            Payments</span></a>
+                <li class="{{ Request::segment(2) === 'payments' ? 'active' : null }}">
+                    <a href="{{route('admin.payments.index')}}"><i class="icon-arrow-down"></i><span>@lang('sidebar.purchase_payments')</span></a>
                 </li>
-                <li class="{{ Request::segment(2) === 'salesPayments' ? 'active open' : null }}">
-                    <a href="{{route('admin.salesPayments.index')}}"><i class="icon-arrow-down"></i><span>Sales
-                            Payments</span></a>
+                <li class="{{ Request::segment(2) === 'salesPayments' ? 'active' : null }}">
+                    <a href="{{route('admin.salesPayments.index')}}"><i class="icon-arrow-down"></i><span>@lang('sidebar.sales_payments')</span></a>
                 </li>
-                <li class="{{ Request::segment(3) === 'reports' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-bar-chart"></i><span>Reports</span></a>
+                <li class="{{ in_array(Request::segment(2), ['invoices','reports']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-bar-chart"></i><span>@lang('sidebar.reports')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.invoices.index')}}">Invoices</a></li>
+                        <li class="{{ Request::segment(2) === 'invoices' ? 'active' : null }}"><a href="{{route('admin.invoices.index')}}">@lang('sidebar.invoices')</a></li>
                         {{--                        <li><a href="{{route('admin.profits')}}">Profit</a></li>--}}
-                        <li><a href="{{route('admin.purchase')}}">Purchase Orders</a></li>
-                        <li><a href="{{route('admin.sale')}}">Sales Orders</a></li>
-                        <li><a href="{{route('admin.saleItem')}}">Sales Orders per Items</a></li>
-                        <li><a href="{{route('admin.expense')}}">Expense</a></li>
-                        <li><a href="{{route('admin.report.returns')}}">Returns Purchase Order</a></li>
-                        <li><a href="{{route('admin.report.safe')}}">Safe Transactions</a></li>
-                        <li><a href="{{route('admin.report.safeCash')}}">Cash Safe Transactions</a></li>
-                        <li><a href="{{route('admin.report.safeVisa')}}">Visa Safe Transactions</a></li>
+                        <li class="{{ Request::segment(3) === 'purchases' ? 'active' : null }}"><a href="{{route('admin.purchase')}}">@lang('sidebar.purchase_orders')</a></li>
+                        <li class="{{ Request::segment(3) === 'sales' ? 'active' : null }}"><a href="{{route('admin.sale')}}">@lang('sidebar.sales_orders')</a></li>
+                        <li class="{{ Request::segment(3) === 'salesItem' ? 'active' : null }}"><a href="{{route('admin.saleItem')}}">@lang('sidebar.sales_orders_per_items')</a></li>
+                        <li class="{{ Request::segment(3) === 'expenses' ? 'active' : null }}"><a href="{{route('admin.expense')}}">@lang('sidebar.expenses')</a></li>
+                        <li class="{{ Request::segment(3) === 'returns' ? 'active' : null }}"><a href="{{route('admin.report.returns')}}">@lang('sidebar.returns_purchase_order')</a></li>
+                        <li class="{{ (Request::segment(4) == '' && Request::segment(3) === 'safes') ? 'active' : null }}"><a href="{{route('admin.report.safe')}}">@lang('sidebar.safe_transactions')</a></li>
+                        <li class="{{ Request::segment(4) === 'cash' ? 'active' : null }}"><a href="{{route('admin.report.safeCash')}}">@lang('sidebar.cash_safe_transactions')</a></li>
+                        <li class="{{ Request::segment(4) === 'visa' ? 'active' : null }}"><a href="{{route('admin.report.safeVisa')}}">@lang('sidebar.visa_safe_transactions')</a></li>
                     </ul>
                 </li>
-
-                <li class="{{ in_array(request()->segment(1), ['services', 'rents'])  ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-bar-chart"></i><span>Services</span></a>
-                    <ul>
-                        <li><a href="{{route('admin.services.index')}}">Service</a></li>
-                        <!--<li><a href="{{route('admin.rents.index')}}">Rents</a></li>-->
-                    </ul>
-                </li>
-
+{{--                <li class="{{ in_array(request()->segment(1), ['services', 'rents'])  ? 'active open' : null }}">--}}
+{{--                    <a href="" class="has-arrow"><i class="icon-bar-chart"></i><span>Services</span></a>--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="{{route('admin.services.index')}}">Service</a></li>--}}
+{{--                        <li><a href="{{route('admin.rents.index')}}">Rents</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 <!--<li class="{{ Request::segment(2) === 'cars' ? 'active open' : null }}">-->
                 <!--    <a href="" class="has-arrow"><i class="icon-vector"></i><span>Cars</span></a>-->
                 <!--    <ul>-->
@@ -129,18 +123,14 @@
                 <!--    <a href="{{route('admin.serviceMaintenance.index')}}"><i class="icon-settings"></i><span>Car-->
                 <!--            Maintenance</span></a>-->
                 <!--</li>-->
-                <li class="{{ Request::segment(2) === 'adminstrator' ? 'active open' : null }}">
-                    <a href="" class="has-arrow"><i class="icon-lock"></i><span>Adminstrators</span></a>
+                <li  class="{{ in_array(Request::segment(2), ['users','roles']) ? 'active open' : null }}">
+                    <a href="" class="has-arrow"><i class="icon-lock"></i><span>@lang('sidebar.adminstrators')</span></a>
                     <ul>
-                        <li><a href="{{route('admin.users.index')}}">Users</a></li>
-                        <li><a href="{{route('admin.roles.index')}}">Roles</a></li>
+                        <li class="{{ Request::segment(2) === 'users' ? 'active' : null }}"><a href="{{route('admin.users.index')}}">@lang('sidebar.users')</a></li>
+                        <li class="{{ Request::segment(2) === 'roles' ? 'active' : null }}"><a href="{{route('admin.roles.index')}}">@lang('sidebar.roles')</a></li>
                     </ul>
                 </li>
-
-
             </ul>
-
-
         </nav>
     </div>
 </div>
