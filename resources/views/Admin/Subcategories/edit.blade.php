@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit SubCtategory')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('items.edit_subcategory'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit SubCategory</h2>
+                <h2>@lang('items.edit_subcategory')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.subCategories.update',['subCategory'=>$subCategory->id])}}" id="advanced-form"
@@ -18,11 +18,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="category_id">Category</label>
+                                <label for="category_id">@lang('items.category')</label>
                                 <select name="category_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="">Choose Category</option>
-            
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}"{{$subCategory->category_id==$category->id?'selected':''}}>{{$category->name}}</option>
                                     @endforeach
@@ -34,27 +33,15 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>SubCategory Name</label>
-        
-        
-                            <input type="text" class="form-control" placeholder="Enter SubCategory Name" name="name" value="{{$subCategory->name}}"><br>
-        
-                                @error('name')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
-        
-        
+                            <label>@lang('general.name')</label>
+                            <input type="text" class="form-control" name="name" placeholder="@lang('items.subcat_name_holder')" value="{{$subCategory->name}}"><br>
+                            @error('name')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                            @enderror
                             </div>
                         </div>
-                     
-                      
                     </div>
-         
-                  <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                  </div>
-
-                 
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>

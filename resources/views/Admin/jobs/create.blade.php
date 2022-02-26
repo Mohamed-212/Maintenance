@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Job')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.create_job'))
 
 
 @section('content')
@@ -8,20 +8,20 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Job</h2>
+                <h2>@lang('employees.create_new_job')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.jobs.store')}}" id="advanced-form" data-parsley-validate
                     novalidate class="confirm">
                     @csrf
                     <div class="form-group">
-                        <label for="text-input1">Job Position</label>
+                        <label for="text-input1">@lang('employees.position')</label>
                         <input type="text" id="text-input1" class="form-control" required name="position">
                         @error('position')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.create')</button>
                 </form>
             </div>
         </div>

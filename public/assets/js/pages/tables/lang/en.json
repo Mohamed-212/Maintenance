@@ -1,0 +1,60 @@
+{
+    "sEmptyTable": "No data available in table",
+    "sLoadingRecords": "Loading...",
+    "sProcessing": "Processing...",
+    "sLengthMenu": "Show _MENU_ entries",
+    "sZeroRecords": "No matching records found",
+    "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+    "sInfoEmpty": "Showing 0 to 0 of 0 entries",
+    "sInfoFiltered": "(filtered from _MAX_ total entries)",
+    "infoThousands": ",",
+    "sSearch": "Search:",
+    "searchPlaceholder": "search for all...",
+    "oPaginate": {
+        "sFirst": "First",
+        "sPrevious": "Previous",
+        "sNext": "Next",
+        "sLast": "Last"
+    },
+    "oAria": {
+        "sSortAscending": ": activate to sort column ascending",
+        "sSortDescending": ": activate to sort column descending"
+    },
+    "select": {
+        "cells": {
+            "1": "1 cell selected",
+            "_": "%d cells selected"
+        },
+        "columns": {
+            "1": "1 column selected",
+            "_": "%d columns selected"
+        }
+    },
+    "buttons": {
+        "collection": "Collection <span class='ui-button-icon-primary ui-icon ui-icon-triangle-1-s'\/>",
+        "colvis": "Column Visibility",
+        "colvisRestore": "Restore visibility",
+        "copy": "Copy",
+        "copyKeys": "Press ctrl or u2318 + C to copy the table data to your system clipboard.<br><br>To cancel, click this message or press escape.",
+        "copySuccess": {
+            "1": "Copied 1 row to clipboard",
+            "_": "Copied %d rows to clipboard"
+        },
+        "copyTitle": "Copy to Clipboard",
+        "csv": "CSV",
+        "excel": "Excel",
+        "pageLength": {
+            "-1": "Show all rows",
+            "_": "Show %d rows"
+        },
+        "pdf": "PDF",
+        "print": "Print",
+        "updateState": "Update",
+        "stateRestore": "State %d",
+        "savedStates": "Saved States",
+        "renameState": "Rename",
+        "removeState": "Remove",
+        "removeAllStates": "Remove All States",
+        "createState": "Create State"
+    }
+}

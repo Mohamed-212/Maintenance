@@ -1,40 +1,33 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'SubCategories')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('items.subcategories'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('subCategories/create')}}">
-            <span>Add New SubCategory</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('subCategories/create')}}">
+            <span>@lang('items.add_new_subcategory')</span>
         </a>
     </div>
-  
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-                
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-                    
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Sub Category</th>
-                                <th>Category Name</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('items.category_name')</th>
+                                <th>@lang('general.edit')</th>
+                                <th>@lang('general.delete')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($subcategories as $category)
-                                
-                      
                             <tr>
                             <td>{{$category->name}}</td>
                             <td>{{$category->category->name}}</td>

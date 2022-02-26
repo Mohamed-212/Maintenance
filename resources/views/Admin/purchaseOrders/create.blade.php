@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Purchase Order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('orders.create_purchase_order'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New order</h2>
+                <h2>@lang('orders.create_new_purchase_order')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.purchaseOrders.store')}}" id="advanced-form"
@@ -17,9 +17,10 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="supplier_id">Supplier Company Name</label>
+                                <label>@lang('orders.supplier_company_name')</label>
                                 <select name="supplier_id" class="form-control" style="width: 100%;" data-select2-id="1"
                                     tabindex="-1" aria-hidden="true" id="category">
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($suppliers as $supplier)
                                     <option value="{{$supplier->id}}">{{$supplier->company_name}}</option>
                                     @endforeach
@@ -32,9 +33,10 @@
 
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="inventory_id">Inventory Name</label>
+                                <label>@lang('orders.inventory_name')</label>
                                 <select name="inventory_id" class="form-control" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true" id="category">
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($inventories as $inventory)
                                     <option value="{{$inventory->id}}">
                                         {{$inventory->name}}
@@ -48,12 +50,12 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="payment_type">Patyment Type</label>
+                                <label>@lang('orders.payment_type')</label>
                                 <select name="payment_type" class="form-control" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true" id="payment_type">
-                                    <option value="">Choose Payment Type</option>
-                                    <option value="cash">Cash</option>
-                                    <option value="visa">Visa</option>
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="cash">@lang('general.cash')</option>
+                                    <option value="visa">@lang('general.visa')</option>
                                 </select>
                                 @error('payment_type')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -65,23 +67,23 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="header">
-                                    <h2>Items</h2>
+                                    <h2>@lang('orders.items')</h2>
                                 </div>
                                 <div class="body">
                                     <div class="table-responsive">
                                         <table class="table" id="table">
                                             <thead>
                                                 <tr>
-                                                    <th>ACTIONS</th>
-                                                    <th>NAME</th>
-                                                    <th>Quantity</th>
-                                                    <th>Cost</th>
-                                                    <th>SubTotal</th>
+                                                    <th>@lang('general.actions')</th>
+                                                    <th>@lang('general.name')</th>
+                                                    <th>@lang('orders.quantity')</th>
+                                                    <th>@lang('orders.cost')</th>
+                                                    <th>@lang('orders.subtotal')</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="append_items">
                                                 <tr index=1>
-                                                    <td><a style="float: right;pointer-events: none;"
+                                                    <td class="p-3"><a style="pointer-events: none;"
                                                             class="btn btn-danger block"><i class="icon-ban"></i></a>
                                                     </td>
                                                     <td>
@@ -89,7 +91,7 @@
                                                             <div class="form-group">
                                                                 <select class="form-control" name="item_id[]" id="item0"
                                                                     class="item">
-                                                                    <option value="">Choose Items</option>
+                                                                    <option value="">@lang('general.choose_option')</option>
                                                                     @foreach($items as $item)
                                                                     <option value="{{$item->id}}">{{$item->name}}
                                                                     </option>
@@ -101,7 +103,6 @@
                                                             @enderror
                                                         </div>
                                                     </td>
-
                                                     <td>
                                                         <div class="form-group">
                                                             <input type="number" min="0" name="quantity[]" id="quantity0"
@@ -112,7 +113,7 @@
                                                     <td>
                                                         <div class="form-group mt-3">
                                                             <input type="number" min="0" class="form-control"
-                                                                placeholder="Ex: 99,99 $" name="cost[]"
+                                                                placeholder="99,99" name="cost[]"
                                                                 value="{{old('cost')}}" id="cost0"
                                                                 onChange="handleChangeCost(0)"><br>
                                                             @error('cost')
@@ -121,31 +122,27 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <h6 id="subtotal0">0.00</h6>
+                                                        <h6 id="subtotal0">0.00 @lang('general.currency')</h6>
                                                     </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="row mb-5">
+                                    <div class="row col-12 mb-5">
                                         <div class="col-2">
-                                            <a class="btn btn-primary block" id="add_new_item" class="add_new_item"
-                                                style="margin-left:30%;"><i class="icon-plus"></i></a>
+                                            <a class="btn btn-primary block" id="add_new_item" class="add_new_item"><i class="icon-plus"></i></a>
                                         </div>
                                     </div>
-
                                     <div class="row" style="margin-left:30%;">
                                         <div class="col-4">
                                             <div class="form-group">
-                                                <h6>Total:</h6>
+                                                <h6>@lang('general.total'):</h6>
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <p id="AllTotal">0.00 EG</p>
+                                            <p id="AllTotal">0.00 @lang('general.currency')</p>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -153,7 +150,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Paid</label>
+                                <label>@lang('orders.paid')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-dollar"></i></span>
@@ -168,7 +165,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Remaining</label>
+                                <label>@lang('orders.remaining')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-dollar"></i></span>
@@ -185,7 +182,7 @@
                     <div class="row">
                         <div class="col-8 mx-auto">
                             <div class="form-group">
-                                <label>Due Date:</label>
+                                <label>@lang('orders.due_date')</label>
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
                                         name="expected_on" data-date-format="yyyy-mm-dd" required
@@ -193,7 +190,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -204,18 +200,14 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Comments</label>
+                                <label>@lang('general.comments')</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments')}}</textarea>
 
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

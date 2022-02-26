@@ -1,66 +1,44 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'jobs')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.jobs'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('jobs/create')}}">
-            <span>Add New Job</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('jobs/create')}}">
+            <span>@lang('employees.add_new_job')</span>
         </a>
     </div>
-  
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-                
-                <ul class="header-dropdown dropdown">
-                    
-                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-                    
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Position</th>
-                             
-                                <th>Edit</th>
-                                <th>Delete</th>
-
+                                <th>@lang('employees.position')</th>
+                                <th>@lang('general.edit')</th>
+                                <th>@lang('general.delete')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($jobs as $job)
-                                
-                      
                             <tr>
                             <td>{{$job->position}}</td>
                             <td><a href="{{url("/jobs/{$job->id}/edit")}}"
                                 class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a></td>
                             <td>
                                 <form action="{{url("/jobs/{$job->id}")}}" method="post" class="delete">
-                                 <button class="btn btn-danger btn-xs confirm-del"><i
-                                    class="fa fa-trash-o"></i></button>
+                                    <button class="btn btn-danger btn-xs confirm-del"><i
+                                        class="fa fa-trash-o"></i></button>
                                             @method('DELETE')
                                             @csrf
-                             </form>
+                                </form>
                             </td>
-                               
                             </tr>
                             @endforeach
                         </tbody>

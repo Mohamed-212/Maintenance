@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit Item')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('items.edit_item'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit Item</h2>
+                <h2>@lang('items.edit_item')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.items.update',['item'=>$item->id])}}" id="advanced-form"
@@ -18,11 +18,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="tax_id">Category</label>
+                                <label for="tax_id">@lang('items.category')</label>
                                 <select name="category_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="">Choose Category</option>
-
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}"
                                         {{$item->category_id==$category->id ?'selected':''}}>{{$category->name}}
@@ -34,20 +33,17 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="tax_id">SubCategory</label>
+                                <label>@lang('items.subcategory')</label>
                                 <select name="sub_category_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required id="subCategory">
-                                 <option value="">Choose SubCategory</option>
-
-                                 @foreach($subCategories as $sub)
-                                 <option value="{{$sub->id}}"
-                                     {{$item->sub_category_id==$sub->id ?'selected':''}}>{{$sub->name}}
-                                 </option>
-                                 @endforeach
-    
+                                    <option value="">@lang('general.choose_option')</option>
+                                     @foreach($subCategories as $sub)
+                                     <option value="{{$sub->id}}"
+                                         {{$item->sub_category_id==$sub->id ?'selected':''}}>{{$sub->name}}
+                                     </option>
+                                     @endforeach
                                 </select>
                                 @error('sub_category_id')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -58,8 +54,8 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="type_id">Item Name</label>
-                                <input type="text" class="form-control" placeholder="enter Item Name" name="name"
+                                <label>@lang('general.name')</label>
+                                <input type="text" class="form-control" placeholder="@lang('items.item_name_holder')" name="name"
                                     value="{{$item->name}}"><br>
                                 @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -68,12 +64,12 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="type_id">Serial Number</label>
+                                <label>@lang('items.serial_number')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                                     </div>
-                                    <input type="text" class="form-control key" placeholder="Ex:12388587745"
+                                    <input type="text" class="form-control key" placeholder="12388587745"
                                         name="serial_number" value="{{$item->serial_number}}">
                                 </div>
                                 @error('serial_number')
@@ -85,7 +81,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>@lang('items.description')</label>
                                 <textarea class="form-control" name="description" rows="5" cols="30">{{$item->description}}</textarea>
                                 @error('description')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -96,13 +92,13 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="price">Price</label>
+                                <label for="price">@lang('items.price')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
-                                    <input type="text" class="form-control money-dollar" placeholder="Ex: 99,99 $"
-                                        name="price" value="{{$item->price}}"><br>
+                                    <input type="text" class="form-control money-dollar" placeholder="99,99"
+                                           name="price" value="{{$item->price}}"><br>
                                 </div>
                                 @error('price')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -111,8 +107,8 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="type_id">Item Unit</label>
-                                <input type="text" class="form-control" placeholder="Ex: liter" name="unit"
+                                <label>@lang('items.item_unit')</label>
+                                <input type="text" class="form-control" placeholder="@lang('items.unit_holder')" name="unit"
                                     value="{{$item->unit}}">
                                 @error('unit')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -121,13 +117,12 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="tax_id">Availability</label>
+                                <label>@lang('general.availability')</label>
                                 <select name="active" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="">Choose</option>
-                                    <option value="0" {{$item->active==0?'selected':''}}>Not Available</option>
-                                    <option value="1" {{$item->active==1?'selected':''}}>Available</option>
-
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="0" {{$item->active==0?'selected':''}}>@lang('general.not_available')</option>
+                                    <option value="1" {{$item->active==1?'selected':''}}>@lang('general.available')</option>
                                 </select>
                                 @error('active')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -135,10 +130,7 @@
                             </div>
                         </div>
                     </div>
-        <div class="row justify-content-center">
-            <button type="submit" class="btn btn-primary mx-auto">Update</button>
-        </div>
-                       
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>
@@ -158,7 +150,8 @@
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script>
     var config ={
-    _url:"{{url('/getSubByCategory/')}}"
+    _url:"{{url('/getSubByCategory/')}}",
+    _lang:"{{app()->getLocale()}}",
     }
 </script>
 <script src="{{ asset('assets/js/pages/getSubCategory.js') }}"></script>

@@ -1,52 +1,34 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'cities')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('cities.cities'))
 
 
 @section('content')
 <div class="row justify-content-end">
-    <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('cities/create')}}">
-            <span>Add New City</span>
+    <div class="col-3 text-right">
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('cities/create')}}">
+            <span>@lang('cities.add_new_city')</span>
         </a>
     </div>
-  
+
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-                
-                <ul class="header-dropdown dropdown">
-                    
-                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another Action</a></li>
-                            <li><a href="javascript:void(0);">Something else</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-                    
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>English Name</th>
-                                <th>Arabic Name</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>@lang('general.english_name')</th>
+                                <th>@lang('general.arabic_name')</th>
+                                <th>@lang('general.edit')</th>
+                                <th>@lang('general.delete')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($cities as $city )
-                                
-                      
                             <tr>
                             <td>{{$city->name_en}}</td>
                             <td>{{$city->name_ar}}</td>

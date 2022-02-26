@@ -1,21 +1,20 @@
 
  var url=config._url+'/';
  var SubCategory = function () {
-    
- 
+
+
      var init = function () {
- 
- 
+
+
         handleChangeCategory();
- 
+
      };
- 
+
      var handleChangeCategory  = function () {
          $('#category').on('change', function () {
              var brand= $(this).val();
              console.log(brand);
              $('#subCategory').html("");
-             $('#subCategory').html('<option selected value="0">' +'none' + '</option>');
              subCategories = "";
              if (brand) {
                  $.get(url+ brand, function (data) {
@@ -32,17 +31,16 @@
              }
          })
     }
- 
- 
- 
+
+
+
      return {
          init: function () {
              init();
          }
      };
- 
+
  }();
  jQuery(document).ready(function () {
     SubCategory.init();
  });
- 

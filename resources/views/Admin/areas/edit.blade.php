@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit City')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('areas.edit_area'))
 
 
 @section('content')
@@ -8,16 +8,15 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit City</h2>
+                <h2>@lang('areas.edit_area')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.areas.update', ['area' => $area->id])}}" id="advanced-form"
                     data-parsley-validate novalidate class="edit">
                     @method('PUT')
                     @csrf
-
                     <div class="form-group">
-                        <label for="text-input1">English Name</label>
+                        <label for="text-input1">@lang('general.english_name')</label>
                         <input type="text" id="text-input1" class="form-control" required name="name_en"
                             value="{{$area->name_en}}">
                         @error('name_en')
@@ -25,7 +24,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="text-input2">Arabic Name</label>
+                        <label for="text-input2">@lang('general.arabic_name')</label>
                         <input type="text" id="text-input2" class="form-control" required name="name_ar"
                             value="{{$area->name_ar}}">
                         @error('name_ar')
@@ -33,16 +32,16 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="city_id">city</label>
+                        <label for="city_id">@lang('areas.city')</label>
                         <select name="city_id" class="form-control select2 select2-hidden-accessible"
                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                             @foreach($cities as $city)
                             <option value="{{$city->id}}" {{$area->city_id==$city->id ?'selected':''}}>
-                                {{$city->name_en}}</option>
+                                {{$city['name_'.app()->getLocale()]}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>

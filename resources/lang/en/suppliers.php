@@ -1,0 +1,26 @@
+<?php
+
+return array(
+    'suppliers' => 'Suppliers',
+    'add_new_supplier' => 'Add new Supplier',
+    'create_new_supplier' => 'Create new Supplier',
+    'create_supplier' => 'Create Supplier',
+    'edit_supplier' => 'Edit Supplier',
+    'show_supplier' => 'Show Supplier',
+    'supplier_company_name' => 'Company Name',
+    'contact_person_name' => 'Contact Person Name',
+    'contact_person_mobile' => 'Contact Person Mobile',
+    'company_information' => 'Company information',
+    'company_name_holder' => 'Enter Company Name',
+    'company_telephone_number' => 'Company Telephone Number',
+    'company_email' => 'Company Email',
+    'contact_person_information' => 'Contact Person Information',
+    'person_name_holder' => 'Enter Contact Person Name',
+    'contact_person_email' => 'Contact Person Email',
+    'transactions' => 'Transactions',
+    'total_purchase_orders' => 'Total Purchase Orders',
+    'total_returns' => 'Total Returns',
+    'total_transactions_orders' => 'Total Transactions Orders',
+    'total_debt' => 'Total Debt',
+    'total_credit' => 'Total Credit',
+);

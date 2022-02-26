@@ -1,6 +1,8 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Invoice For Purchase Order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('orders.invoice_for_purchase_order'))
+
+
 @section('content')
     <div class="row clearfix" id="print">
         <div class="col-lg-12">
@@ -8,17 +10,13 @@
                 <div class="body">
                     <div class="row clearfix">
                         <div class="col-md-6 col-sm-6">
-                            <p class="m-b-2"><strong>Supplier Company Name: </strong>{{$purchaseorder->supplier->company_name}}</p>
-                            <p class="m-b-2"><strong>Inventory Name: </strong>{{$purchaseorder->inventory->name}}</p>
-                            <p class="m-b-2"><strong>Order
-                                    Date: </strong>{{ Carbon\Carbon::parse($purchaseorder->created_at)->format('Y-m-d') }}
-                            </p>
-                            <p class="m-b-2"><strong>Due Date: </strong>{{$purchaseorder->expected_on}}</p>
-                            <p><strong>Order ID: </strong> {{$purchaseorder->id}}</p>
+                            <p class="m-b-2"><strong>@lang('orders.supplier_company_name'): </strong>{{$purchaseorder->supplier->company_name}}</p>
+                            <p class="m-b-2"><strong>@lang('orders.inventory_name'): </strong>{{$purchaseorder->inventory->name}}</p>
+                            <p class="m-b-2"><strong>@lang('orders.order_date'): </strong>{{ Carbon\Carbon::parse($purchaseorder->created_at)->format('Y-m-d') }}</p>
+                            <p class="m-b-2"><strong>@lang('orders.due_date'): </strong>{{$purchaseorder->expected_on}}</p>
+                            <p><strong>@lang('orders.order_id'): </strong> {{$purchaseorder->id}}</p>
                         </div>
-                        <div class="col-md-6 col-sm-6 text-right">
-
-                        </div>
+                        <div class="col-md-6 col-sm-6 text-right"></div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
@@ -26,34 +24,25 @@
                                 <table class="table table-hover table-custom spacing5 mb-5">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>@lang('general.sn)</th>
                                         <th>Item</th>
-                                        <!--<th>Description</th>-->
                                         <th>Purchased Qty</th>
                                         <th>Rate</th>
                                         <th>Returned Qty</th>
-                                        <th class="text-center">Total</th>
+                                        <th class="text-center">@lang('general.total')</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    @foreach ($item_PurchaseOrders as $item_purchaseorder)
+                                    @foreach ($item_PurchaseOrders as $index => $item_purchaseorder)
                                         <tr>
                                             @php
                                                 $item=\App\Models\Item::find($item_purchaseorder->item);
                                             @endphp
-
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$index}}</td>
                                             <td>{{$item->name}}</td>
-
-                                            <!--<td>-->
-                                            <!--    <span></span>-->
-                                            <!--    <p class="hidden-sm-down mb-0 text-muted">{{$item->description}}</p>-->
-                                            <!--</td>-->
                                             <td>{{$item_purchaseorder->quantity + $item_purchaseorder->return}}</td>
                                             <td>{{$item_purchaseorder->cost}}</td>
                                             <td>{{$item_purchaseorder->return}}</td>
-
                                             <td class="text-center">{{number_format((float)abs(($item_purchaseorder->quantity - $item_purchaseorder->return) * $item_purchaseorder->cost), 2, '.', '')}}</td>
                                         </tr>
                                     @endforeach
@@ -70,7 +59,6 @@
                             $total = \App\Models\Payment::where('po_id', $purchaseorder->id)->orderBy('created_at', 'DESC')->first();
                             @endphp
                             <div><span>Paid amount: <strong class="text-success">{{($total->remaining != 0) ? $purchaseorder->total_amount - $total->remaining : number_format((float)$purchaseorder->total_amount, 2, '.', '')  }}  LE</strong></span></div>
-                            
                             <div><span>Remaining amount: <strong class="text-success">{{$total->remaining}}  LE</strong></span></div>
                             @if($purchaseorder->total_return)
                             <div><span>Returned amount: <strong class="text-success">{{number_format((float)abs($purchaseorder->total_return), 2, '.', '')}}  LE</strong></span></div>
@@ -79,7 +67,7 @@
                     </div>
                     <div class="row clearfix noPrint">
                         <div class="col-md-6 m-auto text-center">
-                            <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i> Print</button>
+                            <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i> @lang('general.print') </button>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit Tax')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('tax.edit_tax'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit Tax</h2>
+                <h2>@lang('tax.edit_tax')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.taxes.update', ['tax' => $tax->id])}}" id="advanced-form"
@@ -16,11 +16,10 @@
                     @method('PUT')
                     @csrf
                     <div class="form-group">
-                        <label for="type_id">Tax Type</label>
+                        <label for="type_id">@lang('tax.tax_type')</label>
                         <select name="type_id" class="form-control select2 select2-hidden-accessible"
                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                            <option value="">Choose Tax Type</option>
-
+                            <option value="">@lang('general.choose_option')</option>
                             @foreach($types as $type)
                             <option value="{{$type->id}}" {{$tax->type_id==$type->id ?'selected':''}}>{{$type->name}}
                             </option>
@@ -31,7 +30,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <b>percentage</b>
+                        <label>@lang('tax.percentage')</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-percent"></i></span>
@@ -43,7 +42,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>

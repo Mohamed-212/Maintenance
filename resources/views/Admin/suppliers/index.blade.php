@@ -1,75 +1,65 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'suppliers')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('suppliers.suppliers'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('suppliers/create')}}">
-            <span>Add New Supplier</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('suppliers/create')}}">
+            <span>@lang('suppliers.add_new_supplier')</span>
         </a>
     </div>
-  
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-            
-            </div>
+            <div class="header"> </div>
             <div class="body">
-                <div class="table-responsive">
-                    
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Supplier Company Name</th>
-                                <th>Contact Person Name</th>
-                                <th>Contact Person Mobile</th>
-                                <th>Options</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('suppliers.supplier_company_name')</th>
+                                <th>@lang('suppliers.contact_person_name')</th>
+                                <th>@lang('suppliers.contact_person_mobile')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($suppliers as $supplier)
-                                
-                      
                             <tr>
-                            <td>{{$supplier->id}}</td>
-                            <td>{{$supplier->company_name}}</td>
-                            <td>{{$supplier->contact_person_name}}</td>
-                            <td>{{$supplier->contact_person_mobile}}</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                      Options
-                                    </button>
-                                    <div class="dropdown-menu row">
-                                        <div class="col-12 ml-2">
-                                            <a href="{{url("/suppliers/{$supplier->id}")}}"
-                                                ><i class="fa fa-user"></i>Show</a>
+                                <td>{{$supplier->id}}</td>
+                                <td>{{$supplier->company_name}}</td>
+                                <td>{{$supplier->contact_person_name}}</td>
+                                <td>{{$supplier->contact_person_mobile}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            @lang('general.options')
+                                        </button>
+                                        <div class="dropdown-menu row">
+                                            <div class="col-12 ml-2">
+                                                <a href="{{url("/suppliers/{$supplier->id}")}}"
+                                                    ><i class="fa fa-user"></i>@lang('general.show')</a>
+                                            </div>
+                                            <div class="col-12 ml-2">
+                                                <a href="{{url("/suppliers/{$supplier->id}/edit")}}"
+                                                    ><i class="fa fa-edit"></i>@lang('general.edit')</a>
+                                            </div>
+{{--                                            <div class="col-12">--}}
+{{--                                                <form action="{{url("/suppliers/{$supplier->id}")}}" method="post" class="delete">--}}
+{{--                                                    <button style="background-color: white;border:thick;" class="text-danger">--}}
+{{--                                                        <i class="fa fa-trash-o"></i>@lang('general.delete')--}}
+{{--                                                    </button>--}}
+{{--                                                        @method('DELETE')--}}
+{{--                                                         @csrf--}}
+{{--                                                </form>--}}
+{{--                                            </div>--}}
                                         </div>
-                                        <div class="col-12 ml-2">
-                                            <a href="{{url("/suppliers/{$supplier->id}/edit")}}"
-                                                ><i class="fa fa-edit"></i>Edit</a>
-                                        </div>
-                                        <div class="col-12">
-                                            <form action="{{url("/suppliers/{$supplier->id}")}}" method="post" class="delete">
-                                                <button style="background-color: white;border:thick;" class="text-danger">
-                                                    <i class="fa fa-trash-o"></i>Delete
-                                                </button>
-                                                    @method('DELETE')
-                                                     @csrf
-                                            </form>
-                                        </div>
-   
-                            
-                                    </div>
-                                  </div>
-                            </td>
-                               
+                                      </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

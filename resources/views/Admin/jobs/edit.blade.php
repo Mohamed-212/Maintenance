@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit Job')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('employees.edit_job'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit Job</h2>
+                <h2>@lang('employees.edit_job')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.jobs.update',['job'=>$job->id])}}" id="advanced-form"
@@ -16,14 +16,14 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="text-input1">Job Position</label>
+                        <label for="text-input1">@lang('employees.position')</label>
                         <input type="text" id="text-input1" class="form-control" name="position"
                             value="{{$job->position}}">
                         @error('position')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.update')</button>
                 </form>
             </div>
         </div>

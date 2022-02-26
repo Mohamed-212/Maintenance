@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Inventory')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('inventories.create_inventory'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Inventory</h2>
+                <h2>@lang('inventories.create_new_inventory')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.inventories.store')}}" id="advanced-form"
@@ -17,11 +17,10 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="emp_id">Choose Employee</label>
+                                <label>@lang('inventories.responsible_employee')</label>
                                 <select name="emp_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                    <option value="">Choose</option>
-
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                     @endforeach
@@ -33,12 +32,12 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="tel_no">Telephone Number</label>
+                                <label>@lang('inventories.telephone_number')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                     </div>
-                                    <input type="number" class="form-control key" placeholder="Ex:0212345678"
+                                    <input type="number" class="form-control key" placeholder="0212345678"
                                         name="tel_no" value="{{old('tel_no')}}" pattern="^[0-9]\d{1,10}$" required>
                                 </div>
                                 @error('tel_no')
@@ -48,10 +47,9 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="name">Inventory Name</label>
+                                <label>@lang('general.name')</label>
                                 <div class="input-group">
-        
-                                    <input type="text" class="form-control" placeholder="Ex: Test" name="name" value="{{old('name')}}" required>
+                                    <input type="text" class="form-control" placeholder="@lang('inventories.name_holder')" name="name" value="{{old('name')}}" required>
                                 </div>
                                 @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -62,7 +60,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Address</label>
+                                <label>@lang('general.address')</label>
                                 <textarea class="form-control" name="address" rows="5" cols="30"
                                     required>{{old('address')}}</textarea>
                                 @error('address')
@@ -71,8 +69,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create City')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('cities.create_city'))
 
 
 @section('content')
@@ -8,27 +8,27 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New City</h2>
+                <h2>@lang('cities.create_new_city')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.cities.store')}}" id="advanced-form" data-parsley-validate
                     novalidate class="confirm">
                     @csrf
                     <div class="form-group">
-                        <label for="text-input1">English Name</label>
+                        <label for="text-input1">@lang('general.english_name')</label>
                         <input type="text" id="text-input1" class="form-control" required name="name_en">
                         @error('name_en')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="text-input2">Arabic Name</label>
+                        <label for="text-input2">@lang('general.arabic_name')</label>
                         <input type="text" id="text-input2" class="form-control" required name="name_ar">
                         @error('name_ar')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.create')</button>
                 </form>
             </div>
         </div>
