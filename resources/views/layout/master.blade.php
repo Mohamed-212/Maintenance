@@ -30,9 +30,24 @@
         th {
             font-weight: bold !important;
         }
-
+        .dataTables_length, .dataTables_info{
+            float: left!important;
+        }
+        .dataTables_filter, .dataTables_paginate{
+            float: right!important;
+        }
+        .dt-buttons{
+            margin-bottom: 10px;
+            float: none!important;
+        }
+        .buttons-csv, .buttons-copy, .buttons-print{
+            border-radius: 10px!important;
+        }
         .buttons-copy {
             display: none;
+        }
+        .pagination{
+            padding-right: 0;
         }
 
         /*
@@ -113,6 +128,9 @@
     @stack('after-scripts')
 
     @if (trim($__env->yieldContent('page-script')))
+        <script>
+            var dataTablesLanguageLink = "{{asset('assets/js/pages/tables/lang/'. app()->getLocale() .'.json')}}"
+        </script>
     @yield('page-script')
     @endif
 

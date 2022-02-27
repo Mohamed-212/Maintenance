@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Inventory Details')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('inventories.show_inventory'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Inventory Details</h2>
+                <h2>@lang('inventories.show_inventory')</h2>
             </div>
             <div class="body">
                 <form method="POST"
@@ -16,11 +16,9 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="emp_id">Employee Name</label>
+                                <label>@lang('inventories.responsible_employee')</label>
                                 <select name="emp_id" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" disabled>
-                                    <option value="">Choose</option>
-
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}"
                                         {{$inventory->emp_id==$employee->id ?'selected':''}}>{{$employee->name}}
@@ -34,12 +32,12 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="tel_no">Telephone Number</label>
+                                <label>@lang('inventories.telephone_number')</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                     </div>
-                                    <input type="number" class="form-control key" placeholder="Ex:0212345678"
+                                    <input type="number" class="form-control key" placeholder="0212345678"
                                         name="tel_no" value="{{$inventory->tel_no}}" pattern="^[0-9]\d{1,10}$" disabled>
                                 </div>
                                 @error('tel_no')
@@ -49,10 +47,9 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="tel_no">Inventory Name</label>
+                                <label>@lang('general.name')</label>
                                 <div class="input-group mb-3">
-
-                                    <input type="text" class="form-control key" placeholder="Ex: Test"
+                                    <input type="text" class="form-control key" placeholder="@lang('inventories.name_holder')"
                                         name="name" value="{{$inventory->name}}" disabled>
                                 </div>
                                 @error('name')
@@ -64,7 +61,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Address</label>
+                                <label>@lang('general.address')</label>
                                 <textarea class="form-control" name="address" rows="5" cols="30"
                                 disabled>{{$inventory->address}}</textarea>
                                 @error('address')
@@ -74,17 +71,17 @@
                         </div>
                     </div>
                     <div class="row justify-content-center mt-2 mb-2">
-                      <h4 class="text-info">Inventory Details</h4>
+                      <h4 class="text-info">@lang('inventories.inventory_details')</h4>
                     </div>
                     <div class="row">
-                        <div class="table-responsive p-3">
+                        <div class="table overflow-auto p-3">
                             <table class="table table-striped table-hover dataTable js-exportable">
                                 <thead>
                                 <tr>
-                                    <th>Item Name</th>
-                                    <th>Item Unit</th>
-                                    <th>Item Quantity</th>
-                                    <th>Average Cost</th>
+                                    <th>@lang('inventories.item_name')</th>
+                                    <th>@lang('inventories.item_unit')</th>
+                                    <th>@lang('inventories.item_quantity')</th>
+{{--                                    <th>Average Cost</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -96,7 +93,7 @@
                                         <td>{{$item->name}}</td>
                                         <td>{{$item->unit}}</td>
                                         <td>{{$item_inventory->quantity}}</td>
-                                        <td>{{$item_inventory->av_cost}}</td>
+{{--                                        <td>{{$item_inventory->av_cost}}</td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>

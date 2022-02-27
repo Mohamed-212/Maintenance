@@ -1,5 +1,26 @@
 <?php
 
 return array(
-    '' => '',
+    'suppliers' => 'الموردين',
+    'add_new_supplier' => 'إضافة مورد جديد',
+    'create_new_supplier' => 'إنشاء مورد جديد',
+    'create_supplier' => 'إنشاء مورد',
+    'edit_supplier' => 'تعديل المورد',
+    'show_supplier' => 'عرض المورد',
+    'supplier_company_name' => 'اسم الشركة',
+    'contact_person_name' => 'اسم الشخص المسئول',
+    'contact_person_mobile' => 'هاتف الشخص المسئول',
+    'company_information' => 'معلومات الشركة',
+    'company_name_holder' => 'أدخل اسم الشركة',
+    'company_telephone_number' => 'رقم هاتف الشركة',
+    'company_email' => 'البريد الإلكتروني للشركة',
+    'contact_person_information' => 'معلومات الشخص المسئول',
+    'person_name_holder' => 'أدخل اسم الشخص المسئول',
+    'contact_person_email' => 'البريد الإلكتروني للشخص المسئول',
+    'transactions' => 'المعاملات',
+    'total_purchase_orders' => 'اجمالي طلبات الشراء',
+    'total_returns' => 'إجمالي العوائد',
+    'total_transactions_orders' => 'إجمالي طلبات المعاملات',
+    'total_debt' => 'إجمالي الديون',
+    'total_credit' => 'إجمالي الائتمان',
 );

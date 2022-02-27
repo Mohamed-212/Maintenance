@@ -1,76 +1,65 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Inventories')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('inventories.inventories'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('inventories/create')}}">
-            <span>Add New Inventory</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('inventories/create')}}">
+            <span>@lang('inventories.add_new_inventory')</span>
         </a>
     </div>
-  
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-                
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-                    
-                    <table class="table table-striped table-hover dataTable js-exportable">
+                <div class="table overflow-auto">
+                    <table class="table table-striped table-hover dataTable js-exportable table-custom spacing5">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Telephone Number</th>
-                                <th>Address</th>
-                                <th>Employee</th>
-                                <th>Options</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('inventories.telephone_number')</th>
+                                <th>@lang('general.address')</th>
+                                <th>@lang('inventories.responsible_employee')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($inventories as $inventory)
-                                
-                      
                             <tr>
                             <td>{{$inventory->name}}</td>
                             <td>{{$inventory->tel_no}}</td>
                             <td>{{$inventory->address}}</td>
                             <td>{{$inventory->employee->name}}</td>
-                          
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                      Options
+                                        @lang('general.options')
                                     </button>
                                     <div class="dropdown-menu row">
                                         <div class="col-12 ml-2">
                                             <a href="{{url("/inventories/{$inventory->id}")}}"
-                                                ><i class="fa fa-camera"></i>Show</a>
+                                                ><i class="fa fa-camera"></i>@lang('general.show')</a>
                                         </div>
                                         <div class="col-12 ml-2">
                                             <a href="{{url("/inventories/{$inventory->id}/edit")}}"
-                                                ><i class="fa fa-edit"></i>Edit</a>
+                                                ><i class="fa fa-edit"></i>@lang('general.edit')</a>
                                         </div>
-                                        <div class="col-12">
-                                            <form action="{{url("/inventories/{$inventory->id}")}}" method="post" class="delete">
-                                                <button style="background-color: white;border:thick;" class="text-danger">
-                                                    <i class="fa fa-trash-o"></i>Delete
-                                                </button>
-                                                    @method('DELETE')
-                                                     @csrf
-                                            </form>
-                                        </div>
-   
-                            
+{{--                                        <div class="col-12">--}}
+{{--                                            <form action="{{url("/inventories/{$inventory->id}")}}" method="post" class="delete">--}}
+{{--                                                <button style="background-color: white;border:thick;" class="text-danger">--}}
+{{--                                                    <i class="fa fa-trash-o"></i>@lang('general.delete')--}}
+{{--                                                </button>--}}
+{{--                                                    @method('DELETE')--}}
+{{--                                                     @csrf--}}
+{{--                                            </form>--}}
+{{--                                        </div>--}}
                                     </div>
                                   </div>
                             </td>
-                               
                             </tr>
                             @endforeach
                         </tbody>

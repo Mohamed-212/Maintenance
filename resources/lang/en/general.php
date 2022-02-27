@@ -40,7 +40,12 @@ return array(
     'november' => 'November',
     'december' => 'December',
     'status' => 'Status',
-    'comments' => 'comments',
-    'comments' => 'comments',
+    'date/time' => 'Date/Time',
+    'cash' => 'Cash',
+    'visa' => 'Visa',
+    'actions' => 'Actions',
+    'print' => 'Print',
+    'actions' => 'Actions',
+    'actions' => 'Actions',
 
 );

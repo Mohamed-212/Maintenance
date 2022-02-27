@@ -3,7 +3,7 @@ $(function () {
 
     //Exportable table
     $('.js-exportable').DataTable({
-        dom: 'Bfrtip',
+        dom: 'Blfrtip',
         language: {
             "url": dataTablesLanguageLink,
         },

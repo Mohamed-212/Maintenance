@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Supplier')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('suppliers.create_supplier'))
 
 
 @section('content')
@@ -8,23 +8,21 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Supplier</h2>
+                <h2>@lang('suppliers.create_new_supplier')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.suppliers.store')}}" id="advanced-form" data-parsley-validate
                     novalidate class="confirm">
                     @csrf
-                    <div class="row">
+                    <div class="row col-md-12 m-0 p-0">
                         <div class="card">
-                            <div class="header text-primary">
-                                Copmany information
-                            </div>
+                            <div class="header text-primary">@lang('suppliers.company_information')</div>
                             <div class="body">
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Supplier Company Name</label>
-                                            <input type="text" class="form-control" placeholder="Enter Supplier Company Name"
+                                            <label>@lang('suppliers.supplier_company_name')</label>
+                                            <input type="text" class="form-control" placeholder="@lang('suppliers.company_name_holder')"
                                                 name="company_name" value="{{old('company_name')}}" required><br>
                                             @error('company_name')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -33,13 +31,13 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Company Telephone Number</label>
+                                            <label>@lang('suppliers.company_telephone_number')</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                 </div>
                                                 <input type="number" class="form-control key"
-                                                    placeholder="Ex: 0212345678" name="company_tel_no"
+                                                    placeholder="0212345678" name="company_tel_no"
                                                     value="{{old('company_tel_no')}}" required>
                                             </div>
                                             @error('company_tel_no')
@@ -49,13 +47,13 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Company Email</label>
+                                            <label>@lang('suppliers.company_email')</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-at"></i></span>
                                                 </div>
                                                 <input type="text" class="form-control key"
-                                                    placeholder="Ex: company@test.com" name="email"
+                                                    placeholder="company@test.com" name="email"
                                                     value="{{old('email')}}" required>
                                             </div>
                                             @error('email')
@@ -67,7 +65,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label>Address</label>
+                                            <label>@lang('general.address')</label>
                                             <textarea class="form-control" name="address" rows="5" cols="30"
                                                 required>{{old('address')}}</textarea>
                                             @error('address')
@@ -79,19 +77,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-md-12 m-0 p-0">
                         <div class="card">
-                            <div class="header text-primary">
-                                Contact Person Information
-                            </div>
+                            <div class="header text-primary">@lang('suppliers.contact_person_information')</div>
                             <div class="body">
-
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Contact Person Name</label>
+                                            <label>@lang('suppliers.contact_person_name')</label>
                                             <input type="text" class="form-control"
-                                                placeholder="Enter contact person Name" name="contact_person_name"
+                                                placeholder="@lang('suppliers.person_name_holder')" name="contact_person_name"
                                                 value="{{old('contact_person_name')}}" required><br>
                                             @error('contact_person_name')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -100,13 +95,13 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Contact Person Mobile</label>
+                                            <label>@lang('suppliers.contact_person_mobile')</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                 </div>
                                                 <input type="number" class="form-control key"
-                                                    placeholder="Ex: 01123654789" name="contact_person_mobile"
+                                                    placeholder="01123654789" name="contact_person_mobile"
                                                     value="{{old('contact_person_mobile')}}" required>
                                             </div>
                                             @error('contact_person_mobile')
@@ -116,13 +111,13 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="type_id">Contact Person Email</label>
+                                            <label>@lang('suppliers.contact_person_email')</label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-at"></i></span>
                                                 </div>
                                                 <input type="text" class="form-control key"
-                                                    placeholder="Ex: company@test.com" name="contact_person_email"
+                                                    placeholder="company@test.com" name="contact_person_email"
                                                     value="{{old('contact_person_email')}}" required>
                                             </div>
                                             @error('contact_person_email')
@@ -133,10 +128,8 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

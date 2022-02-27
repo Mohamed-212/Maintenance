@@ -40,7 +40,9 @@ return array(
     'november' => 'نوفمبر',
     'december' => 'ديسمبر',
     'status' => 'الحالة',
-    'comments' => 'comments',
-    'comments' => 'comments',
-    'comments' => 'comments',
+    'date/time' => 'التاريخ/الوقت',
+    'cash' => 'نقدي',
+    'visa' => 'فيزا',
+    'actions' => 'خيارات',
+    'print' => 'طباعة',
 );
