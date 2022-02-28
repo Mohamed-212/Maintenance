@@ -25,9 +25,9 @@ class CreateOfferRequest extends FormRequest
     {
         return [
             'discount_type' => "required",
+            'discount_value' => "required",
             'category_id' => "required|exists:categories,id",
-            'item_id' => "required|exists:items,id",
-
+            'item_id' => "required|array|min:1",
         ];
     }
 }

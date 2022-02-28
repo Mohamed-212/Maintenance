@@ -33,11 +33,7 @@ class UpdateAreaRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required'=>'Area Name is required',
-            'name_ar.unique'=>' Arabic Name is existed',
-            'name_en.unique'=>'English Name is existed',
-            'name_ar.required'=>'Arabic Name is required',
-            'name.regex'=>'English name is not correct ,please write it in english',
+            'name_en.regex'=>'English name is not correct ,please write it in english',
             'name_ar.regex'=>'من فضلك ادخل اسم عربى صحيح',
         ];
     }

@@ -42,7 +42,7 @@
                                         <div class="dropdown-menu row">
                                             <div class="col-12 ml-2">
                                                 <a href="{{url("/suppliers/{$supplier->id}")}}"
-                                                    ><i class="fa fa-user"></i>@lang('general.show')</a>
+                                                    ><i class="fa fa-eye"></i>@lang('general.show')</a>
                                             </div>
                                             <div class="col-12 ml-2">
                                                 <a href="{{url("/suppliers/{$supplier->id}/edit")}}"

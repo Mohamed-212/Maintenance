@@ -10,18 +10,18 @@
             <span>Add New Maintenance</span>
         </a>
     </div>
-  
+
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
-                
-            
+
+
             </div>
             <div class="body">
                 <div class="table-responsive">
-                    
+
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
@@ -33,18 +33,18 @@
                                 <th>Options</th>
                             </tr>
                         </thead>
-                      
+
                         <tbody>
                             @foreach ($maintenances as $item)
-                                
-                      
+
+
                             <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->car->customer->name}}</td>
                             <td>{{$item->car->car_model->name}}</td>
                             <td>{{$item->entrance_date}}</td>
                             <td>{{$item->total}}</td>
-                         
+
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -53,7 +53,7 @@
                                     <div class="dropdown-menu row">
                                         <div class="col-12 ml-2">
                                             <a href="{{url("/serviceMaintenance/{$item->id}")}}"
-                                                ><i class="fa fa-camera"></i>Show</a>
+                                                ><i class="fa fa-eye"></i>Show</a>
                                         </div>
                                         <div class="col-12">
                                             <form action="{{url("/serviceMaintenance/{$item->id}")}}" method="post" class="delete">
@@ -64,12 +64,12 @@
                                                      @csrf
                                             </form>
                                         </div>
-   
-                            
+
+
                                     </div>
                                   </div>
                             </td>
-                               
+
                             </tr>
                             @endforeach
                         </tbody>

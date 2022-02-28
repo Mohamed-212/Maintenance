@@ -25,11 +25,11 @@
                                     <thead>
                                     <tr>
                                         <th>@lang('general.sn)</th>
-                                        <th>Item</th>
-                                        <th>Purchased Qty</th>
-                                        <th>Rate</th>
-                                        <th>Returned Qty</th>
-                                        <th class="text-center">@lang('general.total')</th>
+                                        <th>@lang('orders.item')</th>
+                                        <th>@lang('orders.purchased_qty')</th>
+                                        <th>@lang('orders.rate')</th>
+                                        <th>@lang('orders.returned_qty')</th>
+                                        <th>@lang('general.total')</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,7 +43,7 @@
                                             <td>{{$item_purchaseorder->quantity + $item_purchaseorder->return}}</td>
                                             <td>{{$item_purchaseorder->cost}}</td>
                                             <td>{{$item_purchaseorder->return}}</td>
-                                            <td class="text-center">{{number_format((float)abs(($item_purchaseorder->quantity - $item_purchaseorder->return) * $item_purchaseorder->cost), 2, '.', '')}}</td>
+                                            <td>{{number_format((float)abs(($item_purchaseorder->quantity - $item_purchaseorder->return) * $item_purchaseorder->cost), 2, '.', '')}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -52,16 +52,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row clearfix text-center mb-3 font-20 summary-print">
+                    <div class="row clearfix text-right mb-3 font-20 summary-print">
                         <div class="col-md-12">
-                            <div><span>Total amount: <strong class="text-success">{{$purchaseorder->total_amount}}  LE</strong></span></div>
+                            <div><span>@lang('orders.total_amount'): <strong class="text-success">{{$purchaseorder->total_amount}}  LE</strong></span></div>
                             @php
                             $total = \App\Models\Payment::where('po_id', $purchaseorder->id)->orderBy('created_at', 'DESC')->first();
                             @endphp
-                            <div><span>Paid amount: <strong class="text-success">{{($total->remaining != 0) ? $purchaseorder->total_amount - $total->remaining : number_format((float)$purchaseorder->total_amount, 2, '.', '')  }}  LE</strong></span></div>
-                            <div><span>Remaining amount: <strong class="text-success">{{$total->remaining}}  LE</strong></span></div>
+                            <div><span>@lang('orders.paid_amount'): <strong class="text-success">{{($total->remaining != 0) ? $purchaseorder->total_amount - $total->remaining : number_format((float)$purchaseorder->total_amount, 2, '.', '')  }}  @lang('general.currency')</strong></span></div>
+                            <div><span>@lang('orders.remaining_amount'): <strong class="text-success">{{$total->remaining}}  @lang('general.currency')</strong></span></div>
                             @if($purchaseorder->total_return)
-                            <div><span>Returned amount: <strong class="text-success">{{number_format((float)abs($purchaseorder->total_return), 2, '.', '')}}  LE</strong></span></div>
+                            <div><span>@lang('orders.returned_amount'): <strong class="text-success">{{number_format((float)abs($purchaseorder->total_return), 2, '.', '')}}  @lang('general.currency')</strong></span></div>
                             @endif
                         </div>
                     </div>

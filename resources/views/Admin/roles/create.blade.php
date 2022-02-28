@@ -1,17 +1,14 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Role')
-<style>
-    .mul-select {
-        width: 100%;
-    }
-</style>
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.create_role'))
+
+
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Role</h2>
+                <h2>@lang('admins.create_new_role')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.roles.store')}}" id="advanced-form" data-parsley-validate
@@ -20,7 +17,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="name">Role Name</label>
+                                <label>@lang('general.name')</label>
                                 <input type="text" name="name" class="form-control" style="width: 100%;">
                                 @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -28,16 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (count($errors) > 0)
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        <button class="close" data-close="alert"></button>
-                        <span>{{ $error }}</span>
-                    </div>
-                    @endforeach
-                    @endif
-                  
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

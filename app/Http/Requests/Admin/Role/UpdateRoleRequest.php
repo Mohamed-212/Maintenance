@@ -29,11 +29,4 @@ class UpdateRoleRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required' => 'Name is required',
-            'name.unique' => 'Name is existed',
-        ];
-    }
 }

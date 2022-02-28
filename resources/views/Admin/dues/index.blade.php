@@ -1,46 +1,42 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Over Due date')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('notifications.over_due_date'))
 
 
 @section('content')
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-
-                </div>
+                <div class="header"></div>
                 <div class="body">
-                    <div class="table-responsive">
-
+                    <div class="table overflow-auto">
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Type</th>
-                                <th>Due Date</th>
+                                <th>@lang('notifications.order_id')</th>
+                                <th>@lang('notifications.type')</th>
+                                <th>@lang('notifications.due_date')</th>
                             </tr>
                             </thead>
-
                             <tbody>
-                            @foreach ($rents as $rent)
-                                <tr>
-                                    <td>{{$rent->id}}</td>
-                                    <td>Service Rent</td>
-                                    <td>{{$rent->deliver_date}}</td>
-                                </tr>
-                            @endforeach
+{{--                            @foreach ($rents as $rent)--}}
+{{--                                <tr>--}}
+{{--                                    <td>{{$rent->id}}</td>--}}
+{{--                                    <td>Service Rent</td>--}}
+{{--                                    <td>{{$rent->deliver_date}}</td>--}}
+{{--                                </tr>--}}
+{{--                            @endforeach--}}
                             @foreach ($sales as $sale)
                                 <tr>
                                     <td>{{$sale->id}}</td>
-                                    <td>Sales Order</td>
+                                    <td>@lang('notifications.sales_order')</td>
                                     <td>{{$sale->expected_on}}</td>
                                 </tr>
                             @endforeach
                             @foreach ($purchases as $purchase)
                                 <tr>
                                     <td>{{$purchase->id}}</td>
-                                    <td>Purchases Order</td>
+                                    <td>@lang('notifications.purchases_order')</td>
                                     <td>{{$purchase->expected_on}}</td>
                                 </tr>
                             @endforeach

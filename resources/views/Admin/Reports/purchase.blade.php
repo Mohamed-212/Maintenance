@@ -8,35 +8,32 @@
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-
-                </div>
+                <div class="header"></div>
                 <div class="body">
-                    <div class="table-responsive">
+                    <div class="table overflow-auto">
                         <div class="text-center">
                             <form action="{{route('admin.purchase')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="From" autocomplete="off">
+                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="To" autocomplete="off">
+                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
                                 <button class="btn btn-primary btn-xs mb-1">Search</button>
                             </form>
                         </div>
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Supplier</th>
-                                <th>Employee</th>
-                                <th>Inventory Name</th>
-                                <th>Total Amount</th>
-                                <th>Remaining</th>
-                                <th>Due Date</th>
-                                <th>Date/Time</th>
+                                <th>@lang('reports.order_id')</th>
+                                <th>@lang('reports.supplier')</th>
+                                <th>@lang('reports.employee')</th>
+                                <th>@lang('reports.inventory_name')</th>
+                                <th>@lang('reports.total_amount')</th>
+                                <th>@lang('reports.remaining')</th>
+                                <th>@lang('reports.due_date')</th>
+                                <th>@lang('general.date/time')</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach ($purchaseOrders as $purchaseOrder)
                                 <tr>
@@ -52,7 +49,6 @@
                                     <td>{{$purchaseOrder->remaining}}</td>
                                     <td>{{$purchaseOrder->expected_on}}</td>
                                     <td>{{$purchaseOrder->created_at}}</td>
-
                                 </tr>
                             @endforeach
                             </tbody>

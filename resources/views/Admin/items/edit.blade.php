@@ -93,7 +93,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="price">@lang('items.price')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>

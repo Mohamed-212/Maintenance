@@ -30,7 +30,7 @@
                         <div class="col-2">
                             <div class="form-group">
                                 <label for="total">@lang('employees.total_salary')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
@@ -83,7 +83,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label>@lang('employees.bonus')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
@@ -94,7 +94,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label>@lang('employees.deduction')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
@@ -106,7 +106,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="loan_deduction">@lang('employees.loan_deduction')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>

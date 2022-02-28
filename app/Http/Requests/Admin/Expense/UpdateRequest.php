@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'type_id' => "required|exists:expense_types,id",
             'total_amount' => "required",
             'payment_type' => "required",
-
+            'comments' => "required",
         ];
     }
 }

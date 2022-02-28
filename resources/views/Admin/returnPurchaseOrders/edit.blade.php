@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Return Purchase Order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('returns.create_return_purchase_order'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h2>Create New order</h2>
+                    <h2>@lang('returns.create_return_purchase_order')</h2>
                 </div>
                 <div class="body">
                     <form method="POST" action="{{route('admin.returns.store')}}" id="advanced-form" class="confirm">
@@ -16,9 +16,9 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="order_id">Purchase Order ID</label>
+                                    <label for="order_id">@lang('returns.purchase_order_id')</label>
                                     <select name="order_id" class="form-control" style="width: 100%;" required id="order_id">
-                                        <option value="">Order ID</option>
+                                        <option value="">@lang('general.choose_option')</option>
                                         @foreach($purchaseOrders as $purchaseOrder)
                                             <option value="{{$purchaseOrder}}">{{$purchaseOrder}}</option>
                                         @endforeach
@@ -30,29 +30,31 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h2>Items</h2>
+                                        <h2>@lang('returns.items')</h2>
                                     </div>
                                     <div class="body">
-                                        <div class="table-responsive">
+                                        <div class="table overflow-auto">
                                             <table class="table" id="table">
                                                 <thead>
                                                 <tr>
-                                                    <th>NAME</th>
-                                                    <th>Purchased Qty</th>
-                                                    <th>Returned Qty</th>
-                                                    <th>Rate</th>
-                                                    <th>Total</th>
+                                                    <th>@lang('general.name')</th>
+                                                    <th>@lang('returns.purchased_qty')</th>
+                                                    <th>@lang('returns.returned_qty')</th>
+                                                    <th>@lang('returns.rate')</th>
+                                                    <th>@lang('general.total')</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="append_items">
-
+                                                    <tr>
+                                                        <td valign="top" colspan="5" class="dataTables_empty text-center">@lang('returns.choose_order')</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="row">
+                                        <div class="row mt-2">
                                             <div class="col-3">
                                                 <div class="form-group">
-                                                    <h6>Paid:</h6>
+                                                    <h6>@lang('returns.paid'):</h6>
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -60,7 +62,7 @@
                                             </div>
                                             <div class="col-3">
                                                 <div class="form-group">
-                                                    <h6>Total:</h6>
+                                                    <h6>@lang('general.total'):</h6>
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -75,14 +77,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label>Comments</label>
+                                    <label>@lang('general.comments')</label>
                                     <textarea class="form-control" name="comment" rows="5"
                                         cols="30">{{old('comment')}}</textarea>
-    
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                        <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                     </form>
                 </div>
             </div>
@@ -127,7 +128,7 @@
             });
 
         });
-        
+
         $('body').on('keyup input', '.returnQ', function() {
             var q = $(this).val();
             if(q != ''){

@@ -1,56 +1,48 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Sales order Items')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('reports.sales_orders_by_items'))
 
 
 @section('content')
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-
-
-                </div>
+                <div class="header"></div>
                 <div class="body">
-                    <div class="table-responsive">
-
+                    <div class="table overflow-auto">
                         <div class="text-center">
                             <form action="{{route('admin.saleItem')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="From" autocomplete="off">
+                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="To" autocomplete="off">
+                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
                                 <select name="cat" class="w-25 mb-2"
                                         style="padding: 0.35rem!important;" id="cat">
-                                    <option value="">Filter by category</option>
+                                    <option value="">@lang('reports.filter_by_category')</option>
                                     @foreach($subCats as $subCat)
                                         <option value="{{$subCat->id}}">{{$subCat->name}}</option>
                                     @endforeach
                                 </select>
-                                <button class="btn btn-primary btn-xs mb-1">Search</button>
+                                <button class="btn btn-primary btn-xs mb-1">@lang('reports.search')</button>
                             </form>
                         </div>
-
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Name</th>
-                                <th>Serial Number</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>TotalTaxes</th>
-                                <th>Category</th>
-                                <th>Date/Time</th>
+                                <th>@lang('reports.order_id')</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('reports.serial_number')</th>
+                                <th>@lang('reports.quantity')</th>
+                                <th>@lang('general.total')</th>
+                                <th>@lang('reports.total_taxes')</th>
+                                <th>@lang('reports.category')</th>
+                                <th>@lang('general.date/time')</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach ($salesorders as $salesorder)
                                 @foreach ($salesorder->items as $item)
-    
-    
                                     <tr>
                                         <td><a href="{{url("/invoices/{$salesorder->id}")}}">{{$salesorder->id}}</a></td>
                                         <td>{{$item->name}}</td>

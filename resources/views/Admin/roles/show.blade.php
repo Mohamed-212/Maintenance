@@ -1,32 +1,24 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Show Role')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.show_role'))
 
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Show Role</h2>
+                <h2>@lang('admins.show_role')</h2>
             </div>
             <div class="body">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="name">Role Name</label>
+                            <label>@lang('general.name')</label>
                             <input disabled type="text" name="name" class="form-control" value="{{$role->name}}"
                                 style="width: 100%;">
                             @error('name')
                             <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                           
-                            
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,16 @@
         .pagination{
             padding-right: 0;
         }
-
+        @if(app()->getLocale() == 'ar')
+        .select2-search__field{
+            direction: rtl;
+            padding-right: 10px;
+        }
+        .dropdown .dropdown-menu{
+            direction: rtl;
+            text-align: right;
+        }
+        @endif
         /*
         table{
             width:20% !important;

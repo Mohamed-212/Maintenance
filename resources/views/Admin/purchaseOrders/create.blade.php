@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="form-group">
+                            <div class="form-group mb-0">
                                 <label>@lang('orders.payment_type')</label>
                                 <select name="payment_type" class="form-control" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true" id="payment_type">
@@ -87,8 +87,8 @@
                                                             class="btn btn-danger block"><i class="icon-ban"></i></a>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
-                                                            <div class="form-group">
+                                                        <div class="form-group mb-0">
+                                                            <div class="form-group mb-0">
                                                                 <select class="form-control" name="item_id[]" id="item0"
                                                                     class="item">
                                                                     <option value="">@lang('general.choose_option')</option>
@@ -98,31 +98,34 @@
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            @error('item_id')
+                                                            @error('item_id.0')
                                                             <small class="form-text text-danger">{{ $message }}</small>
                                                             @enderror
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
+                                                        <div class="form-group mb-0">
                                                             <input type="number" min="0" name="quantity[]" id="quantity0"
-                                                                class="form-control" value=1
+                                                                class="form-control" value="1"
                                                                 onChange="handleChangeQuantity(0)">
+                                                            @error('quantity.0')
+                                                            <small class="form-text text-danger">{{ $message }}</small>
+                                                            @enderror
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group mt-3">
+                                                        <div class="form-group mb-0">
                                                             <input type="number" min="0" class="form-control"
                                                                 placeholder="99,99" name="cost[]"
-                                                                value="{{old('cost')}}" id="cost0"
-                                                                onChange="handleChangeCost(0)"><br>
-                                                            @error('cost')
+                                                                value="{{old('cost[]')}}" id="cost0"
+                                                                onChange="handleChangeCost(0)">
+                                                            @error('cost.0')
                                                             <small class="form-text text-danger">{{ $message }}</small>
                                                             @enderror
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <h6 id="subtotal0">0.00 @lang('general.currency')</h6>
+                                                        <h6 class="d-inline-block" id="subtotal0">0.00</h6> @lang('general.currency')
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -133,14 +136,13 @@
                                             <a class="btn btn-primary block" id="add_new_item" class="add_new_item"><i class="icon-plus"></i></a>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-left:30%;">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <h6>@lang('general.total'):</h6>
+                                    <div class="row">
+                                        <div class="col-md-4 m-auto">
+                                            <div class="form-group row">
+                                                <h6 class="col-4">@lang('general.total'):</h6>
+                                                <p class="col-4 text-center" id="AllTotal">0.00</p>
+                                                <span class="col-4"> @lang('general.currency')</span>
                                             </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <p id="AllTotal">0.00 @lang('general.currency')</p>
                                         </div>
                                     </div>
                                 </div>
@@ -151,12 +153,12 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>@lang('orders.paid')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" min="0" class="form-control key" name="paid"
-                                        onChange="handleChangeRemaining()" value="{{old('paid')}}" id="paid" required>
+                                           onChange="handleChangeRemaining()" value="{{old('paid')}}" id="paid">
                                 </div>
                                 @error('paid')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -166,12 +168,12 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>@lang('orders.remaining')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" name="remaining" id="remaining"
-                                        value="{{old('remaining')}}" disabled>
+                                           value="{{old('remaining')}}" disabled>
                                 </div>
                                 @error('remaining')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -185,9 +187,12 @@
                                 <label>@lang('orders.due_date')</label>
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
-                                        name="expected_on" data-date-format="yyyy-mm-dd" required
-                                        value="{{old('start_date')}}">
+                                        name="expected_on" data-date-format="yyyy-mm-dd"
+                                        value="{{old('expected_on')}}">
                                 </div>
+                                @error('expected_on')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -203,7 +208,9 @@
                                 <label>@lang('general.comments')</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments')}}</textarea>
-
+                                @error('comments')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -264,14 +271,14 @@
 
 
         var append = '<tr index="'+i+'" id="'+i+'">';
-            append += '<td><a style="float: right;"class="btn btn-danger block add_item" onClick="Delete('+i+')"><i class="icon-trash"></i></a></td>';
-            append += '<td> <div class="form-group"><div class="form-group"><select class="form-control" name="item_id[]" id="item'+i+'"><option value="">Choose Items</option>'
+            append += '<td class="p-3"><a class="btn btn-danger block add_item" onClick="Delete('+i+')"><i class="icon-trash"></i></a></td>';
+            append += '<td> <div class="form-group"><div class="form-group mb-0"><select class="form-control" name="item_id[]" id="item'+i+'"><option value="">@lang('general.choose_option')</option>'
             @foreach($items as $item)
             append+='<option value="{{$item->id}}">{{$item->name}}</option>'
             @endforeach
             append+='</select></div></div></td>';
-            append += '<td><div class="form-group"><input type="number" min="0"  name="quantity[]" id="quantity'+i+'" onChange="handleChangeQuantity('+i+')" class="form-control"value=1></div></td><td> <div class="form-group mt-3"><input type="number" min="0" class="form-control money-dollar" placeholder="Ex: 99,99 $" id="cost'+i+'" name="cost[]" onChange="handleChangeCost('+i+')"><br></div></td>';
-            append += '<td><h6 id="subtotal'+i+'">0.00</h6></td>';
+            append += '<td><div class="form-group"><input type="number" min="0"  name="quantity[]" id="quantity'+i+'" onChange="handleChangeQuantity('+i+')" class="form-control" value="1"></div></td><td> <div class="form-group mb-0"><input type="number" min="0" class="form-control money-dollar" placeholder="99,99" id="cost'+i+'" name="cost[]" onChange="handleChangeCost('+i+')"><br></div></td>';
+            append += '<td><h6 class="d-inline-block" id="subtotal'+i+'">0.00</h6> @lang('general.currency')</td>';
             append += '</tr>';
 
             $("#append_items").last().append(append);

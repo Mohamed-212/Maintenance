@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Show Return Purchase Order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('returns.show_return_purchase_order'))
 
 
 @section('content')
@@ -8,13 +8,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h2>Create New order</h2>
+                    <h2>@lang('returns.show_return_purchase_order')</h2>
                 </div>
                 <div class="body">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="order_id">Purchase Order ID</label>
+                                <label for="order_id">@lang('returns.purchase_order_id')</label>
                                 <select name="order_id" class="form-control" disabled style="width: 100%;"
                                         id="order_id">
                                     <option>{{$purchaseOrder->id}}</option>
@@ -33,11 +33,11 @@
                                         <table class="table" id="table">
                                             <thead>
                                             <tr>
-                                                <th>NAME</th>
-                                                <th>Purchased Qty</th>
-                                                <th>Returned Qty</th>
-                                                <th>Rate</th>
-                                                <th>Total</th>
+                                                <th>@lang('general.name')</th>
+                                                <th>@lang('returns.purchased_qty')</th>
+                                                <th>@lang('returns.returned_qty')</th>
+                                                <th>@lang('returns.rate')</th>
+                                                <th>@lang('general.total')</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -82,33 +82,31 @@
                                                 </td>
                                             </tr>
                                             @php
-                                            
-                                            $comments = ($item->pivot->comment) ? $item->pivot->comment : $comments ;  
-                                            
-                                            $total += ($item->pivot->cost * $item->pivot->return) 
+                                            $comments = ($item->pivot->comment) ? $item->pivot->comment : $comments ;
+                                            $total += ($item->pivot->cost * $item->pivot->return)
                                             @endphp
                                             @endforeach
                                             </tbody>
                                         </table>
                                     </div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <div class="form-group">
-                                                    <h6>Order Debt:</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="number" value="{{number_format((float)abs($purchaseOrder->total_return), 2, '.', '')}}" disabled class="form-control">
-                                            </div>
-                                            <div class="col-3">
-                                                <div class="form-group">
-                                                    <h6>Total:</h6>
-                                                </div>
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="number" disabled value="{{number_format((float)$total, 2, '.', '')}}" class="form-control">
+                                    <div class="row mt-2">
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <h6>@lang('returns.order_debt'):</h6>
                                             </div>
                                         </div>
+                                        <div class="col-3">
+                                            <input type="number" value="{{number_format((float)abs($purchaseOrder->total_return), 2, '.', '')}}" disabled class="form-control">
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <h6>@lang('general.total'):</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <input type="number" disabled value="{{number_format((float)$total, 2, '.', '')}}" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -116,10 +114,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Comments</label>
+                                <label>@lang('general.comments')</label>
                                 <textarea class="form-control" disabled name="comment[]" rows="5"
                                     cols="30">{{$comments}}</textarea>
-
                             </div>
                         </div>
                     </div>

@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Sales Order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('orders.create_new_sales_order'))
 
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New order</h2>
+                <h2>@lang('orders.create_new_sales_order')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.salesOrders.store')}}" id="advanced-form"
@@ -22,10 +22,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="customer_id">Customer</label>
+                                <label for="customer_id">@lang('orders.customer')</label>
                                 <select name="customer_id" class="form-control" style="width: 100%;" data-select2-id="1"
-                                    tabindex="-1" aria-hidden="true" id="category">
-                                    <option value="">Choose Customer</option>
+                                    tabindex="-1" aria-hidden="true">
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($customers as $customer)
                                     <option value="{{$customer->id}}">{{$customer->name}}</option>
                                     @endforeach
@@ -36,14 +36,14 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="form-group">
-                                <label for="payment_type">Patyment Type</label>
+                            <div class="form-group mb-0">
+                                <label for="payment_type">@lang('orders.payment_type')</label>
                                 <select name="payment_type" class="form-control" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true" id="payment_type"
                                     value="{{old('payment_type')}}">
-                                    <option value="">Choose Payment Type</option>
-                                    <option value="cash">Cash</option>
-                                    <option value="visa">Visa</option>
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="cash">@lang('general.cash')</option>
+                                    <option value="visa">@lang('general.visa')</option>
                                 </select>
                                 @error('payment_type')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -53,11 +53,11 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card">
+                            <div class="card mb-0">
                                 <div class="header">
-                                    <h2>Add Quick Information If Customer Doesn't Exist</h2>
+                                    <h2 style="cursor:pointer" onClick="showCustomer()">@lang('orders.add_customer')</h2>
                                 </div>
-                                <div class="body">
+                                <div class="body mb-0" id="showCustomer" style="display:none">
                                     @if(Session::has('success'))
                                     <div class="alert alert-success">
                                         {{ Session::get('success') }}
@@ -69,8 +69,8 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="type_id">Customer Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Customer Name" name="name"
+                                                <label>@lang('general.name')</label>
+                                                <input type="text" class="form-control" placeholder="@lang('orders.name_holder')" name="name"
                                                     value="{{old('name')}}"><br>
                                                 @error('name')
                                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -80,12 +80,12 @@
 
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="type_id">Mobile</label>
+                                                <label>@lang('general.mobile')</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control key" placeholder="Ex: 01234567890"
+                                                    <input type="text" class="form-control key" placeholder="01234567890"
                                                         name="mobile" value="{{old('mobile')}}">
                                                 </div>
                                                 @error('mobile')
@@ -94,10 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -105,120 +102,109 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="header">
-                                    <h2>Items</h2>
+                                    <h2>@lang('orders.items')</h2>
                                 </div>
                                 <div class="body">
                                     <div class="table-responsive">
                                         <table class="table" id="table">
                                             <thead>
                                                 <tr>
-                                                    <th>ACTIONS</th>
-                                                    <th>Item</th>
-                                                    <th>Serial</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>SubTotal</th>
+                                                    <th>@lang('general.actions')</th>
+                                                    <th>@lang('orders.item')</th>
+                                                    <th>@lang('orders.serial')</th>
+                                                    <th>@lang('orders.quantity')</th>
+                                                    <th>@lang('orders.price')</th>
+                                                    <th>@lang('orders.subtotal')</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="append_items">
                                                 <tr index=1>
-                                                    <td><a style="float: right;pointer-events: none;"
+                                                    <td class="p-3"><a style="pointer-events: none;"
                                                             class="btn btn-danger block"><i class="icon-ban"></i></a>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
+                                                        <div class="form-group mb-0">
                                                             <select class="form-control" name="item_id[]" id="item0"
                                                                 class="item" onClick="handleChangeItem(0)">
-                                                                <option value="">Choose Items</option>
+                                                                <option value="">@lang('general.choose_option')</option>
                                                                 @foreach($items as $item)
                                                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                                                 @endforeach
                                                             </select>
-                                                            @error('item_id')
+                                                            @error('item_id.0')
                                                             <small class="form-text text-danger">{{ $message }}</small>
                                                             @enderror
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="form-group">
+                                                        <div class="form-group mb-0">
                                                             <input type="text" name="serial_number" id="serial_number0"
                                                                 class="form-control" onChange="handelChangeSerial(0)">
                                                         </div>
                                                     </td>
                                                     <td width="10">
-                                                        <div class="form-group">
+                                                        <div class="form-group mb-0">
                                                             <input type="number" min="0"  name="quantity[]" id="quantity0"
                                                                 class="form-control" value=1
                                                                 onChange="handleChangeQuantity(0)">
-                                                            @error('quantity[]')
+                                                            @error('quantity.0')
                                                             <small class="form-text text-danger">{{ $message }}</small>
                                                             @enderror
                                                         </div>
                                                     </td>
                                                     <td width="100">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"name="price"
+                                                        <div class="form-group mb-0">
+                                                            <input type="text" class="form-control" name="price"
                                                                 value="" id="price0" readonly>
-                                                            @error('price')
-                                                            <small class="form-text text-danger">{{ $message }}</small>
-                                                            @enderror
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <h6 id="subtotal0">0.00</h6>
+                                                        <h6 class="d-inline-block" id="subtotal0">0.00</h6> @lang('general.currency')
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="row mb-5">
+                                    <div class="row col-12 mb-5">
                                         <div class="col-2">
-                                            <a class="btn btn-primary block" id="add_new_item" class="add_new_item"
-                                                style="margin-left:35%;"><i class="icon-plus"></i></a>
+                                            <a class="btn btn-primary block" id="add_new_item" class="add_new_item"><i class="icon-plus"></i></a>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-left:30%;">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <h6>Subtotal:</h6>
+                                    <div class="row" style="flex-direction: column">
+                                        <div class="col-md-4 m-auto">
+                                            <div class="form-group row">
+                                                <h6 class="col-4">@lang('orders.subtotal'):</h6>
+                                                <p class="col-4 text-center" id="subAllTotal">0.00</p>
+                                                <span class="col-4"> @lang('general.currency')</span>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <p id="subAllTotal">0.00 EG</p>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-left:30%;">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <h6>Tax:</h6>
+                                        <div class="col-md-4 m-auto">
+                                            <div class="form-group row">
+                                                <h6 class="col-4">@lang('orders.tax'):</h6>
+                                                <p class="col-4 text-center" id="allTax">0.00</p>
+                                                <span class="col-4"> @lang('general.currency')</span>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <p id="allTax">0.00 EG</p>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-left:30%;">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <h6>Total:</h6>
+                                        <div class="col-md-4 m-auto">
+                                            <div class="form-group row">
+                                                <h6 class="col-4">@lang('general.total'):</h6>
+                                                <p class="col-4 text-center" id="total">0.00</p>
+                                                <span class="col-4"> @lang('general.currency')</span>
                                             </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <p id="total">0.00 EG</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label>Paid</label>
-                                            <div class="input-group mb-3">
+                                            <label>@lang('orders.paid')</label>
+                                            <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                                    <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                                 </div>
                                                 <input type="number" min="0" class="form-control key" name="paid"
-                                                    onChange="handleChangeRemaining()" value=""
-                                                    id="paid">
+                                                       onChange="handleChangeRemaining()" value=""
+                                                       id="paid">
                                             </div>
                                             @error('paid')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -227,13 +213,13 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label>Remaining</label>
-                                            <div class="input-group mb-3">
+                                            <label>@lang('orders.remaining')</label>
+                                            <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                                    <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                                 </div>
                                                 <input type="number" class="form-control key" name="remaining"
-                                                    id="remaining" value="{{old('remaining')}}" disabled>
+                                                       id="remaining" value="{{old('remaining')}}" disabled>
                                             </div>
                                             @error('remaining')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -242,22 +228,22 @@
                                     </div>
                                     <div class="col-8 mx-auto">
                                         <div class="form-group">
-                                            <label>Due Date:</label>
+                                            <label>@lang('orders.due_date')</label>
                                             <div class="input-group mb-3">
                                                 <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
-                                                       name="expected_on" data-date-format="yyyy-mm-dd" required
-                                                       value="{{old('start_date')}}">
+                                                       name="expected_on" data-date-format="yyyy-mm-dd"
+                                                       value="{{old('expected_on')}}">
                                             </div>
+                                            @error('expected_on')
+                                            <small class="form-text text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-primary mx-auto">Create</button>
-                    </div>
-
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>
@@ -308,14 +294,14 @@ $('#add_new_item').on('click', function (event) {
 $(this).data('clicked', true);
 
 var append = '<tr index="'+i+'" id="'+i+'">';
-append += '<td><a style="float: right;"class="btn btn-danger block add_item" onClick="Delete('+i+')"><i class="icon-trash"></i></a></td>';
-append += '<td> <div class="form-group"><div class="form-group"><select class="form-control" name="item_id[]" onChange="handleChangeItem('+i+')" id="item'+i+'"><option value="">Choose Items</option>'
+append += '<td class="p-3"><a class="btn btn-danger block add_item" onClick="Delete('+i+')"><i class="icon-trash"></i></a></td>';
+append += '<td> <div class="form-group"><div class="form-group mb-0"><select class="form-control" name="item_id[]" onChange="handleChangeItem('+i+')" id="item'+i+'"><option value="">@lang('general.choose_option')</option>'
 @foreach($items as $item)
 append+='<option value="{{$item->id}}">{{$item->name}}</option>'
 @endforeach
 append+='</select></div></div></td><td><div class="form-group"><input type="text" name="serial_number" id="serial_number'+i+'"class="form-control" onChange="handelChangeSerial('+i+')"></div></td>';
-append += '<td><div class="form-group"><input type="number" min="0" name="quantity[]" id="quantity'+i+'" onChange="handleChangeQuantity('+i+')" class="form-control"value=1></div></td><td><div class="form-group mt-3"><input type="text" class="form-control money-dollar" id="price'+i+'" onChange="handelChangetotal('+i+')" readonly><br></div></td>';
-append += '<td><h6 id="subtotal'+i+'" onChange="handelChangetotal('+i+')">0.00</h6></td>';
+append += '<td><div class="form-group"><input type="number" min="0" name="quantity[]" id="quantity'+i+'" onChange="handleChangeQuantity('+i+')" class="form-control" value="1"></div></td><td><div class="form-group mb-0"><input type="text" class="form-control money-dollar" id="price'+i+'" onChange="handelChangetotal('+i+')" readonly><br></div></td>';
+append += '<td><h6 class="d-inline-block" id="subtotal'+i+'" onChange="handelChangetotal('+i+')">0.00</h6> @lang('general.currency')</td>';
 append += '</tr>';
 
 $("#append_items").last().append(append);
@@ -427,6 +413,11 @@ console.log(data);
 function Delete(i){
 $('#'+i+'').remove();
 }
+
+    //display add new customer
+    function showCustomer(i){
+        $('#showCustomer').toggle();
+    }
 
 </script>
 <script>

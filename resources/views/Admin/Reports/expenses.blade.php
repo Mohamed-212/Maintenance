@@ -1,45 +1,43 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Expenses')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('reports.expenses'))
 
 
 @section('content')
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
+                <div class="table overflow-auto">
                     <div class="text-center">
                         <form action="{{route('admin.expense')}}" method="GET">
                             @csrf
                             <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                   name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="From" autocomplete="off">
+                                   name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                             <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                   name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="To" autocomplete="off">
+                                   name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
                             <button class="btn btn-primary btn-xs mb-1">Search</button>
                         </form>
                     </div>
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Transaction Id</th>
-                                <th>Employee</th>
-                                <th>Type</th>
-                                <th>Amount</th>
-                                <th>Payment Type</th>
-                                <th>Date/Time</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('reports.transaction_id')</th>
+                                <th>@lang('reports.employee')</th>
+                                <th>@lang('reports.type')</th>
+                                <th>@lang('reports.amount')</th>
+                                <th>@lang('reports.payment_type')</th>
+                                <th>@lang('general.date/time')</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($expenses as $item)
+                            @foreach ($expenses as $index => $item)
 
                             <tr>
-                                <td>{{$item->id}}</td>
+                                <td>{{$index}}</td>
                                 <td>{{$item->trans_id}}</td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->expense_type->name}}</td>

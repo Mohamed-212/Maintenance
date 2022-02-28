@@ -1,55 +1,47 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Sales order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('reports.sales_order'))
 
 
 @section('content')
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-
-
-                </div>
+                <div class="header"></div>
                 <div class="body">
-                    <div class="table-responsive">
-
+                    <div class="table overflow-auto">
                         <div class="text-center">
                             <form action="{{route('admin.sale')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="From" autocomplete="off">
+                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="To" autocomplete="off">
+                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
                                 <select name="cat" class="w-25 mb-2"
                                         style="padding: 0.35rem!important;" id="cat">
-                                    <option value="">Filter by category</option>
+                                    <option value="">@lang('reports.filter_by_category')</option>
                                     @foreach($subCats as $subCat)
                                         <option value="{{$subCat->id}}">{{$subCat->name}}</option>
                                     @endforeach
                                 </select>
-                                <button class="btn btn-primary btn-xs mb-1">Search</button>
+                                <button class="btn btn-primary btn-xs mb-1">@lang('reports.search')</button>
                             </form>
                         </div>
-
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Customer</th>
-                                <th>Employee</th>
-                                <th>Subtotal</th>
-                                <th>Remaining</th>
-                                <th>Total Taxes</th>
-                                <th>Total</th>
-                                <th>Date/Time</th>
+                                <th>@lang('reports.order_id')</th>
+                                <th>@lang('reports.customer')</th>
+                                <th>@lang('reports.employee')</th>
+                                <th>@lang('reports.subtotal')</th>
+                                <th>@lang('reports.remaining')</th>
+                                <th>@lang('reports.total_taxes')</th>
+                                <th>@lang('general.total')</th>
+                                <th>@lang('general.date/time')</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach ($salesorders as $item)
-
-
                                 <tr>
                                     <td><a href="{{url("/invoices/{$item->id}")}}">{{$item->id}}</a></td>
                                     <td><a href="{{url("/customers/{optional($item->customer)->id}")}}">{{optional($item->customer)->name}}</a></td>

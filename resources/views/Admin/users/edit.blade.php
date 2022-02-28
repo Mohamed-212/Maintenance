@@ -1,13 +1,14 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Edit User')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.edit_user'))
+
 
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Edit User</h2>
+                <h2>@lang('admins.edit_user')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.users.update',['user'=>$user->id])}}" id="advanced-form"
@@ -17,7 +18,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="name">User Name</label>
+                                label>@lang('general.name')</label>
                                 <input type="text" name="name" class="form-control" value="{{$user->name}}"
                                     style="width: 100%;">
                                 @error('name')
@@ -28,7 +29,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="email">User Email</label>
+                                <label>@lang('general.email')</label>
                                 <input type="email" name="email" class="form-control" value="{{$user->email}}"
                                     style="width: 100%;">
                                 @error('email')
@@ -39,7 +40,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label>@lang('admins.password')</label>
                                 <input type="password" name="password" class="form-control">
                                 @error('password')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -49,7 +50,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="password_confirmation">Password Confirmation</label>
+                                <label>@lang('admins.password_confirmation')</label>
                                 <input type="password" name="password_confirmation" class="form-control"
                                     style="width: 100%;">
                                 @error('password_confirmation')
@@ -60,7 +61,7 @@
 
                         <div class="col-md-9 mb-3">
                             <div class="form-group">
-                                <label for="roles_list[]">Role List</label>
+                                <label for="roles_list[]">@lang('admins.role_list')</label>
                                 <div class="row">
                                     @foreach($roles as $role)
                                     <div class="col-sm-3">
@@ -83,10 +84,8 @@
                                 @enderror
                             </div>
                         </div>
-
                     </div>
-
-                    <button type="submit" class="btn btn-primary mx-auto">Update</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.update')</button>
                 </form>
             </div>
         </div>

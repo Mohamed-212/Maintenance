@@ -1,65 +1,44 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Expenses Type')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('expenses.expenses_type'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5"href="{{url('expensesType/create')}}">
-            <span>Add New Type</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('expensesType/create')}}">
+            <span>@lang('expenses.add_new_type')</span>
         </a>
     </div>
-  
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-                    
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Options</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('general.edit')</th>
+                                <th>@lang('general.delete')</th>
                             </tr>
                         </thead>
-                      
                         <tbody>
                             @foreach ($expensesTypes as $type )
-                                
-                      
                             <tr>
-                            <td>{{$type->name}}</td>
-                    
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                      Options
-                                    </button>
-                                    <div class="dropdown-menu row">
-                                        <div class="col-12 ml-2">
-                                            <a href="{{url("/expensesType/{$type->id}/edit")}}"
-                                                ><i class="fa fa-edit"></i>Edit</a>
-                                        </div>
-                                        <div class="col-12">
-                                            <form action="{{url("/expensesType/{$type->id}")}}" method="post" class="delete">
-                                                <button style="background-color: white;border:thick;" class="text-danger">
-                                                    <i class="fa fa-trash-o"></i>Delete
-                                                </button>
-                                   
-                                                           @method('DELETE')
-                                                           @csrf
-                                            </form>
-                                        </div>
-   
-                            
-                                    </div>
-                                  </div>
-                            </td>
+                                <td>{{$type->name}}</td>
+                                <td><a href="{{url("/expensesType/{$type->id}/edit")}}"
+                                       class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a></td>
+                                <td>
+                                    <form action="{{url("/expensesType/{$type->id}")}}" method="post" class="delete">
+                                        <button class="btn btn-danger btn-xs confirm-del"><i
+                                                class="fa fa-trash-o"></i></button>
+                                        @method('DELETE')
+                                        @csrf
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

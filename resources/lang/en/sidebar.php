@@ -23,7 +23,7 @@ return array (
   'orders' => 'Orders',
   'purchase_orders' => 'Purchase Orders',
   'sales_orders' => 'Sales Orders',
-  'returns' => 'Returns',
+  'returns' => 'Refunds',
   'expenses' => 'Expenses',
   'offers' => 'Offers',
   'purchase_payments' => 'Purchase Payments',

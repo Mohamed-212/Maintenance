@@ -1,40 +1,43 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Show Payment')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('payments.show_purchase'))
 
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Show Payment</h2>
+                <h2>@lang('payments.show_purchase')</h2>
             </div>
             <div class="body">
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="po_id">Purchase Order</label>
-                            <input disabled type="text" name="po_id" class="form-control" value="{{$payment->po_id}}"
-                                style="width: 100%;">
+                            <label for="po_id">@lang('payments.purchase_order')</label>
+                            <input disabled type="text" name="po_id" class="form-control" value="{{$payment->po_id}}">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="payment_type">Payment Type</label>
+                            <label for="payment_type">@lang('payments.payment_type')</label>
                             <input disabled type="text" name="payment_type" class="form-control"
-                                value="{{$payment->payment_type}}" style="width: 100%;">
+                                value="{{__('general.'.$payment->payment_type)}}">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="paid">Paid</label>
-                            <input disabled type="text" name="paid" class="form-control" value="{{$payment->paid}}"
-                                style="width: 100%;">
+                            <label for="paid">@lang('payments.paid')</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><b>@lang('general.currency')</b></span>
+                                </div>
+                                <input type="number" class="form-control" name="paid" value="{{$payment->paid}}">
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="file_attachment">Attachment</label>
+                            <label for="file_attachment">@lang('payments.attachment')</label>
                             <div>
                                 <img src="{{$payment->file_attachment}}" width="300px">
                             </div>
@@ -44,7 +47,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label>Comments</label>
+                            <label>@lang('general.comments')</label>
                             <textarea disabled class="form-control" name="comments" rows="5"
                                 cols="30">{{($payment->comments)}}</textarea>
                         </div>

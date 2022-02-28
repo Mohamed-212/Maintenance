@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Expense')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('expenses.create_expense'))
 
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New expense</h2>
+                <h2>@lang('expenses.create_expense')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.expenses.store')}}" id="advanced-form" enctype="multipart/form-data" data-parsley-validate
@@ -17,11 +17,10 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="tax_id">Type</label>
+                                <label>@lang('expenses.type')</label>
                                 <select name="type_id" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                    <option value="">Choose Type</option>
-
+                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($types as $type)
                                     <option value="{{$type->id}}">{{$type->name}}</option>
                                     @endforeach
@@ -33,13 +32,13 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="amount">Amount</label>
-                                <div class="input-group mb-3">
+                                <label for="amount">@lang('expenses.amount')</label>
+                                <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-dollar"></i></span>
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
-                                    <input type="text" class="form-control money-dollar" placeholder="Ex: 99,99 $"
-                                        name="total_amount" value="{{old('total_amount')}}" required>
+                                    <input type="text" class="form-control money-dollar" placeholder="99,99"
+                                        name="total_amount" value="{{old('total_amount')}}">
                                 </div>
                                 @error('total_amount')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -47,13 +46,13 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="form-group">
-                                <label for="tax_id">Payment Type</label>
+                            <div class="form-group mb-0">
+                                <label>@lang('expenses.payment_type')</label>
                                 <select name="payment_type" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
-                                    <option value="">Choose Payment</option>
-                                    <option value="cash">Cash</option>
-                                    <option value="Visa">Visa</option>
+                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="cash">@lang('general.cash')</option>
+                                    <option value="visa">@lang('general.visa')</option>
                                 </select>
                                 @error('payment_type')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -64,13 +63,13 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="type_id">User Name</label>
+                                <label>@lang('expenses.employee')</label>
                             <input type="text" class="form-control" value="{{auth()->user()->name}}" disabled>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="type_id">Date</label>
+                                <label>@lang('expenses.date')</label>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control key"
                                          value="{{ Carbon\Carbon::now()->format('Y-m-d')}}" disabled>
@@ -81,9 +80,11 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Comments</label>
-                                <textarea class="form-control" name="comments" rows="5" cols="30"
-                                    required>{{old('comments')}}</textarea>
+                                <label>@lang('general.comments')</label>
+                                <textarea class="form-control" name="comments" rows="5" cols="30">{{old('comments')}}</textarea>
+                                @error('comments')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -91,12 +92,9 @@
                     <div class="col-12">
                         <input type="file" class="dropify" name="file_attachment">
                         <div class="mt-3"></div>
-                    </div>  
+                    </div>
                  </div>
-        <div class="row justify-content-lg-center">
-            <button type="submit" class="btn btn-primary mx-auto">Create</button>
-        </div>
-                   
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

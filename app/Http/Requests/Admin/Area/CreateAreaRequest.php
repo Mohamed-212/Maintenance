@@ -32,11 +32,6 @@ class CreateAreaRequest extends FormRequest
     public function messages()
     {
         return [
-            'name_en.required'=>'Area Name is required',
-            'name_en.unique'=>'Name is existed',
-            'name_ar.required'=>'Area Name is required',
-            'name_ar.unique'=>'Name is existed',
-            'name_ar.required'=>'Arabic Name is required',
             'name_en.regex'=>'English name is not correct ,please write it in english',
             'name_ar.regex'=>'من فضلك ادخل اسم عربى صحيح',
         ];

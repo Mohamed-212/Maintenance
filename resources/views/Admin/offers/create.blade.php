@@ -1,13 +1,13 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Offer')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('offers.create_offer'))
 
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Offer</h2>
+                <h2>@lang('offers.create_new_offer')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.offers.store')}}" id="advanced-form" data-parsley-validate
@@ -16,11 +16,10 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="tax_id">Category</label>
+                                <label>@lang('offers.category')</label>
                                 <select name="category_id" class="form-control" style="width: 100%;" data-select2-id="1"
                                     tabindex="-1" aria-hidden="true" id="category">
-                                    <option value="">Choose Category</option>
-
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
@@ -31,14 +30,12 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <label for="item_id">Items</label>
-                            <div class="form-group">
-                                <select class="mul-select" multiple="true" name="item_id[]" id="item">
-                                    <option value="">Choose Items</option>
-
+                            <label>@lang('offers.items')</label>
+                            <div class="form-group mb-0">
+                                <select class="form-control mul-select" multiple="true" name="item_id[]" id="item">
+                                    <option value="">@lang('general.choose_option')</option>
                                 </select>
                             </div>
-
                             @error('item_id')
                             <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -48,12 +45,12 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Disccount Type</label>
+                                <label>@lang('offers.discount_type')</label>
                                 <select name="discount_type" class="form-control" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="">Choose</option>
-                                    <option value="precentage">Precentage</option>
-                                    <option value="amount">amount</option>
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="percentage">@lang('offers.percentage')</option>
+                                    <option value="amount">@lang('offers.amount')</option>
                                 </select>
                                 @error('discount_type')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -62,21 +59,21 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="email">Discount Value</label>
-                                <div class="input-group mb-3">
+                                <label>@lang('offers.discount_value')</label>
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-percent"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Ex:" name="discount_value"
+                                    <input type="text" class="form-control" placeholder="10" name="discount_value"
                                         value="{{old('discount_value')}}"><br>
                                 </div>
-
+                                @error('discount_value')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
-
                     </div>
-
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>
@@ -116,7 +113,7 @@
     // initialize after multiselect
     $('#basic-form').parsley();
     $(".mul-select").select2({
-                    placeholder: "select Items", //placeholder
+                    placeholder: "@lang('general.choose_option')", //placeholder
                     tags: true,
                     tokenSeparators: ['/',',',';'," "]
                 });

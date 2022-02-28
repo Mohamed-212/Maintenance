@@ -77,6 +77,9 @@
                                 <label>Comments</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments', $payment->comments)}}</textarea>
+                                @error('comments')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>

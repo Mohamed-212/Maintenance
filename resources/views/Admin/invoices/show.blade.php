@@ -1,6 +1,8 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Invoice')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('reports.show_invoice'))
+
+
 @section('content')
     <div class="row clearfix" id="print">
         <div class="col-lg-12">
@@ -8,16 +10,11 @@
                 <div class="body">
                     <div class="row clearfix">
                         <div class="col-md-6 col-sm-6">
-                            <p class="m-b-2"><strong>Customer Name: </strong>{{optional($salesorder->customer)->name}}
-                            </p>
-                            <p class="m-b-2"><strong>Order
-                                    Date: </strong>{{ Carbon\Carbon::parse($salesorder->created_at)->format('Y-m-d') }}
-                            </p>
-                            <p><strong>Order ID: </strong> {{$salesorder->id}}</p>
+                            <p class="m-b-2"><strong>@lang('reports.customer_name'): </strong>{{optional($salesorder->customer)->name}}</p>
+                            <p class="m-b-2"><strong>@lang('reports.order_date'): </strong>{{ Carbon\Carbon::parse($salesorder->created_at)->format('Y-m-d') }}</p>
+                            <p><strong>@lang('reports.order_id'): </strong> {{$salesorder->id}}</p>
                         </div>
-                        <div class="col-md-6 col-sm-6 text-right">
-
-                        </div>
+                        <div class="col-md-6 col-sm-6 text-right"></div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
@@ -25,35 +22,26 @@
                                 <table class="table table-hover table-custom spacing5 mb-5">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Item</th>
-                                        <!--<th>Description</th>-->
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Tax</th>
-                                        <th class="text-center">Total</th>
+                                        <th>@lang('general.sn)</th>
+                                        <th>@lang('reports.item')</th>
+                                        <th>@lang('reports.quantity')</th>
+                                        <th>@lang('reports.price')</th>
+                                        <th>@lang('reports.tax')</th>
+                                        <th>@lang('general.total)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
-                                    @foreach ($item_salesorders as $item_salesorder)
+                                    @foreach ($item_salesorders as $index => $item_salesorder)
                                         <tr>
                                             @php
                                                 $item=\App\Models\Item::find($item_salesorder->item);
                                             @endphp
-
-                                            <td>{{$item->id}}</td>
+                                            <td>{{$index}}</td>
                                             <td>{{$item->name}}</td>
-
-                                            <!--<td>-->
-                                            <!--    <span></span>-->
-                                            <!--    <p class="hidden-sm-down mb-0 text-muted">{{$item->description}}</p>-->
-                                            <!--</td>-->
                                             <td>{{$item_salesorder->quantity}}</td>
                                             <td>{{$item->taxed_price}}</td>
                                             <td>{{$item->category->tax->percentage*$item->price/100}}</td>
-
-                                            <td class="text-center">{{$item->taxed_price*$item_salesorder->quantity}}</td>
+                                            <td>{{$item->taxed_price*$item_salesorder->quantity}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -62,17 +50,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row clearfix text-center mb-3 font-20 summary-print">
+                    <div class="row clearfix text-right mb-3 font-20 summary-print">
                         <div class="col-md-12">
-                            <div><span>Total Taxes: <strong class="text-success">{{$salesorder->total_taxes}}  LE</strong></span></div>
-                            <div><span>Total: <strong class="text-success">{{$salesorder->total_amount}}  LE</strong></span></div>
-                            <div><span>Paid: <strong class="text-success">{{$salesorder->paid}}  LE</strong></span></div>
-                            <div><span>Remaining: <strong class="text-success">{{$salesorder->remaining}}  LE</strong></span></div>
+                            <div><span>@lang('reports.total_taxes'): <strong class="text-success">{{$salesorder->total_taxes}}  @lang('general.currency')</strong></span></div>
+                            <div><span>@lang('general.total'): <strong class="text-success">{{$salesorder->total_amount}}  @lang('general.currency')</strong></span></div>
+                            <div><span>@lang('reports.paid'): <strong class="text-success">{{$salesorder->paid}}  @lang('general.currency')</strong></span></div>
+                            <div><span>@lang('reports.remaining'): <strong class="text-success">{{$salesorder->remaining}}  @lang('general.currency')</strong></span></div>
                         </div>
                     </div>
                     <div class="row clearfix noPrint">
-                        <div class="col-md-6 text-right">
-                            <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i> Print</button>
+                        <div class="col-md-6 text-center">
+                            <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i>@lang('general.print')</button>
                         </div>
                     </div>
                 </div>

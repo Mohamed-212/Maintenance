@@ -28,17 +28,10 @@ class CreateRequest extends FormRequest
             'inventory_id' => "required|exists:inventories,id",
             'expected_on' => "required",
             'paid' => "required",
-            'cost' => "required",
+            'cost.0' => "required",
+            'item_id.0' => "required",
+            'quantity.0' => "required",
             'payment_type' => "required",
-
-
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'quantity[].required' => "The quantity field is required.",
         ];
     }
 }

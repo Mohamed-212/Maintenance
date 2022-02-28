@@ -1,6 +1,5 @@
 @extends('layout.master')
-@section('parentPageTitle', 'My Page')
-@section('title', 'Dashboard')
+@section('parentPageTitle', __('general.dashboard'))
 
 
 @section('content')
@@ -12,15 +11,15 @@
                 <div class="card-wrapper flip-left">
                     <div class="card s-widget-top">
                         <div class="front p-3 px-4">
-                            <div>Income status</div>
+                            <div>@lang('admins.income_status')</div>
                             <div class="py-4 m-0 text-center h2 text-info">$2,258</div>
                             <div class="d-flex">
-                                <small class="text-muted">New income</small>
+                                <small class="text-muted">@lang('admins.new_income')</small>
                                 <div class="ml-auto">0%</div>
                             </div>
                         </div>
                         <div class="back p-3 px-4 bg-info text-center">
-                            <p class="text-light">This Week</p>
+                            <p class="text-light">@lang('admins.this_week')</p>
                             <span id="minibar-chart2" class="mini-bar-chart"></span>
                         </div>
                     </div>
@@ -30,15 +29,15 @@
                 <div class="card-wrapper flip-left">
                     <div class="card s-widget-top">
                         <div class="front p-3 px-4 bg-danger text-light">
-                            <div>Order status</div>
+                            <div>@lang('admins.order_status')</div>
                             <div class="py-4 m-0 text-center h2">428</div>
                             <div class="d-flex">
-                                <small>New order</small>
+                                <small>@lang('admins.new_order')</small>
                                 <div class="ml-auto"><i class="fa fa-caret-down"></i>10%</div>
                             </div>
                         </div>
                         <div class="back p-3 px-4 text-center">
-                            <p>This Week</p>
+                            <p>@lang('admins.this_week')</p>
                             <span id="minibar-chart4" class="mini-bar-chart"></span>
                         </div>
                     </div>
@@ -48,15 +47,15 @@
                 <div class="card-wrapper flip-left">
                     <div class="card s-widget-top">
                         <div class="front p-3 px-4 bg-warning text-light">
-                            <div>Customer status</div>
+                            <div>@lang('admins.customer_status')</div>
                             <div class="py-4 m-0 text-center h2">232</div>
                             <div class="d-flex">
-                                <small>New users</small>
+                                <small>@lang('admins.new_users')</small>
                                 <div class="ml-auto"><i class="fa fa-caret-up"></i>3%</div>
                             </div>
                         </div>
                         <div class="back p-3 px-4 text-center">
-                            <p>This Week</p>
+                            <p>@lang('admins.this_week')</p>
                             <span id="minibar-chart3" class="mini-bar-chart"></span>
                         </div>
                     </div>
@@ -66,57 +65,57 @@
                 <div class="card-wrapper flip-left">
                     <div class="card s-widget-top">
                         <div class="front p-3 px-4">
-                            <div>Total revenue</div>
+                            <div>@lang('admins.total_revenue')</div>
                             <div class="py-4 m-0 text-center h2 text-success">$9,653</div>
                             <div class="d-flex">
-                                <small class="text-muted">Income</small>
+                                <small class="text-muted">@lang('admins.income')</small>
                                 <div class="ml-auto"><i class="fa fa-caret-up text-success"></i>4%</div>
                             </div>
                         </div>
                         <div class="back p-3 px-4 bg-success text-center">
-                            <p class="text-light">This Week</p>
+                            <p class="text-light">@lang('admins.this_week')</p>
                             <span id="minibar-chart1" class="mini-bar-chart"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>                
+    </div>
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card">
             <div class="body">
                 <div class="form-group mb-4">
-                    <label class="d-block">Financials <span class="float-right">77% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.financials') <span class="float-right">77% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-azura" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
                     </div>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="d-block">Time to Market <span class="float-right">50% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.time_to_market') <span class="float-right">50% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
                     </div>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="d-block">Engagement <span class="float-right">23% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.engagement') <span class="float-right">23% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-green" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width: 23%;"></div>
                     </div>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="d-block">Customers <span class="float-right">78% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.customers') <span class="float-right">78% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-indigo" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
                     </div>
                 </div>
                 <div class="form-group mb-4">
-                    <label class="d-block">Competitors <span class="float-right"> 33% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.competitors') <span class="float-right"> 33% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;"></div>
                     </div>
                 </div>
                 <div class="form-group mb-2">
-                    <label class="d-block">Exit Strategy<span class="float-right">88% <i class="fa fa-long-arrow-up"></i></span></label>
+                    <label class="d-block">@lang('admins.exit_strategy')<span class="float-right">88% <i class="fa fa-long-arrow-up"></i></span></label>
                     <div class="progress progress-xxs">
                         <div class="progress-bar bg-red" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;"></div>
                     </div>
@@ -132,7 +131,7 @@
                         <div class="text-center">
                             <input type="text" class="knob" value="77" data-width="68" data-height="68" data-thickness="0.1" data-bgColor="#383b40" data-fgColor="#17C2D7">
                         </div>
-                        <label class="mb-0 mt-2">New Users</label>
+                        <label class="mb-0 mt-2">@lang('admins.new_users')</label>
                         <h4 class="h4 mb-0 font-weight-bold text-cyan">225</h4>
                     </div>
                     <div class="col-12 col-md-2 col-lg-12">
@@ -142,7 +141,7 @@
                         <div class="text-center">
                             <input type="text" class="knob" value="38" data-width="68" data-height="68" data-thickness="0.1" data-bgColor="#383b40" data-fgColor="#dc3545">
                         </div>
-                        <label class="mb-0 mt-2">Return Visitors</label>
+                        <label class="mb-0 mt-2">@lang('admins.return_visitors')</label>
                         <h4 class="h4 mb-0 font-weight-bold text-info">124</h4>
                     </div>
                 </div>
@@ -154,7 +153,7 @@
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="card">
             <div class="header">
-                <h2>Sales This Week</h2>
+                <h2>@lang('admins.sales_This_week')</h2>
             </div>
             <div class="body">
                 <div id="chart-pie" style="height: 300px"></div>
@@ -164,7 +163,7 @@
     <div class="col-lg-9 col-md-6 col-sm-12">
         <div class="card">
             <div class="header">
-                <h2>Employment Growth</h2>
+                <h2>@lang('admins.employment_growth')</h2>
             </div>
             <div class="body">
                 <div id="chart-employment" style="height: 300px"></div>
@@ -176,14 +175,7 @@
     <div class="col-lg-6 col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Overview</h2>
-                <ul class="header-dropdown dropdown">                                
-                    <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                       
-                    </li>
-                </ul>
+                <h2>@lang('admins.overview')</h2>
             </div>
             <div class="body">
                 <div id="stackedbar-chart" class="ct-chart"></div>
@@ -193,20 +185,20 @@
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="header">
-                <h2>Members</h2>
+                <h2>@lang('admins.members')</h2>
             </div>
-            <div class="body">                            
+            <div class="body">
                 <div id="chart-bar-stacked" style="height: 200px"></div>
             </div>
             <div class="card-footer text-center">
                 <div class="row clearfix">
                     <div class="col-6">
                         <h6>350</h6>
-                        <span>Users</span>
+                        <span>@lang('admins.users')</span>
                     </div>
                     <div class="col-6">
                         <h6>87</h6>
-                        <span>VIP</span>
+                        <span>@lang('admins.vip')</span>
                     </div>
                 </div>
             </div>
@@ -215,7 +207,7 @@
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="header">
-                <h2>Marketing </h2>
+                <h2>@lang('admins.marketing')</h2>
             </div>
             <div class="body">
                 <div id="chart-area-Marketing" style="height: 200px"></div>
@@ -224,11 +216,11 @@
                 <div class="row clearfix">
                     <div class="col-6">
                         <h6>$3,095</h6>
-                        <span>Last Month</span>
+                        <span>@lang('admins.last_month')</span>
                     </div>
                     <div class="col-6">
                         <h6>$2,763</h6>
-                        <span>This Month</span>
+                        <span>@lang('admins.this_month')</span>
                     </div>
                 </div>
             </div>

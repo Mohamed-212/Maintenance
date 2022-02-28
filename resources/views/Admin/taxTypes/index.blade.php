@@ -27,7 +27,7 @@
                         <tbody>
                             @foreach ($types as $type )
                             <tr>
-                            <td>{{$type->name}}</td>
+                                <td>{{$type->name}}</td>
                                 <td><a href="{{url("/taxTypes/{$type->id}/edit")}}"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a></td>
                                 <td>

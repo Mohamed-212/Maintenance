@@ -52,7 +52,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <form action="{{url("/salaries/{$salary->id}")}}" method="post" class="delete">
-                                                    <button style="background-color: white;border:thick;" class="text-danger">
+                                                    <button style="background-color: white;border:none;outline: 0"
+                                                            class="text-danger p-0">
                                                         <i class="fa fa-trash-o"></i>@lang('general.delete')
                                                     </button>
                                                         @method('DELETE')

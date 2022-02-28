@@ -1,49 +1,41 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Sales order')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('orders.sales_orders'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary buttons-html5" href="{{url('salesOrders/create')}}">
-            <span>Add New order</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('salesOrders/create')}}">
+            <span>@lang('orders.add_new_sales_order')</span>
         </a>
     </div>
-
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Customer</th>
-                                <th>Employee</th>
-                                <th>Subtotal</th>
-                                <th>Remaining</th>
-                                <th>Total Taxes</th>
-                                <th>Total</th>
-                                <th>Due Date</th>
-                                <th>Date/Time</th>
-                                <th>Options</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('orders.customer')</th>
+                                <th>@lang('orders.employee')</th>
+                                <th>@lang('orders.subtotal')</th>
+                                <th>@lang('orders.remaining')</th>
+                                <th>@lang('orders.total_taxes')</th>
+                                <th>@lang('general.total')</th>
+                                <th>@lang('orders.due_date')</th>
+                                <th>@lang('general.date/time')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            @foreach ($salesorders as $item)
-
-
+                            @foreach ($salesorders as $index => $item)
                             <tr>
-                                <td><a href="{{url("/invoices/{$item->id}")}}">{{$item->id}}</a></td>
+                                <td>{{$index}}</td>
                                 <td><a href="{{url("/customers/{optional($item->customer)->id}")}}">{{optional($item->customer)->name}}</a></td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->sub_total_amount}}</td>
@@ -52,17 +44,16 @@
                                 <td>{{$item->total_amount}}</td>
                                 <td>{{$item->expected_on}}</td>
                                 <td>{{$item->created_at}}</td>
-
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-primary dropdown-toggle"
                                             data-toggle="dropdown">
-                                            Options
+                                            @lang('general.options')
                                         </button>
                                         <div class="dropdown-menu row">
                                             <div class="col-12 ml-2">
                                                 <a href="{{url("/invoices/{$item->id}")}}"><i
-                                                        class="fa fa-camera"></i>Show</a>
+                                                        class="fa fa-eye"></i>@lang('general.show')</a>
                                             </div>
                                             <!--
                                         <div class="col-12">
@@ -74,12 +65,9 @@
                                                      @csrf
                                             </form>
                                         </div>-->
-
-
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                             @endforeach
                         </tbody>

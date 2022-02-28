@@ -9,19 +9,19 @@ $(function(){
         width: '100px',
         height: '100px',
         sliceColors: ['#29bd73', '#182973', '#ffcd55']
-    })    
+    })
 
-    // notification popup
-    toastr.options.closeButton = true;
-    toastr.options.positionClass = 'toast-bottom-right';
-    toastr.options.showDuration = 1000;
-    toastr['info']('Hello, welcome to Oculux, a unique admin Template.');
+    // // notification popup
+    // toastr.options.closeButton = true;
+    // toastr.options.positionClass = 'toast-bottom-right';
+    // toastr.options.showDuration = 1000;
+    // toastr['info']('Hello, welcome to Oculux, a unique admin Template.');
 
 
     $('.knob').knob({
 		draw: function () {
 		}
-    }); 
+    });
     $(".rtl .knob").knob({
 		draw: function () {
 		   //style rtl
@@ -30,14 +30,14 @@ $(function(){
 				'margin-left': 'auto'
 			});
 		},
-	});   
-    
+	});
+
 });
 
 $(function() {
 	"use strict";
     initSparkline();
-	
+
 	var values2 = getRandomValues();
 	var paramsBar = {
         type: 'bar',
@@ -410,7 +410,7 @@ $(function(){
             left: -7,
         },
     });
-    
+
     c3.generate({
         bindto: '#chart-pie', // id of chart wrapper
         data: {

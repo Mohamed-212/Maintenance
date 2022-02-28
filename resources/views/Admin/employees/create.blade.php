@@ -45,16 +45,16 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>@lang('employees.salary')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
                                     <input type="number" class="form-control key" name="total"
                                            value="{{old('salary')}}">
-                                    @error('salary')
-                                    <small class="form-text text-danger">{{ $message }}</small>
-                                    @enderror
                                 </div>
+                                @error('salary')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-6">

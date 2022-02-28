@@ -1,17 +1,14 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create User')
-<style>
-    .mul-select {
-        width: 100%;
-    }
-</style>
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.create_user'))
+
+
 @section('content')
 <div class="row clearfix">
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New User</h2>
+                <h2>@lang('admins.create_new_user')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.users.store')}}" id="advanced-form" data-parsley-validate
@@ -20,7 +17,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="name">User Name</label>
+                                <label>@lang('general.name')</label>
                                 <input type="text" name="name" class="form-control" style="width: 100%;">
                                 @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -30,7 +27,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="email">User Email</label>
+                                <label>@lang('general.email')</label>
                                 <input type="email" name="email" class="form-control" style="width: 100%;">
                                 @error('email')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -40,7 +37,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label>@lang('admins.password')</label>
                                 <input type="password" name="password" class="form-control" style="width: 100%;">
                                 @error('password')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -50,7 +47,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="password_confirmation">Password Confirmation</label>
+                                <label>@lang('admins.password_confirmation')</label>
                                 <input type="password" name="password_confirmation" class="form-control"
                                     style="width: 100%;">
                                 @error('password_confirmation')
@@ -61,9 +58,9 @@
 
                         <div class="col-md-9 mb-3">
                             <div class="form-group">
-                                <label for="roles_list[]">Role List</label>
+                                <label for="roles_list[]">@lang('admins.role_list')</label>
                                 </br>
-                                <input id="select-all" type="checkbox"><label for='select-all'>Select All</label>
+                                <input id="select-all" type="checkbox"><label for='select-all'> @lang('admins.select_all')</label>
                                 </br>
                                 <div class="row">
                                     @foreach($roles as $role)
@@ -71,7 +68,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" value="{{$role->id}}"
-                                                    name="roles_list[]">{{$role->name}}
+                                                    name="roles_list[]"> {{$role->name}}
                                             </label>
                                         </div>
                                     </div>
@@ -84,7 +81,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-primary mx-auto">Create</button>
+                    <button type="submit" class="btn btn-primary mx-auto">@lang('general.create')</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Type')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('expenses.create_type'))
 
 
 @section('content')
@@ -8,20 +8,20 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Type</h2>
+                <h2>@lang('expenses.create_new_type')</h2>
             </div>
             <div class="body">
                 <form method="POST" action="{{route('admin.expensesType.store')}}" id="advanced-form" data-parsley-validate
                     novalidate class="confirm">
                     @csrf
                     <div class="form-group">
-                        <label for="text-input1">Name</label>
+                        <label for="text-input1">@lang('general.name')</label>
                         <input type="text" id="text-input1" class="form-control" required name="name">
                         @error('name')
                         <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.create')</button>
                 </form>
             </div>
         </div>

@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Visa Safe Transaction')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('reports.visa_safe_transaction'))
 
 
 @section('content')
@@ -9,34 +9,33 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="body">
-                    <div class="table-responsive">
+                    <div class="table overflow-auto">
                         <div class="text-center">
                             <form action="{{route('admin.report.safeVisa')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="From" autocomplete="off">
+                                       name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
-                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="To" autocomplete="off">
+                                       name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
                                 <select name="status" class="w-25 mb-2" style="padding: 0.35rem!important;" id="status">
-                                    <option value="">Status</option>
-                                    <option value="in">In</option>
-                                    <option value="out">Out</option>
+                                    <option value="">@lang('reports.status')</option>
+                                    <option value="in">@lang('reports.in')</option>
+                                    <option value="out">@lang('reports.out')</option>
                                 </select>
-                                <button class="btn btn-primary btn-xs mb-1">Search</button>
+                                <button class="btn btn-primary btn-xs mb-1">@lang('reports.search')</button>
                             </form>
                         </div>
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Amount</th>
-                                <th>Transaction Type</th>
-                                <th>Status</th>
-                                <th>Payment Type</th>
-                                <th>Date/Time</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('reports.amount')</th>
+                                <th>@lang('reports.transaction_type')</th>
+                                <th>@lang('reports.status')</th>
+                                <th>@lang('reports.payment_type')</th>
+                                <th>@lang('general.date/time')</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach ($safes as $safe)
                                 <tr
@@ -52,7 +51,7 @@
                             </tbody>
                         </table>
                         <div class="text-left">
-                            <b class="mr-5">Total Amount : {{$totalAmount}}</b>
+                            <b class="mr-5">@lang('reports.total_amount') : {{$totalAmount}}</b>
                         </div>
                     </div>
                 </div>

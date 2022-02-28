@@ -1,42 +1,38 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Return Purchase Orders')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('returns.return_purchase_orders'))
 
 
 @section('content')
     <div class="row justify-content-end">
         <div class="col-3">
-            <a class="btn btn-round btn-primary buttons-html5" href="{{url('purchaseOrders/returns/create')}}">
-                <span>Add Return Purchase Order</span>
+            <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('purchaseOrders/returns/create')}}">
+                <span>@lang('returns.add_return_purchase_order')</span>
             </a>
         </div>
     </div>
     <div class="row clearfix">
         <div class="col-lg-12">
             <div class="card">
-                <div class="header">
-
-                </div>
+                <div class="header"></div>
                 <div class="body">
-                    <div class="table-responsive">
-
+                    <div class="table overflow-auto">
                         <table class="table table-striped table-hover dataTable js-exportable">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Purchase Order ID</th>
-                                <th>Supplier</th>
-                                <th>Employee</th>
-                                <th>Inventory Name</th>
-                                <th>Date/Time</th>
-                                <th>Options</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('returns.purchase_order_id')</th>
+                                <th>@lang('returns.supplier')</th>
+                                <th>@lang('returns.employee')</th>
+                                <th>@lang('returns.inventory_name')</th>
+                                <th>@lang('general.date/time')</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                             </thead>
-
                             <tbody>
                             @foreach ($purchaseOrders as $index => $purchaseOrder)
                                 <tr>
-                                    <td>{{$index+1}}</td>
+                                    <td>{{$index}}</td>
                                     <td>
                                         <a href="{{url("/purchaseOrders/{$purchaseOrder->id}")}}">{{$purchaseOrder->id}}</a>
                                     </td>
@@ -50,12 +46,12 @@
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-primary dropdown-toggle"
                                                 data-toggle="dropdown">
-                                                Options
+                                                @lang('general.options')
                                             </button>
                                             <div class="dropdown-menu row">
                                                 <div class="col-12 ml-2">
                                                     <a href="{{url("/purchaseOrders/returns/show/{$purchaseOrder->id}")}}"><i
-                                                            class="fa fa-user"></i>Show</a>
+                                                            class="fa fa-eye"></i>@lang('general.show')</a>
                                                 </div>
                                             </div>
                                         </div>

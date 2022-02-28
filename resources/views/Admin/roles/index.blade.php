@@ -1,64 +1,58 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Roles')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.roles'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary  buttons-html5" href="{{url('roles/create')}}">
-            <span>Add New Role</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('roles/create')}}">
+            <span>@lang('admins.add_new_role')</span>
         </a>
     </div>
-
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Guard</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('general.name')</th>
                                 {{-- <th>Roles</th> --}}
-                                <th>Options</th>
+                                <th>@lang('general.options')</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($roles as $role)
+                            @foreach ($roles as $index => $role)
                             <tr>
-                                <td>{{$role->id}}</td>
+                                <td>{{$index}}</td>
                                 <td>{{$role->name}}</td>
-                                <td>{{$role->guard_name}}</td>
                                 {{-- <td>{{$role->roles()}}</td> --}}
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-primary dropdown-toggle"
                                             data-toggle="dropdown">
-                                            Options
+                                            @lang('general.options')
                                         </button>
                                         <div class="dropdown-menu row">
-                                            <div class="col-12 ml-2">
+                                            <div class="col-12">
                                                 <a href="{{url("/roles/{$role->id}")}}"><i
-                                                        class="fa fa-address-book"></i>Show</a>
+                                                        class="fa fa-eye"></i>@lang('general.show')</a>
                                             </div>
-                                            <div class="col-12 ml-2">
+                                            <div class="col-12">
                                                 <a href="{{url("/roles/{$role->id}/edit")}}"><i
-                                                        class="fa fa-edit"></i>Edit</a>
+                                                        class="fa fa-edit"></i>@lang('general.edit')</a>
                                             </div>
                                             <div class="col-12">
                                                 <form action="{{url("/roles/{$role->id}")}}" method="post" class="delete">
-                                                    <button style="background-color: white;border:thick;"
-                                                        class="text-danger">
-                                                        <i class="fa fa-trash-o"></i>Delete
+                                                    <button style="background-color: white;border:none;outline: 0"
+                                                            class="text-danger p-0">
+                                                        <i class="fa fa-trash-o"></i>@lang('general.delete')
                                                     </button>
 
                                                     @method('DELETE')

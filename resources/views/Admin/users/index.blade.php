@@ -1,41 +1,37 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Users')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('admins.users'))
 
 
 @section('content')
 <div class="row justify-content-end">
     <div class="col-3">
-        <a class="btn btn-round btn-primary  buttons-html5" href="{{url('users/create')}}">
-            <span>Add New User</span>
+        <a class="btn rounded w-100 btn-success buttons-html5" href="{{url('users/create')}}">
+            <span>@lang('admins.add_new_user')</span>
         </a>
     </div>
-
 </div>
 <div class="row clearfix">
     <div class="col-lg-12">
         <div class="card">
-            <div class="header">
-
-            </div>
+            <div class="header"></div>
             <div class="body">
-                <div class="table-responsive">
-
+                <div class="table overflow-auto">
                     <table class="table table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Roles</th>
-                                <th>Options</th>
+                                <th>@lang('general.sn')</th>
+                                <th>@lang('general.name')</th>
+                                <th>@lang('general.email')</th>
+                                <th>@lang('admins.roles')</th>
+{{--                                <th>@lang('general.options')</th>--}}
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($users as $index => $user)
                             <tr>
-                                <td>{{$user->id}}</td>
+                                <td>{{$index}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
@@ -44,34 +40,31 @@
                                     @endforeach
                                 </td>
                                 {{-- <td>{{$user->roles()}}</td> --}}
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-primary dropdown-toggle"
-                                            data-toggle="dropdown">
-                                            Options
-                                        </button>
-                                        <div class="dropdown-menu row">
-                                            <div class="col-12 ml-2">
-                                                <a href="{{url("/users/{$user->id}/edit")}}"><i
-                                                        class="fa fa-edit"></i>Edit</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <form action="{{url("/users/{$user->id}")}}" method="post" class="delete">
-                                                    <button style="background-color: white;border:thick;"
-                                                        class="text-danger">
-                                                        <i class="fa fa-trash-o"></i>Delete
-                                                    </button>
+{{--                                <td>--}}
+{{--                                    <div class="dropdown">--}}
+{{--                                        <button type="button" class="btn btn-primary dropdown-toggle"--}}
+{{--                                            data-toggle="dropdown">--}}
+{{--                                            @lang('general.options')--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu row">--}}
+{{--                                            <div class="col-12 ml-2">--}}
+{{--                                                <a href="{{url("/users/{$user->id}/edit")}}"><i--}}
+{{--                                                        class="fa fa-edit"></i>@lang('general.edit')</a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-12">--}}
+{{--                                                <form action="{{url("/users/{$user->id}")}}" method="post" class="delete">--}}
+{{--                                                    <button style="background-color: white;border:none;outline: 0"--}}
+{{--                                                            class="text-danger p-0">--}}
+{{--                                                        <i class="fa fa-trash-o"></i>@lang('general.delete')--}}
+{{--                                                    </button>--}}
 
-                                                    @method('DELETE')
-                                                    @csrf
-                                                </form>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </td>
-
+{{--                                                    @method('DELETE')--}}
+{{--                                                    @csrf--}}
+{{--                                                </form>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
                             </tr>
                             @endforeach
                         </tbody>

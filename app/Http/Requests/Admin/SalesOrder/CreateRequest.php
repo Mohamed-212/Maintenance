@@ -24,11 +24,12 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => "nullable|exists:customers,id",
-            'item_id' => "required|exists:items,id",
+            'customer_id' => "required_without:name|exists:customers,id",
+            'item_id.0' => "required",
             'price' => "required",
             'paid' => "required",
             'payment_type' => "required",
+            'expected_on' => "required",
         ];
     }
 }

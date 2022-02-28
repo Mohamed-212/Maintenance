@@ -1,6 +1,6 @@
 @extends('layout.master')
-@section('parentPageTitle', 'Dashboard')
-@section('title', 'Create Sales Payment')
+@section('parentPageTitle', __('general.dashboard'))
+@section('title', __('payments.create_sales'))
 
 
 @section('content')
@@ -8,25 +8,18 @@
     <div class="col-md-12">
         <div class="card">
             <div class="header">
-                <h2>Create New Sales Payment</h2>
+                <h2>@lang('payments.create_sales')</h2>
             </div>
             <div class="body">
-                @if($errors->any())
-                <div class="alert alert-danger text-center msg" id="error">
-                    <h6>{{$errors->first()}}</h6>
-                </div>
-                @endif
                 <form method="POST" enctype="multipart/form-data" action="{{route('admin.salesPayments.store')}}"
                     id="advanced-form" data-parsley-validate novalidate class="confirm">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="so_id">Sales Order</label>
-                                <select name="so_id" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="">Choose Sales Order</option>
-
+                                <label>@lang('payments.sales_order')</label>
+                                <select name="so_id" class="form-control select2 select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option value="">@lang('general.choose_option')</option>
                                     @foreach($salesOrders as $salesOrder)
                                     <option value="{{$salesOrder->id}}">{{$salesOrder->id}}</option>
                                     @endforeach
@@ -37,12 +30,12 @@
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="po_id">Payment Type</label>
+                            <div class="form-group mb-0">
+                                <label>@lang('payments.payment_type')</label>
                                 <select class="form-control" name="payment_type">
-                                    <option value="">Choose Payment Type</option>
-                                    <option value="cash">Cash</option>
-                                    <option value="visa">Visa</option>
+                                    <option value="">@lang('general.choose_option')</option>
+                                    <option value="cash">@lang('general.cash')</option>
+                                    <option value="visa">@lang('general.visa')</option>
                                 </select>
                             </div>
                             @error('payment_type')
@@ -53,9 +46,14 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="paid">Paid</label>
-                                <input type="number" min="0" class="form-control" name="paid" placeholder="Enter Paid"
-                                    value="{{old('paid')}}">
+                                <label>@lang('payments.paid')</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
+                                    </div>
+                                    <input type="number" class="form-control" name="paid" placeholder="99.99"
+                                           value="{{old('paid')}}">
+                                </div>
                                 @error('paid')
                                 <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
@@ -63,7 +61,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="file_attachment">Attachment</label>
+                                <label for="file_attachment">@lang('payments.attachment')</label>
                                 <input type="file" class="form-control" name="file_attachment"
                                     placeholder="Enter Attachment" value="{{old('file_attachment')}}">
                                 @error('file_attachment')
@@ -75,14 +73,16 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label>Comments</label>
+                                <label>@lang('general.comments')</label>
                                 <textarea class="form-control" name="comments" rows="5"
                                     cols="30">{{old('comments')}}</textarea>
+                                @error('comments')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">@lang('general.create')</button>
                 </form>
             </div>
         </div>
