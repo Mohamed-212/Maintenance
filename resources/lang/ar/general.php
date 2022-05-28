@@ -41,7 +41,7 @@ return array(
     'december' => 'ديسمبر',
     'status' => 'الحالة',
     'date/time' => 'التاريخ/الوقت',
-    'cash' => 'نقدي',
+    'cache' => 'نقدي',
     'visa' => 'فيزا',
     'actions' => 'خيارات',
     'print' => 'طباعة',

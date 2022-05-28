@@ -27,7 +27,7 @@
                             <thead>
                             <tr>
                                 <th>@lang('reports.order_id')</th>
-                                <th>@lang('reports.customer')</th>
+                                <th>@lang('reports.company')</th>
                                 <th>@lang('reports.sub_total')</th>
                                 <th>@lang('reports.total_taxes')</th>
                                 <th>@lang('general.total')</th>
@@ -38,7 +38,7 @@
                             @foreach ($salesorders as $item)
                                 <tr>
                                     <td><a href="{{url("/invoices/{$item->id}")}}">{{$item->id}}</a></td>
-                                    <td>{{optional($item->customer)->name}}</td>
+                                    <td>{{optional($item->customer)->company}}</td>
                                     <td>{{$item->sub_total_amount}}</td>
                                     <td>{{$item->total_taxes}}</td>
                                     <td>{{$item->total_amount}}</td>

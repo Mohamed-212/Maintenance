@@ -1,5 +1,6 @@
 
  var url=config._url+'/';
+  var _lang=config._lang;
  var Area = function () {
 
 
@@ -13,7 +14,6 @@
      var handleChangeCity  = function () {
          $('#city').on('change', function () {
              var city= $(this).val();
-             console.log(city);
              $('#area').html("");
              areas = "";
              if (city) {

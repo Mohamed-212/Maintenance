@@ -16,7 +16,11 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('mobile')->unique();
+            $table->string('landline')->unique();
+            $table->string('fax')->unique();
+            $table->string('company');
+            $table->string('vendor_code');
+            $table->string('position');
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->string('address')->nullable();

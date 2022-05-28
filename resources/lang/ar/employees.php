@@ -36,5 +36,8 @@ return array(
     'salary' => 'الراتب',
     'start_date' => 'تاريخ البدء',
     'job' => 'الوظيفة',
+    'social_ins' => 'التأمين الاجتماعي',
+    'transportation' => 'المواصلات',
+    'commission' => 'العمولة',
     'emp_name_holder' => 'أدخل اسم الموظف',
 );

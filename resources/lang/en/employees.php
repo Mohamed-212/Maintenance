@@ -36,5 +36,8 @@ return array(
     'salary' => 'Salary',
     'start_date' => 'Start Date',
     'job' => 'Job',
+    'social_ins' => 'Social Insurance',
+    'transportation' => 'Transportation',
+    'commission' => 'Commission',
     'emp_name_holder' => 'Enter Employee Name',
 );

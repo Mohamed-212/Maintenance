@@ -19,6 +19,9 @@ class CreateSalariesTable extends Migration
             $table->string('month');
             $table->date('salary_date');
             $table->decimal('bonus', 10, 2)->default(0);
+            $table->decimal('social_ins', 10, 2)->default(0);
+            $table->decimal('transportation', 10, 2)->default(0);
+            $table->decimal('commission', 10, 2)->default(0);
             $table->decimal('deduction', 10, 2)->default(0);
             $table->decimal('loan_deduction', 10, 2)->default(0);
             $table->decimal('total', 10, 2);

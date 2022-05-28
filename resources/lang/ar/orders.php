@@ -39,4 +39,6 @@ return array(
     'serial' => 'المسلسل',
     'price' => 'السعر',
     'tax' => 'الضرائب',
+    'company' => 'الشركة',
+    'vendor_code' => 'رمز البائع',
 );

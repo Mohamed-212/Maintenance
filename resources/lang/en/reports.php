@@ -35,10 +35,13 @@ return array(
     'subtotal' => 'Subtotal',
     'in' => 'In',
     'out' => 'Out',
+    'show_invoice' => 'Invoice For Sales Order',
     'current_balance' => 'Current Balance',
     'safe_transaction' => 'Safe Transactions',
     'cash_safe_transaction' => 'Cash Safe Transactions',
     'visa_safe_transaction' => 'Visa Safe Transactions',
     'sales_order' => 'Sales Orders',
     'sales_orders_by_items' => 'Sales Orders by Items',
+    'company' => 'Company',
+    'vendor_code' => 'Vendor Code',
 );

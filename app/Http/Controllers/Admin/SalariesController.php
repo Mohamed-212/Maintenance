@@ -57,7 +57,19 @@ class SalariesController extends Controller
 
         if ($request->input('bonus')) {
             $salary->bonus = $request->input('bonus');
-            $salary->total = $employee->salary + $request->input('bonus');
+            $salary->total = $salary->total + $request->input('bonus');
+        }
+        if ($request->input('transportation')) {
+            $salary->transportation = $request->input('transportation');
+            $salary->total = $salary->total + $request->input('transportation');
+        }
+        if ($request->input('commission')) {
+            $salary->commission = $request->input('commission');
+            $salary->total = $salary->total + $request->input('commission');
+        }
+        if ($request->input('social_ins')) {
+            $salary->social_ins = $request->input('social_ins');
+            $salary->total = $salary->total - $request->input('social_ins');
         }
         if ($request->input('deduction')) {
             $salary->deduction = $request->input('deduction');
@@ -131,7 +143,19 @@ class SalariesController extends Controller
 
         if ($request->input('bonus')) {
             $salary->bonus = $request->input('bonus');
-            $salary->total = $employee->salary + $request->input('bonus');
+            $salary->total = $salary->total + $request->input('bonus');
+        }
+        if ($request->input('transportation')) {
+            $salary->transportation = $request->input('transportation');
+            $salary->total = $salary->total + $request->input('transportation');
+        }
+        if ($request->input('commission')) {
+            $salary->commission = $request->input('commission');
+            $salary->total = $salary->total + $request->input('commission');
+        }
+        if ($request->input('social_ins')) {
+            $salary->social_ins = $request->input('social_ins');
+            $salary->total = $salary->total - $request->input('social_ins');
         }
         if ($request->input('deduction')) {
             $salary->deduction = $request->input('deduction');
@@ -144,7 +168,7 @@ class SalariesController extends Controller
         $salary->user_id = auth()->user()->id;
         $salary->save();
         $report = Report::where('type', 'salary')->where('entity_id', $salary->id)->first();
-        $report->amount = $salary->total;
+        $report->amount = $salary->total - $salary->loan_deduction;
         $report->payment_type = 'cash';
         $report->status = 'out';
         $report->save();

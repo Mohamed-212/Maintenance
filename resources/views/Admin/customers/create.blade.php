@@ -17,18 +17,50 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label>@lang('general.name')</label>
-                                <input type="text" class="form-control" placeholder="@lang('customers.name_holder')" name="name"
-                                    value="{{old('name')}}"><br>
-                                @error('name')
+                                <label>@lang('customers.company')</label>
+                                <input type="text" class="form-control" placeholder="@lang('customers.company_holder')" name="company"
+                                       value="{{old('company')}}">
+                                @error('company')
                                 <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
+                                <label>@lang('customers.landline')</label>
+                                <div class="input-group mb-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control key" placeholder="0226698745"
+                                           name="landline" value="{{old('landline')}}">
+                                </div>
+                                @error('landline')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>@lang('customers.fax')</label>
+                                <div class="input-group mb-0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-volume-control-phone"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control key" placeholder="0226698745"
+                                           name="fax" value="{{old('fax')}}">
+                                </div>
+                                @error('fax')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
                                 <label>@lang('general.email')</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-0">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-at"></i></span>
                                     </div>
@@ -42,22 +74,27 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label>@lang('general.mobile')</label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control key" placeholder="01234567890"
-                                        name="mobile" value="{{old('mobile')}}">
-                                </div>
-                                @error('mobile')
+                                <label>@lang('customers.name')</label>
+                                <input type="text" class="form-control" placeholder="@lang('customers.name_holder')" name="name"
+                                       value="{{old('name')}}">
+                                @error('name')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>@lang('customers.position')</label>
+                                <input type="text" class="form-control" placeholder="@lang('customers.position_holder')" name="position"
+                                       value="{{old('position')}}">
+                                @error('position')
                                 <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label>@lang('customers.city')</label>
                                 <select name="city_id" class="form-control select2 select2-hidden-accessible"
@@ -72,7 +109,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label>@lang('customers.area')</label>
                                 <select name="area_id" class="form-control select2 select2-hidden-accessible"
@@ -80,6 +117,16 @@
                                     <option value="">@lang('general.choose_option')</option>
                                 </select>
                                 @error('area_id')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>@lang('customers.vendor_code')</label>
+                                <input type="text" class="form-control" placeholder="@lang('customers.vendor_code_holder')" name="vendor_code"
+                                       value="{{old('vendor_code')}}">
+                                @error('vendor_code')
                                 <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>

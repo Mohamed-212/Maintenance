@@ -23,7 +23,7 @@
                                 <th>@lang('general.name')</th>
                                 <th>@lang('items.category_name')</th>
                                 <th>@lang('general.edit')</th>
-                                <th>@lang('general.delete')</th>
+                                <!--<th>@lang('general.delete')</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -33,14 +33,14 @@
                             <td>{{$category->category->name}}</td>
                                 <td><a href="{{url("/subCategories/{$category->id}/edit")}}"
                                     class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a></td>
-                                <td>
-                                    <form action="{{url("/subCategories/{$category->id}")}}" method="post" class="delete">
-                                     <button class="btn btn-danger btn-xs confirm-del"><i
-                                        class="fa fa-trash-o"></i></button>
-                                                @method('DELETE')
-                                                @csrf
-                                 </form>
-                                </td>
+                                <!--<td>-->
+                                <!--    <form action="{{url("/subCategories/{$category->id}")}}" method="post" class="delete">-->
+                                <!--     <button class="btn btn-danger btn-xs confirm-del"><i-->
+                                <!--        class="fa fa-trash-o"></i></button>-->
+                                <!--                @method('DELETE')-->
+                                <!--                @csrf-->
+                                <!-- </form>-->
+                                <!--</td>-->
                             </tr>
                             @endforeach
                         </tbody>
