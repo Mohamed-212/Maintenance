@@ -26,11 +26,11 @@ class CreateSupplierRequest extends FormRequest
         return [
             'company_name' => "required",
             'company_tel_no' => "required|size:10|regex:/0[0-9]{9}/",
-            'email' => ['required', 'email'],
+            'email' => ['nullable', 'email'],
             'contact_person_mobile' => "required|size:11|regex:/(01)[0-9]{9}/",
             'contact_person_name' => "required",
             'address' => "required",
-            'contact_person_email' => ['required', 'email'],
+            'contact_person_email' => ['nullable', 'email'],
 
 
         ];

@@ -16,7 +16,7 @@ return array (
     'salaries' => 'الرواتب',
     'loans' => 'القروض',
     'inventories' => 'المخازن',
-    'adminstrators' => 'المسؤولين',
+    'administrators' => 'المسؤولين',
     'users' => 'المستخدمون',
     'roles' => 'الأدوار',
     'suppliers' => 'الموردين',

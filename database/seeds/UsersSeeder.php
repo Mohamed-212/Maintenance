@@ -16,6 +16,8 @@ class UsersSeeder extends Seeder
             'email' => 'demo@212.com',
             'password' => bcrypt('@212.com'),
         ]);
+        $user->assignRole(['locations', 'taxes', 'items', 'customers', 'employees', 'inventories', 'suppliers',
+             'orders', 'returns', 'expenses', 'offers', 'purchase_payments', 'sales_payments', 'reports', 'administrators']);
 
     }
 }

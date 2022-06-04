@@ -66,7 +66,7 @@
                                     @foreach($roles as $role)
                                     <div class="col-sm-3">
                                         <div class="checkbox">
-                                            <label>{{$role->name}}
+                                            <label>{{__('sidebar.'.$role->name)}}
 
                                                 @if($user->hasRole($role->name))
                                                 <input type="checkbox" value="{{$role->id}}" name="roles_list[]"

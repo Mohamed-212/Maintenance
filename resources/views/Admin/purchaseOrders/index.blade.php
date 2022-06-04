@@ -35,7 +35,7 @@
                             <tbody>
                             @foreach ($purchaseOrders as $index => $purchaseOrder)
                                 <tr>
-                                    <td>{{$index}}</td>
+                                    <td>{{$index + 1}}</td>
                                     <td>
                                         <a href="{{url("/suppliers/{$purchaseOrder->supplier->id}/edit")}}">{{$purchaseOrder->supplier->company_name}}</a>
                                     </td>

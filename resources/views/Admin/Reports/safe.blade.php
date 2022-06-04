@@ -45,7 +45,7 @@
                             @foreach ($safes as $index => $safe)
                                 <tr
                                     data-status="{{$safe->type=='sales_order'||$safe->type=='sales_payment'||$safe->type=='rent'||$safe->type=='maintenance'||$safe->type=='insurance'?'in':'out'}}">
-                                    <td>{{$index}}</td>
+                                    <td>{{$index + 1}}</td>
                                     <td>{{$safe->amount}}</td>
                                     <td>{{$safe->type}}</td>
                                     <td>{{$safe->status}}</td>

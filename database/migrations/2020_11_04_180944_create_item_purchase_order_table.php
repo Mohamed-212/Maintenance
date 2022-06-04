@@ -21,6 +21,7 @@ class CreateItemPurchaseOrderTable extends Migration
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity');
             $table->integer('return')->nullable();
+            $table->longText('comments')->nullable();
             $table->decimal('cost', 10, 2);
             $table->timestamps();
         });

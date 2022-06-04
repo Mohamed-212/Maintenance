@@ -34,7 +34,7 @@
                             <tbody>
                             @foreach ($salesPayments as $index => $payment)
                                 <tr>
-                                    <td>{{$index}}</td>
+                                    <td>{{$index + 1}}</td>
                                     <td>{{$payment->salesOrder->id}}</td>
                                     <td>{{$payment->payment_type}}</td>
                                     <td>{{$payment->salesOrder->total_amount}}</td>

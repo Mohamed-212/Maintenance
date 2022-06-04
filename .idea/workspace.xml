@@ -3,43 +3,44 @@
   <component name="ChangeListManager">
     <list default="true" id="17e7cf72-2c4d-43f6-bf6d-a5704edc46c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CustomersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SalariesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SalariesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/CreateCustomerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/CreateCustomerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/UpdateCustomerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Customer/UpdateCustomerRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_04_073428_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_04_073428_create_customers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_04_073521_create_salaries_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_04_073521_create_salaries_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/InvoicesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/InvoicesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SalesOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SalesOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Item/CreateItemRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Item/CreateItemRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Supplier/CreateSupplierRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Supplier/CreateSupplierRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Supplier/UpdateSupplierRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Supplier/UpdateSupplierRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_04_180944_create_item_purchase_order_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_04_180944_create_item_purchase_order_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/getAreas.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/getAreas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/customers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/employees.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/reports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/customers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/employees.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/reports.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/reports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Subcategories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Subcategories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/customers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/customers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/customers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/customers/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/sidebar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Reports/expenses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Reports/expenses.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Reports/safe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Reports/safe.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Reports/safeCash.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Reports/safeCash.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Reports/safeVisa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Reports/safeVisa.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/customers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/customers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/customers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/customers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/employees/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/employees/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/invoices/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/expenses/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/expenses/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/invoices/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/items/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/items/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/jobs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/jobs/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/offers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/offers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/payments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/payments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/purchaseOrders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/purchaseOrders/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/purchaseOrders/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/purchaseOrders/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/salaries/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/salaries/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/salaries/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/salaries/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/returnPurchaseOrders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/returnPurchaseOrders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/roles/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/roles/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/roles/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/roles/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/salesOrders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/salesOrders/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/salesOrders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/salesOrders/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/taxTypes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/taxTypes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/salesPayments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/salesPayments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/suppliers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/suppliers/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/suppliers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/suppliers/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/suppliers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/suppliers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

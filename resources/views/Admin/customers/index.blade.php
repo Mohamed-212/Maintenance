@@ -32,7 +32,7 @@
                         <tbody>
                             @foreach ($customers as $index => $customer)
                             <tr>
-                                 <td>{{$index}}</td>
+                                 <td>{{$index + 1}}</td>
                                 <td>{{$customer->company}}</td>
                                 <td>{{$customer->landline}}</td>
                                 <td>{{$customer->address}}</td>

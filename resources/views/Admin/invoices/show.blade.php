@@ -37,7 +37,7 @@
                                             @php
                                                 $item=\App\Models\Item::find($item_salesorder->item);
                                             @endphp
-                                            <td>{{$index}}</td>
+                                            <td>{{$index + 1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item_salesorder->quantity}}</td>
                                             <td>{{$item->taxed_price}}</td>

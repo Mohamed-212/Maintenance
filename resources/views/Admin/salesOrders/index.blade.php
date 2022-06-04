@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($salesorders as $index => $item)
                             <tr>
-                                <td>{{$index}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td><a href="{{url("/customers/{optional($item->customer)->id}")}}">{{optional($item->customer)->company}}</a></td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->sub_total_amount}}</td>
@@ -55,16 +55,15 @@
                                                 <a href="{{url("/invoices/{$item->id}")}}"><i
                                                         class="fa fa-eye"></i>@lang('general.show')</a>
                                             </div>
-                                            <!--
-                                        <div class="col-12">
-                                            <form action="{{url("/sales-orders/{$item->id}")}}" method="post">
-                                                <button style="background-color: white;border:thick;" class="text-danger">
-                                                    <i class="fa fa-trash-o"></i>Delete
-                                                </button>
-                                                    @method('DELETE')
-                                                     @csrf
-                                            </form>
-                                        </div>-->
+                                            <div class="col-12">
+                                                <form action="{{url("/salesOrders/{$item->id}")}}" method="post">
+                                                    <button style="background-color: white;border:thick;" class="text-danger">
+                                                        <i class="fa fa-trash-o"></i>Delete
+                                                    </button>
+                                                        @method('DELETE')
+                                                         @csrf
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>

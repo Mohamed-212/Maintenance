@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach ($items as $index => $item)
                             <tr>
-                                <td>{{$index}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td>{{$item->serial_number}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->taxed_price}}</td>

@@ -31,12 +31,12 @@
                         <tbody>
                             @foreach ($users as $index => $user)
                             <tr>
-                                <td>{{$index}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @foreach($user->roles as $role)
-                                    <span class="btn btn-success btn-xs">{{$role->name}}</span>
+                                    <span class="btn btn-success btn-xs">{{__('sidebar.'.$role->name)}}</span>
                                     @endforeach
                                 </td>
                                 {{-- <td>{{$user->roles()}}</td> --}}
