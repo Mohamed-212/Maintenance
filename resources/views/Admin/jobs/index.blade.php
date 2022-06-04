@@ -22,7 +22,7 @@
                             <tr>
                                 <th>@lang('employees.position')</th>
                                 <th>@lang('general.edit')</th>
-                                <th>@lang('general.delete')</th>
+                                <!--<th>@lang('general.delete')</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -31,14 +31,14 @@
                             <td>{{$job->position}}</td>
                             <td><a href="{{url("/jobs/{$job->id}/edit")}}"
                                 class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a></td>
-                            <td>
-                                <form action="{{url("/jobs/{$job->id}")}}" method="post" class="delete">
-                                    <button class="btn btn-danger btn-xs confirm-del"><i
-                                        class="fa fa-trash-o"></i></button>
-                                            @method('DELETE')
-                                            @csrf
-                                </form>
-                            </td>
+                            <!--<td>-->
+                            <!--    <form action="{{url("/jobs/{$job->id}")}}" method="post" class="delete">-->
+                            <!--        <button class="btn btn-danger btn-xs confirm-del"><i-->
+                            <!--            class="fa fa-trash-o"></i></button>-->
+                            <!--                @method('DELETE')-->
+                            <!--                @csrf-->
+                            <!--    </form>-->
+                            <!--</td>-->
                             </tr>
                             @endforeach
                         </tbody>

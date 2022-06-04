@@ -52,7 +52,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><b>@lang('general.currency')</b></span>
                                     </div>
-                                    <input type="number" class="form-control key" name="total"
+                                    <input type="number" class="form-control key" name="salary"
                                            value="{{$employee->salary}}">
                                 </div>
                                 @error('salary')

@@ -51,16 +51,16 @@
                                                 <a href="{{url("/items/{$item->id}/edit")}}"><i
                                                         class="fa fa-edit"></i>@lang('general.edit')</a>
                                             </div>
-                                            <div class="col-12">
-                                                <form action="{{url("/items/{$item->id}")}}" method="post" class="delete">
-                                                    <button style="background-color: white;border:none;outline: 0"
-                                                            class="text-danger p-0">
-                                                        <i class="fa fa-trash-o"></i>@lang('general.delete')
-                                                    </button>
-                                                    @method('DELETE')
-                                                    @csrf
-                                                </form>
-                                            </div>
+                                            <!--<div class="col-12">-->
+                                            <!--    <form action="{{url("/items/{$item->id}")}}" method="post" class="delete">-->
+                                            <!--        <button style="background-color: white;border:none;outline: 0"-->
+                                            <!--                class="text-danger p-0">-->
+                                            <!--            <i class="fa fa-trash-o"></i>@lang('general.delete')-->
+                                            <!--        </button>-->
+                                            <!--        @method('DELETE')-->
+                                            <!--        @csrf-->
+                                            <!--    </form>-->
+                                            <!--</div>-->
                                         </div>
                                     </div>
                                 </td>

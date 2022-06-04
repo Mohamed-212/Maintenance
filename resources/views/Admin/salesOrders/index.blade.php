@@ -21,7 +21,7 @@
                         <thead>
                             <tr>
                                 <th>@lang('general.sn')</th>
-                                <th>@lang('orders.customer')</th>
+                                <th>@lang('orders.company')</th>
                                 <th>@lang('orders.employee')</th>
                                 <th>@lang('orders.subtotal')</th>
                                 <th>@lang('orders.remaining')</th>
@@ -36,7 +36,7 @@
                             @foreach ($salesorders as $index => $item)
                             <tr>
                                 <td>{{$index}}</td>
-                                <td><a href="{{url("/customers/{optional($item->customer)->id}")}}">{{optional($item->customer)->name}}</a></td>
+                                <td><a href="{{url("/customers/{optional($item->customer)->id}")}}">{{optional($item->customer)->company}}</a></td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->sub_total_amount}}</td>
                                 <td>{{$item->remaining}}</td>

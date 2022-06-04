@@ -21,9 +21,8 @@
                         <thead>
                             <tr>
                                 <th>@lang('general.sn')</th>
-                                <th>@lang('general.name')</th>
-                                <th>@lang('general.email')</th>
-                                <th>@lang('general.mobile')</th>
+                                <th>@lang('customers.company')</th>
+                                <th>@lang('customers.landline')</th>
                                 <th>@lang('general.address')</th>
                                 <th>@lang('customers.area')</th>
                                 <th>@lang('customers.city')</th>
@@ -31,12 +30,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customers as $customer)
+                            @foreach ($customers as $index => $customer)
                             <tr>
-                                 <td>{{$customer->id}}</td>
-                                <td>{{$customer->name}}</td>
-                                <td>{{$customer->email}}</td>
-                                <td>{{$customer->mobile}}</td>
+                                 <td>{{$index}}</td>
+                                <td>{{$customer->company}}</td>
+                                <td>{{$customer->landline}}</td>
                                 <td>{{$customer->address}}</td>
                                 <td>{{optional($customer->area)->name_en}}</td>
                                 <td>{{optional($customer->city)->name_en}}</td>

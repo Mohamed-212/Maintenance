@@ -25,7 +25,11 @@ class CreateCustomerRequest extends FormRequest
     {
         return [
             'name' => "required",
-            'mobile' => "required|size:11|regex:/(01)[0-9]{9}/|unique:customers",
+            'company' => "required",
+            'position' => "required",
+            'vendor_code' => "required",
+            'landline' => "required|size:10|regex:/(02)[0-9]{8}/|unique:customers",
+            'fax' => "required|size:10|regex:/(02)[0-9]{8}/|unique:customers",
             'email' => ['nullable', 'email', 'unique:customers'],
             'city_id' => "nullable|exists:cities,id",
             'area_id' => "nullable|exists:areas,id",

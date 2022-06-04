@@ -11,6 +11,7 @@
                     <div class="row clearfix">
                         <div class="col-md-6 col-sm-6">
                             <p class="m-b-2"><strong>@lang('reports.customer_name'): </strong>{{optional($salesorder->customer)->name}}</p>
+                            <p class="m-b-2"><strong>@lang('reports.vendor_code'): </strong>{{optional($salesorder->customer)->vendor_code}}</p>
                             <p class="m-b-2"><strong>@lang('reports.order_date'): </strong>{{ Carbon\Carbon::parse($salesorder->created_at)->format('Y-m-d') }}</p>
                             <p><strong>@lang('reports.order_id'): </strong> {{$salesorder->id}}</p>
                         </div>
@@ -22,12 +23,12 @@
                                 <table class="table table-hover table-custom spacing5 mb-5">
                                     <thead>
                                     <tr>
-                                        <th>@lang('general.sn)</th>
+                                        <th>@lang('general.sn')</th>
                                         <th>@lang('reports.item')</th>
                                         <th>@lang('reports.quantity')</th>
                                         <th>@lang('reports.price')</th>
                                         <th>@lang('reports.tax')</th>
-                                        <th>@lang('general.total)</th>
+                                        <th>@lang('general.total')</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -52,14 +53,14 @@
                     </div>
                     <div class="row clearfix text-right mb-3 font-20 summary-print">
                         <div class="col-md-12">
-                            <div><span>@lang('reports.total_taxes'): <strong class="text-success">{{$salesorder->total_taxes}}  @lang('general.currency')</strong></span></div>
-                            <div><span>@lang('general.total'): <strong class="text-success">{{$salesorder->total_amount}}  @lang('general.currency')</strong></span></div>
+                            <div><span>@lang('reports.total_taxes'): <strong class="text-success"> {{$salesorder->total_taxes}}  @lang('general.currency')</strong></span></div>
+                            <div><span> @lang('general.total') : <strong class="text-success">{{$salesorder->total_amount}}  @lang('general.currency') </strong></span></div>
                             <div><span>@lang('reports.paid'): <strong class="text-success">{{$salesorder->paid}}  @lang('general.currency')</strong></span></div>
                             <div><span>@lang('reports.remaining'): <strong class="text-success">{{$salesorder->remaining}}  @lang('general.currency')</strong></span></div>
                         </div>
                     </div>
                     <div class="row clearfix noPrint">
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-12 text-center">
                             <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i>@lang('general.print')</button>
                         </div>
                     </div>

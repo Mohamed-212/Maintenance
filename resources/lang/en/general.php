@@ -41,7 +41,7 @@ return array(
     'december' => 'December',
     'status' => 'Status',
     'date/time' => 'Date/Time',
-    'cash' => 'Cash',
+    'cache' => 'Cache',
     'visa' => 'Visa',
     'actions' => 'Actions',
     'print' => 'Print',

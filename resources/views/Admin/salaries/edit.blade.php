@@ -72,7 +72,7 @@
                                 <div class="input-group mb-3">
                                     <input data-provide="datepicker" data-date-autoclose="true" class="form-control"
                                         name="salary_date" data-date-format="yyyy-mm-dd" required
-                                           value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" disabled>
+                                           value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" >
                                 </div>
                                 @error('salary_date')
                                 <small class="form-text text-danger">{{ $message }}</small>
@@ -119,6 +119,45 @@
                             </div>
                         </div>
 
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label>@lang('employees.commission')</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
+                                    </div>
+                                    <input type="number" class="form-control key" name="commission"
+                                           value="{{$salary->commission}}">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="deduction">@lang('employees.transportation')</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
+                                    </div>
+                                    <input type="number" class="form-control key" name="transportation"
+                                           value="{{$salary->transportation}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="deduction">@lang('employees.social_ins')</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>@lang('general.currency')</b></span>
+                                    </div>
+                                    <input type="number" class="form-control key" name="social_ins"
+                                           value="{{$salary->social_ins}}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12">

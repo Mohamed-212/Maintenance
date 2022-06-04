@@ -39,4 +39,6 @@ return array(
     'serial' => 'Serial',
     'price' => 'Price',
     'tax' => 'Tax',
+    'company' => 'Company',
+    'vendor_code' => 'Vendor Code',
 );

@@ -35,10 +35,13 @@ return array(
     'subtotal' => 'المجموع الفرعي',
     'in' => 'للداخل',
     'out' => 'للخارج',
+    'show_invoice' => 'فاتورة طلب البيع',
     'current_balance' => 'الرصيد الحالي',
     'safe_transaction' => 'المعاملات الآمنة',
     'cash_safe_transaction' => 'المعاملات النقدية الآمنة',
     'visa_safe_transaction' => 'معاملات Visa الآمنة',
     'sales_order' => 'طلبات المبيعات',
     'sales_orders_by_items' => 'طلبات المبيعات حسب الأصناف',
+    'company' => 'الشركة',
+    'vendor_code' => 'رمز البائع',
 );

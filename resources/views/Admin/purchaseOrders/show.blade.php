@@ -24,7 +24,7 @@
                                 <table class="table table-hover table-custom spacing5 mb-5">
                                     <thead>
                                     <tr>
-                                        <th>@lang('general.sn)</th>
+                                        <th>@lang('general.sn')</th>
                                         <th>@lang('orders.item')</th>
                                         <th>@lang('orders.purchased_qty')</th>
                                         <th>@lang('orders.rate')</th>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="row clearfix noPrint">
-                        <div class="col-md-6 m-auto text-center">
+                        <div class="col-md-12 m-auto text-center">
                             <button class="btn btn-info" onClick="printme()"><i class="icon-printer"></i> @lang('general.print') </button>
                         </div>
                     </div>

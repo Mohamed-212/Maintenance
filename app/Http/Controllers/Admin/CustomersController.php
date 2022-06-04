@@ -52,7 +52,11 @@ class CustomersController extends Controller
             $customer = new Customer;
             $customer->name = $request->input('name');
             $customer->email = $request->input('email');
-            $customer->mobile = $request->input('mobile');
+            $customer->landline = $request->input('landline');
+            $customer->fax = $request->input('fax');
+            $customer->company = $request->input('company');
+            $customer->position = $request->input('position');
+            $customer->vendor_code = $request->input('vendor_code');
             $customer->city_id = $request->input('city_id');
             $customer->area_id = $request->input('area_id');
             $customer->address = $request->input('address');
