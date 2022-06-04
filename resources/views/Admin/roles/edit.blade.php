@@ -18,7 +18,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label>@lang('general.name')</label>
-                                <input type="text" name="name" class="form-control" value="{{$role->name}}"
+                                <input type="text" name="name" class="form-control" value="{{__('sidebar.'.$role->name)}}"
                                     style="width: 100%;">
                                 @error('name')
                                 <small class="form-text text-danger">{{ $message }}</small>

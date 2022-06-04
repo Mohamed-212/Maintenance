@@ -20,57 +20,57 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function() {
     Route::get('/logout', 'Auth\LoginController@logout');
     Auth::routes(['register' => false]);
-    Route::group(['middleware' => ['auth', 'role:Admin'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+    Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'as' => 'admin.'], function () {
         Route::get('/', 'AdminController@index')->name('dashboard');
         //Dues
         Route::get('/over-due-date', 'AdminController@dues')->name('dues');
         //cities
-        Route::resource('cities', 'CitiesController');
+        Route::resource('cities', 'CitiesController')->middleware('role:locations');
         //areas
-        Route::resource('areas', 'AreasController');
+        Route::resource('areas', 'AreasController')->middleware('role:locations');
         //types of taxes
-        Route::resource('taxTypes', 'TaxTypesController');
+        Route::resource('taxTypes', 'TaxTypesController')->middleware('role:taxes');
         //taxes
-        Route::resource('taxes', 'TaxesController');
+        Route::resource('taxes', 'TaxesController')->middleware('role:taxes');
         //categories for items
-        Route::resource('categories', 'CategoriesController');
+        Route::resource('categories', 'CategoriesController')->middleware('role:items');
         //items
-        Route::resource('items', 'ItemsController');
+        Route::resource('items', 'ItemsController')->middleware('role:items');
         //customers
-        Route::resource('customers', 'CustomersController');
+        Route::resource('customers', 'CustomersController')->middleware('role:customers');
         /*get areas of cities ajax */
         Route::get('get_areas/{city}', 'CustomersController@getAreas')->name('getAreas');
         //jobs for employees
-        Route::resource('jobs', 'Jobscontroller');
+        Route::resource('jobs', 'Jobscontroller')->middleware('role:employees');
         //salaries for employees
         Route::get('getSalary/{id}', 'SalariesController@getSalary');
-        Route::resource('salaries', 'SalariesController');
+        Route::resource('salaries', 'SalariesController')->middleware('role:employees');
         //loans for employees
-        Route::resource('loans', 'LoansController');
+        Route::resource('loans', 'LoansController')->middleware('role:employees');
         //employees
-        Route::resource('employees', 'Employeescontroller');
+        Route::resource('employees', 'Employeescontroller')->middleware('role:employees');
         //inventories
-        Route::resource('inventories', 'InventoriesController');
+        Route::resource('inventories', 'InventoriesController')->middleware('role:inventories');
         //suppliers
-        Route::resource('suppliers', 'SuppliersController');
+        Route::resource('suppliers', 'SuppliersController')->middleware('role:suppliers');
         //return purchase orders
-        Route::get('purchaseOrders/returns', 'PurchaseOrdersController@returns')->name('returns.index');
-        Route::get('purchaseOrders/returns/create', 'PurchaseOrdersController@returnsCreate')->name('returns.create');
-        Route::get('purchaseOrders/returns/show/{id}', 'PurchaseOrdersController@returnsShow')->name('returns.show');
-        Route::get('purchaseOrders/returns/getItem/{id}', 'PurchaseOrdersController@getItems');
-        Route::post('purchaseOrders/returns/store', 'PurchaseOrdersController@returnsStore')->name('returns.store');
+        Route::get('purchaseOrders/returns', 'PurchaseOrdersController@returns')->name('returns.index')->middleware('role:returns');
+        Route::get('purchaseOrders/returns/create', 'PurchaseOrdersController@returnsCreate')->name('returns.create')->middleware('role:returns');
+        Route::get('purchaseOrders/returns/show/{id}', 'PurchaseOrdersController@returnsShow')->name('returns.show')->middleware('role:returns');
+        Route::get('purchaseOrders/returns/getItem/{id}', 'PurchaseOrdersController@getItems')->middleware('role:returns');
+        Route::post('purchaseOrders/returns/store', 'PurchaseOrdersController@returnsStore')->name('returns.store')->middleware('role:returns');
         //purchase orders
-        Route::resource('purchaseOrders', 'PurchaseOrdersController');
+        Route::resource('purchaseOrders', 'PurchaseOrdersController')->middleware('role:orders');
         //offers
-        Route::resource('offers', 'OffersController');
+        Route::resource('offers', 'OffersController')->middleware('role:offers');
         //users
-        Route::resource('users', 'UsersController');
+        Route::resource('users', 'UsersController')->middleware('role:administrators');
         //roles
-        Route::resource('roles', 'RolesController');
+        Route::resource('roles', 'RolesController')->middleware('role:administrators');
         //purchase payments
-        Route::resource('payments', 'PaymentsController');
+        Route::resource('payments', 'PaymentsController')->middleware('role:purchase_payments');
         //sales payments
-        Route::resource('salesPayments', 'SalesPaymentsController');
+        Route::resource('salesPayments', 'SalesPaymentsController')->middleware('role:sales_payments');
         /*get Items by category_id */
         Route::get('getItemsByCategory/{category}', 'AjaxController@getItemsByCategory')->name('getItems');
         Route::get('getItem/{item}/{quantity}/{invoice}', 'AjaxController@getItem')->name('getSales');
@@ -80,27 +80,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::get('total/{cost}/{quantity}/{invoice}', 'AjaxController@TotalPurchaseOrder')->name('getPurchase');
         Route::get('remaining/{paid}/{total}', 'AjaxController@remaining')->name('getRemaining');
         //sales Order
-        Route::resource('salesOrders', 'SalesOrderController');
+        Route::resource('salesOrders', 'SalesOrderController')->middleware('role:orders');
         //invoices for sales order
         Route::resource('invoices', 'InvoicesController');
         //Types of expenses
-        Route::resource('expensesType', 'ExpenseTypeController');
+        Route::resource('expensesType', 'ExpenseTypeController')->middleware('role:expenses');
         //expenses
-        Route::resource('expenses', 'ExpensesController');
+        Route::resource('expenses', 'ExpensesController')->middleware('role:expenses');
         //profits
 
-        Route::get('reports/profits', 'ReportsController@profits')->name('profits');
-        Route::get('reports/purchases', 'ReportsController@purchases')->name('purchase');
-        Route::get('reports/sales', 'ReportsController@sales')->name('sale');
-        Route::get('reports/salesItem', 'ReportsController@salesItem')->name('saleItem');
-        Route::get('reports/expenses', 'ReportsController@expenses')->name('expense');
-        Route::get('reports/returns', 'ReportsController@returns')->name('report.returns');
+        Route::get('reports/profits', 'ReportsController@profits')->name('profits')->middleware('role:reports');
+        Route::get('reports/purchases', 'ReportsController@purchases')->name('purchase')->middleware('role:reports');
+        Route::get('reports/sales', 'ReportsController@sales')->name('sale')->middleware('role:reports');
+        Route::get('reports/salesItem', 'ReportsController@salesItem')->name('saleItem')->middleware('role:reports');
+        Route::get('reports/expenses', 'ReportsController@expenses')->name('expense')->middleware('role:reports');
+        Route::get('reports/returns', 'ReportsController@returns')->name('report.returns')->middleware('role:reports');
 
 
         //safes
-        Route::get('reports/safes', 'ReportsController@safe')->name('report.safe');
-        Route::get('reports/safes/cash', 'ReportsController@safeCash')->name('report.safeCash');
-        Route::get('reports/safes/visa', 'ReportsController@safeVisa')->name('report.safeVisa');
+        Route::get('reports/safes', 'ReportsController@safe')->name('report.safe')->middleware('role:reports');
+        Route::get('reports/safes/cash', 'ReportsController@safeCash')->name('report.safeCash')->middleware('role:reports');
+        Route::get('reports/safes/visa', 'ReportsController@safeVisa')->name('report.safeVisa')->middleware('role:reports');
 
         //rents
         Route::get('rents/check-date/{from}/{to}/{dress}/{id?}', 'RentController@checkDate')->name('check.date');
@@ -127,7 +127,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         Route::resource('serviceMaintenance', 'ServiceMaintenanceController');
 
         //Subcategories
-        Route::resource('subCategories', 'SubCategoriesController');
+        Route::resource('subCategories', 'SubCategoriesController')->middleware('role:items');
 
         Route::get('getSubByCategory/{category}', 'AjaxController@getSubByCategory')->name('getSubCategories');
         Route::get('getItemsBySubCategory/{category}', 'AjaxController@getItemsBySubCategory')->name('getItemsBySubCategory');

@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                label>@lang('general.name')</label>
+                                <label>@lang('general.name')</label>
                                 <input type="text" name="name" class="form-control" value="{{$user->name}}"
                                     style="width: 100%;">
                                 @error('name')
@@ -66,7 +66,7 @@
                                     @foreach($roles as $role)
                                     <div class="col-sm-3">
                                         <div class="checkbox">
-                                            <label>{{$role->name}}
+                                            <label>{{__('sidebar.'.$role->name)}}
 
                                                 @if($user->hasRole($role->name))
                                                 <input type="checkbox" value="{{$role->id}}" name="roles_list[]"

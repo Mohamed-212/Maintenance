@@ -45,7 +45,5 @@ return array(
     'visa' => 'Visa',
     'actions' => 'Actions',
     'print' => 'Print',
-    'actions' => 'Actions',
-    'actions' => 'Actions',
-
+    'no_data' => 'No enough Item',
 );

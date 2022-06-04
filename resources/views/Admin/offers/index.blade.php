@@ -32,7 +32,7 @@
                             <tbody>
                             @foreach ($offers as $index => $offer)
                                 <tr>
-                                    <td>{{$index}}</td>
+                                    <td>{{$index + 1}}</td>
                                     <td>{{$offer->category->name}}</td>
                                     <td>{{$offer->item->name}}</td>
                                     <td>{{$offer->discount_type}}</td>

@@ -68,7 +68,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" value="{{$role->id}}"
-                                                    name="roles_list[]"> {{$role->name}}
+                                                    name="roles_list[]"> {{__('sidebar.'.$role->name)}}
                                             </label>
                                         </div>
                                     </div>

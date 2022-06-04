@@ -38,7 +38,7 @@
                                             @php
                                                 $item=\App\Models\Item::find($item_purchaseorder->item);
                                             @endphp
-                                            <td>{{$index}}</td>
+                                            <td>{{$index + 1}}</td>
                                             <td>{{$item->name}}</td>
                                             <td>{{$item_purchaseorder->quantity + $item_purchaseorder->return}}</td>
                                             <td>{{$item_purchaseorder->cost}}</td>

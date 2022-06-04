@@ -25,7 +25,7 @@ class CreateItemRequest extends FormRequest
     {
         return [
             'name' => "required",
-            'serial_number' => "required|numeric|unique:items",
+            'serial_number' => "required|unique:items,serial_number",
             'price' => "required|numeric",
             'active' => "required",
             'unit' => "required",

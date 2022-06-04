@@ -30,8 +30,8 @@
                         <tbody>
                             @foreach ($roles as $index => $role)
                             <tr>
-                                <td>{{$index}}</td>
-                                <td>{{$role->name}}</td>
+                                <td>{{$index + 1}}</td>
+                                <td>{{__('sidebar.'.$role->name)}}</td>
                                 {{-- <td>{{$role->roles()}}</td> --}}
                                 <td>
                                     <div class="dropdown">

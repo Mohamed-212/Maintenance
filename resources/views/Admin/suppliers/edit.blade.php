@@ -55,7 +55,7 @@
                                                 </div>
                                                 <input type="text" class="form-control key"
                                                     placeholder="company@test.com" name="email"
-                                                    value="{{$supplier->email}}" required>
+                                                    value="{{$supplier->email}}">
                                             </div>
                                             @error('email')
                                             <small class="form-text text-danger">{{ $message }}</small>
@@ -119,7 +119,7 @@
                                                 </div>
                                                 <input type="text" class="form-control key"
                                                     placeholder="company@test.com" name="contact_person_email"
-                                                    value="{{$supplier->contact_person_email}}" required>
+                                                    value="{{$supplier->contact_person_email}}">
                                             </div>
                                             @error('contact_person_email')
                                             <small class="form-text text-danger">{{ $message }}</small>

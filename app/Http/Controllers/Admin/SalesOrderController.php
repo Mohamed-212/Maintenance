@@ -51,15 +51,10 @@ class SalesOrderController extends Controller
         if($request->input('name')||$request->input('mobile')){
             $request->validate([
                 'name' => 'required',
-                'mobile' => 'required|size:11|regex:/(01)[0-9]{9}/|unique:customers',
-            ], [
-                'name.required' => 'Name is required',
-                'mobile.required' => 'Mobile is required'
+                'mobile' => 'required|size:11|regex:/(01)[0-9]{9}/|unique:customers,mobile',
             ]);
-            $customer =Customer::create($request->all());
-          
+            $customer =Customer::insertGetId(['name' => $request->name, 'mobile' => $request->mobile]);
         }
-
         $subTotal = 0;
         $tax = 0;
         $total = 0;
@@ -67,13 +62,10 @@ class SalesOrderController extends Controller
         $salesorder = new SalesOrder;
         if($request->input('customer_id')){
             $salesorder->customer_id = $request->input('customer_id');
-          
         }
-        if($request->input('name')||$request->input('mobile')){
-            $salesorder->customer_id = $customer->id;
+        elseif ($request->input('name') && $request->input('mobile')){
+            $salesorder->customer_id = $customer;
         }
-        
-
 
         $salesorder->payment_type = $request->input('payment_type');
         $salesorder->paid = $request->input('paid');
@@ -96,7 +88,7 @@ class SalesOrderController extends Controller
                     $stock = DB::table('inventory_item')->where('item_id', $item->id)->first();
                     if ($row > $stock->quantity) {
                         $salesorder->delete();
-                        return redirect(route('admin.salesOrders.create'))->with('error', 'No enough data');
+                        return redirect(route('admin.salesOrders.create'))->with('error', __('general.no_data'));
                     } else {
                         $stock->quantity -= $row;
                         $stock = DB::table('inventory_item')->where('item_id', $item->id)->update(['quantity' => $stock->quantity]);
@@ -122,13 +114,13 @@ class SalesOrderController extends Controller
         $paymentReport->entity_id = $salesPayment->id;
         $paymentReport->save();
 
-        $report = new Report;
-        $report->entity_id = $salesorder->id;
-        $report->type = 'sales_order';
-        $report->status = 'in';
-        $report->payment_type = $salesorder->payment_type;
-        $report->amount = $salesorder->total_amount;
-        $report->save();
+//        $report = new Report;
+//        $report->entity_id = $salesorder->id;
+//        $report->type = 'sales_order';
+//        $report->status = 'in';
+//        $report->payment_type = $salesorder->payment_type;
+//        $report->amount = $salesorder->total_amount;
+//        $report->save();
 
         return redirect(route('admin.salesOrders.index'));
     }
@@ -175,6 +167,16 @@ class SalesOrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ids = SalesPayment::where('so_id', $id)->pluck('id')->toArray();
+        Report::where('type', 'sales_payment')->whereIn('entity_id', $ids)->delete();
+        $all_quantity = DB::table('item_sales_order')->where('so_id', $id)->get();
+        foreach($all_quantity as $oneItem){
+            $old_quantity = DB::table('inventory_item')->where('item_id', $oneItem->item_id)->first();
+            DB::table('inventory_item')->where('item_id', $oneItem->item_id)->update(['quantity' => $old_quantity->quantity + $oneItem->quantity]);
+        }
+        DB::table('item_sales_order')->where('so_id', $id)->delete();
+        SalesPayment::where('so_id', $id)->delete();
+        SalesOrder::where('id', $id)->delete();
+        return redirect(route('admin.salesOrders.index'));
     }
 }

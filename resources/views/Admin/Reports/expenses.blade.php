@@ -37,7 +37,7 @@
                             @foreach ($expenses as $index => $item)
 
                             <tr>
-                                <td>{{$index}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td>{{$item->trans_id}}</td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{{$item->expense_type->name}}</td>

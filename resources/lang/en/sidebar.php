@@ -16,7 +16,7 @@ return array (
   'salaries' => 'Salaries',
   'loans' => 'Loans',
   'inventories' => 'Inventories',
-  'adminstrators' => 'Adminstrators',
+  'administrators' => 'Administrators',
   'users' => 'Users',
   'roles' => 'Roles',
   'suppliers' => 'Suppliers',

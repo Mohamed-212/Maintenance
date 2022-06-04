@@ -52,12 +52,11 @@ class InvoicesController extends Controller
      */
     public function show($id)
     {
-   $salesorder=SalesOrder::find($id);
+        $salesorder=SalesOrder::find($id);
         $item_salesorders=SalesOrder::join('item_sales_order','item_sales_order.so_id','=','sales_orders.id')
                                 ->join('customers','sales_orders.customer_id','=','customers.id')
                              ->select('sales_orders.id as sales_id','sales_orders.sub_total_amount','total_taxes','total_amount','remaining','paid','sales_orders.user_id','sales_orders.created_at as Date','item_sales_order.item_id as item','item_sales_order.quantity as quantity','customers.name as customer_name')
                              ->where('sales_orders.id',$id)->get();
-//dd($salesorder->items());
         return view('Admin.invoices.show',compact('salesorder','item_salesorders'));
 
     }
