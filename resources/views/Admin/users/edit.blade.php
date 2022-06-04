@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                label>@lang('general.name')</label>
+                                <label>@lang('general.name')</label>
                                 <input type="text" name="name" class="form-control" value="{{$user->name}}"
                                     style="width: 100%;">
                                 @error('name')
