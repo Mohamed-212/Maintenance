@@ -30,7 +30,7 @@ class PurchaseOrder extends Model
 
     public function items()
     {
-        return $this->belongsToMany('App\Models\Item', 'item_purchase_order', 'po_id')->withPivot('quantity', 'cost','return','comment');
+        return $this->belongsToMany('App\Models\Item', 'item_purchase_order', 'po_id')->withPivot('quantity', 'cost','return','comments');
     }
 
     public function returns()
