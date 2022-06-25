@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => "required|unique:expense_types,name," . $request->segment(2),
+            'name' => "required|unique:expense_types,name," . $request->segment(3),
         ];
     }
 }

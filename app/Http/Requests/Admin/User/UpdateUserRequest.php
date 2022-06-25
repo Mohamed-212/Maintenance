@@ -26,7 +26,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:users,email,' . $request->segment(2),
+            'email' => 'required|unique:users,email,' . $request->segment(3),
             'roles_list' => 'required'
         ];
     }

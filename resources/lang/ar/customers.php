@@ -11,6 +11,7 @@ return array(
     'company_holder' => 'أدخل اسم الشركة',
     'landline' => 'الهاتف ارضي',
     'fax' => 'الفاكس',
+    'vat_no' => 'الرقم الضريبي',
     'company' => 'الشركة',
     'vendor_code' => 'رمز البائع',
     'vendor_code_holder' => 'أدخل رمز البائع',

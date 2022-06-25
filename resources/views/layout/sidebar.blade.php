@@ -167,8 +167,11 @@
                             <li class="{{ Request::segment(4) === 'cash' ? 'active' : null }}"><a
                                     href="{{route('admin.report.safeCash')}}">@lang('sidebar.cash_safe_transactions')</a>
                             </li>
-                            <li class="{{ Request::segment(4) === 'visa' ? 'active' : null }}"><a
-                                    href="{{route('admin.report.safeVisa')}}">@lang('sidebar.visa_safe_transactions')</a>
+                            <li class="{{ Request::segment(4) === 'check' ? 'active' : null }}"><a
+                                    href="{{route('admin.report.safeCheck')}}">@lang('sidebar.check_safe_transactions')</a>
+                            </li>
+                            <li class="{{ Request::segment(4) === 'wire_transfer' ? 'active' : null }}"><a
+                                    href="{{route('admin.report.safeWireTransfer')}}">@lang('sidebar.wire_transfer_safe_transactions')</a>
                             </li>
                         </ul>
                     </li>

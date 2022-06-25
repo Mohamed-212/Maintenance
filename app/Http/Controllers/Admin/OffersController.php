@@ -50,7 +50,7 @@ class OffersController extends Controller
             $offer->item_id = $value;
             $offer->discount_type = $request->input('discount_type');
             $offer->discount_value = $request->input('discount_value');
-            if ($request->input('discount_type') == 'precentage') {
+            if ($request->input('discount_type') == 'percentage') {
                 $offer->price_after_discount = $item->price - (($item->price / 100.00) * $request->input('discount_value'));
             }
             if ($request->input('discount_type') == 'amount') {

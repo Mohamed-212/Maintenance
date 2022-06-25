@@ -13,6 +13,7 @@ return array(
     'company_holder' => 'Enter Company Name',
     'landline' => 'Landline',
     'fax' => 'Fax',
+    'vat_no' => 'VAT Number',
     'company' => 'Company',
     'vendor_code' => 'Vendor Code',
     'vendor_code_holder' => 'Enter Vendor Code',

@@ -51,6 +51,7 @@ class CustomersController extends Controller
 
             $customer = new Customer;
             $customer->name = $request->input('name');
+            $customer->vat_no = $request->input('vat_no');
             $customer->email = $request->input('email');
             $customer->landline = $request->input('landline');
             $customer->fax = $request->input('fax');

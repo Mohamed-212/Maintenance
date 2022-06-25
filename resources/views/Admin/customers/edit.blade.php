@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>@lang('customers.city')</label>
                                 <select name="city_id" class="form-control select2 select2-hidden-accessible"
@@ -111,7 +111,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>@lang('customers.area')</label>
                                 <select name="area_id" class="form-control select2 select2-hidden-accessible"
@@ -127,12 +127,22 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-group">
                                 <label>@lang('customers.vendor_code')</label>
                                 <input type="text" class="form-control" placeholder="@lang('customers.vendor_code_holder')" name="vendor_code"
                                        value="{{$customer->vendor_code}}">
                                 @error('vendor_code')
+                                <small class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>@lang('customers.vat_no')</label>
+                                <input type="text" class="form-control" placeholder="@lang('customers.vat_no')" name="vat_no"
+                                       value="{{$customer->vat_no}}">
+                                @error('vat_no')
                                 <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>

@@ -25,7 +25,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => 'required|unique:roles,name,' . $request->segment(2),
+            'name' => 'required|unique:roles,name,' . $request->segment(3),
         ];
     }
 

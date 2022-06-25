@@ -52,7 +52,8 @@
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                     <option value="">@lang('general.choose_option')</option>
                                     <option value="cash">@lang('general.cash')</option>
-                                    <option value="visa">@lang('general.visa')</option>
+                                    <option value="check">@lang('general.check')</option>
+                                    <option value="wire_transfer">@lang('general.wire_transfer')</option>
                                 </select>
                                 @error('payment_type')
                                 <small class="form-text text-danger">{{ $message }}</small>

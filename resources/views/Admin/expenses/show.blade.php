@@ -55,8 +55,8 @@
                                         <option value="">@lang('general.choose_option')</option>
                                         <option
                                             value="cash"{{$expense->payment_type=='cash'?'selected':''}}>@lang('general.cash')</option>
-                                        <option value="visa"{{$expense->payment_type=='visa'?'selected':''}}>
-                                            >@lang('general.visa')</option>
+                                        <option value="check"{{$expense->payment_type=='check'?'selected':''}}>@lang('general.check')</option>
+                                        <option value="wire_transfer"{{$expense->payment_type=='wire_transfer'?'selected':''}}>@lang('general.wire_transfer')</option>
                                     </select>
                                     @error('payment_type')
                                     <small class="form-text text-danger">{{ $message }}</small>

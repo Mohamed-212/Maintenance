@@ -21,8 +21,6 @@ class PaymentsController extends Controller
     public function index()
     {
         $payments = Payment::latest()->get();
-        //dd($payments);
-        //dd($payments->purchaseOrder);
         return view('Admin.payments.index', compact('payments'));
     }
 

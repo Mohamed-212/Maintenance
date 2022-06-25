@@ -25,29 +25,36 @@ class ReportsController extends Controller
         $safes = $safes->get();
         $cashIncome = 0;
         $cashOutcome = 0;
-        $visaIncome = 0;
-        $visaOutcome = 0;
+        $wireTransferOutcome = 0;
+        $wireTransferIncome = 0;
+        $checkIncome = 0;
+        $checkOutcome = 0;
         foreach ($safes as $safe) {
             if ($safe->status == 'in') {
 
                 if ($safe->payment_type == 'cash') {
                     $cashIncome += $safe->amount;
-                } else {
-                    $visaIncome += $safe->amount;
+                } elseif ($safe->payment_type == 'check') {
+                    $checkIncome += $safe->amount;
+                }else{
+                    $wireTransferIncome += $safe->amount;
                 }
             } else {
 
                 if ($safe->payment_type == 'cash') {
                     $cashOutcome += $safe->amount;
-                } else {
-                    $visaOutcome += $safe->amount;
+                } elseif ($safe->payment_type == 'check') {
+                    $checkOutcome += $safe->amount;
+                }else{
+                    $wireTransferOutcome += $safe->amount;
                 }
             }
         }
         $cashSafe = $cashIncome - $cashOutcome;
-        $visaSafe = $visaIncome - $visaOutcome;
-        $currentSafe = $cashIncome + $visaIncome - $cashOutcome - $visaOutcome;
-        return view('Admin.Reports.safe', compact('safes', 'currentSafe', 'cashSafe', 'visaSafe', 'totalAmount'));
+        $checkSafe = $checkIncome - $checkOutcome;
+        $wireTransferSafe = $checkIncome - $checkOutcome;
+        $currentSafe = $cashIncome + $checkIncome + $wireTransferIncome - $cashOutcome - $checkOutcome - $wireTransferOutcome;
+        return view('Admin.Reports.safe', compact('safes', 'currentSafe', 'cashSafe', 'checkSafe', 'wireTransferSafe', 'totalAmount'));
     }
     public function safeCash(Request $request)
     {
@@ -62,9 +69,9 @@ class ReportsController extends Controller
         $safes = $safes->get();
         return view('Admin.Reports.safeCash', compact('safes', 'totalAmount'));
     }
-    public function safeVisa(Request $request)
+    public function safeCheck(Request $request)
     {
-        $safes = Report::where('type', '!=', 'purchase_order')->where('payment_type', 'visa')->orderBy('id', 'DESC');
+        $safes = Report::where('type', '!=', 'purchase_order')->where('payment_type', 'check')->orderBy('id', 'DESC');
         if($request->from && $request->to){
             $safes->where('created_at', '>=', date($request->from))->where('created_at', '<=', date($request->to));
         }
@@ -73,7 +80,20 @@ class ReportsController extends Controller
         }
         $totalAmount = $safes->sum('amount');
         $safes = $safes->get();
-        return view('Admin.Reports.safeVisa', compact('safes', 'totalAmount'));
+        return view('Admin.Reports.safeCheck', compact('safes', 'totalAmount'));
+    }
+    public function safeWireTransfer(Request $request)
+    {
+        $safes = Report::where('type', '!=', 'purchase_order')->where('payment_type', 'wire_transfer')->orderBy('id', 'DESC');
+        if($request->from && $request->to){
+            $safes->where('created_at', '>=', date($request->from))->where('created_at', '<=', date($request->to));
+        }
+        if($request->status){
+            $safes->where('status', $request->status);
+        }
+        $totalAmount = $safes->sum('amount');
+        $safes = $safes->get();
+        return view('Admin.Reports.safeWireTransfer', compact('safes', 'totalAmount'));
     }
     public function profits()
     {
@@ -138,7 +158,7 @@ class ReportsController extends Controller
         $subCats = SubCategory::orderBy('id', 'DESC')->get();
         return view('Admin.Reports.sales', compact(['salesorders', 'subCats']));
     }
-    
+
     public function salesItem(Request $request)
     {
         $salesorders = SalesOrder::orderBy('id', 'DESC');

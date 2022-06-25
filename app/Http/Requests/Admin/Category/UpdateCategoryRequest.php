@@ -25,7 +25,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => "required|unique:categories,name," . $request->segment(2),
+            'name' => "required|unique:categories,name," . $request->segment(3),
             'tax_id' => "required|exists:taxes,id",
         ];
     }

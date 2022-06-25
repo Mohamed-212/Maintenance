@@ -25,8 +25,8 @@ class UpdateAreaRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name_en' => 'required|regex:/^[A-Za-z0-9_\s]+$/|unique:areas,name_en,'.$request->segment(2),
-            'name_ar' => 'required|string|regex:/^[ء-ي ?0-9]+$/u|unique:areas,name_ar,'.$request->segment(2),
+            'name_en' => 'required|regex:/^[A-Za-z0-9_\s]+$/|unique:areas,name_en,'.$request->segment(3),
+            'name_ar' => 'required|string|regex:/^[ء-ي ?0-9]+$/u|unique:areas,name_ar,'.$request->segment(3),
             'city_id' => "required|exists:cities,id"
         ];
     }

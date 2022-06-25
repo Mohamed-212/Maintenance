@@ -34,5 +34,6 @@ return array (
     'returns_purchase_order' => 'عائدات طلبات الشراء',
     'safe_transactions' => 'المعاملات الآمنة',
     'cash_safe_transactions' => 'المعاملات النقدية الآمنة',
-    'visa_safe_transactions' => 'معاملات Visa الآمنة',
+    'check_safe_transactions' => 'معاملات الشيك الآمنة',
+    'wire_transfer_safe_transactions' => 'معاملات التحويلات النقدية الآمنة',
 );
