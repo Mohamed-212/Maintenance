@@ -25,7 +25,7 @@ class UpdateTaxTypeRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => "required|unique:tax_types,name," . $request->segment(2),
+            'name' => "required|unique:tax_types,name," . $request->segment(3),
         ];
     }
 }

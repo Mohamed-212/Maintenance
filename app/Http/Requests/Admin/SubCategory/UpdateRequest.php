@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     public function rules(Request $request)
     {
         return [
-            'name' => "required|unique:sub_categories,name," . $request->segment(2),
+            'name' => "required|unique:sub_categories,name," . $request->segment(3),
             'category_id' => "required|exists:categories,id",
         ];
     }

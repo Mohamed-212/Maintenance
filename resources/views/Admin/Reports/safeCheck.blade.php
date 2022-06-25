@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', __('general.dashboard'))
-@section('title', __('reports.visa_safe_transaction'))
+@section('title', __('reports.check_safe_transaction'))
 
 
 @section('content')
@@ -11,7 +11,7 @@
                 <div class="body">
                     <div class="table overflow-auto">
                         <div class="text-center">
-                            <form action="{{route('admin.report.safeVisa')}}" method="GET">
+                            <form action="{{route('admin.report.safeCheck')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
                                        name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">

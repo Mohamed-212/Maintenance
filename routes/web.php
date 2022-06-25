@@ -100,7 +100,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
         //safes
         Route::get('reports/safes', 'ReportsController@safe')->name('report.safe')->middleware('role:reports');
         Route::get('reports/safes/cash', 'ReportsController@safeCash')->name('report.safeCash')->middleware('role:reports');
-        Route::get('reports/safes/visa', 'ReportsController@safeVisa')->name('report.safeVisa')->middleware('role:reports');
+        Route::get('reports/safes/check', 'ReportsController@safeCheck')->name('report.safeCheck')->middleware('role:reports');
+        Route::get('reports/safes/wire_transfer', 'ReportsController@safeWireTransfer')->name('report.safeWireTransfer')->middleware('role:reports');
 
         //rents
         Route::get('rents/check-date/{from}/{to}/{dress}/{id?}', 'RentController@checkDate')->name('check.date');

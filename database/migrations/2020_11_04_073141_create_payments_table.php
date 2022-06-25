@@ -21,7 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('file_attachment')->nullable();
             $table->longText('comments')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->enum('payment_type', ['cash', 'visa']);
+            $table->enum('payment_type', ['cash', 'check', 'wire_transfer']);
             $table->timestamps();
         });
     }

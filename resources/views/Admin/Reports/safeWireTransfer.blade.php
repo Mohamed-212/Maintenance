@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('parentPageTitle', __('general.dashboard'))
-@section('title', __('reports.safe_transaction'))
+@section('title', __('reports.wire_transfer_safe_transaction'))
 
 
 @section('content')
@@ -10,20 +10,14 @@
             <div class="card">
                 <div class="body">
                     <div class="table overflow-auto">
-                        <div class="text-center p-3 mb-2" style="border-radius: 5px; border: 1px solid #e25985">
-                            <b class="mr-5">@lang('reports.current_balance') : {{$currentSafe}}</b>
-                            <b class="mr-5 ml-5">@lang('general.cash') : {{$cashSafe}}</b>
-                            <b class="mr-5 ml-5">@lang('general.check') : {{$checkSafe}}</b>
-                            <b class="mr-5 ml-5">@lang('general.wire_transfer') : {{$wireTransferSafe}}</b>
-                        </div>
                         <div class="text-center">
-                            <form action="{{route('admin.report.safe')}}" method="GET">
+                            <form action="{{route('admin.report.safeWireTransfer')}}" method="GET">
                                 @csrf
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
                                        name="from" data-date-format="yyyy-mm-dd" value="{{old('from')}}" placeholder="@lang('reports.from')" autocomplete="off">
                                 <input data-provide="datepicker" data-date-autoclose="true" class="w-25 p-1 mb-2"
                                        name="to" data-date-format="yyyy-mm-dd" value="{{old('to')}}" placeholder="@lang('reports.to')" autocomplete="off">
-                                <select name="status" class="w-25 mb-2" id="status" style="padding: 0.35rem!important;">
+                                <select name="status" class="w-25 mb-2" style="padding: 0.35rem!important;" id="status">
                                     <option value="">@lang('reports.status')</option>
                                     <option value="in">@lang('reports.in')</option>
                                     <option value="out">@lang('reports.out')</option>

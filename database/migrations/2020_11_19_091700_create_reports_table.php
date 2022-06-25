@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->decimal('amount', 10, 2);
             $table->bigInteger('entity_id');
-            $table->enum('payment_type', ['cash', 'visa']);
+            $table->enum('payment_type', ['cash', 'check', 'wire_transfer']);
             $table->enum('status', ['in', 'out']);
             $table->enum('type', ['sales_order', 'purchase_order', 'salary', 'expense', 'payment', 'maintenance', 'sales_payment', 'rent', 'loan', 'insurance', 'refund_purchase_item', 'refund_insurance']);
             $table->timestamps();

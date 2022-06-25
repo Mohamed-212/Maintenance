@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('company');
             $table->string('vendor_code');
             $table->string('position');
+            $table->string('vat_no')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->string('address')->nullable();

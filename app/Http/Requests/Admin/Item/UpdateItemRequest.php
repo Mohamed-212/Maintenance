@@ -26,7 +26,7 @@ class UpdateItemRequest extends FormRequest
     {
         return [
             'name' => "required",
-            'serial_number' => "required|unique:items,serial_number,".$request->segment(2),
+            'serial_number' => "required|unique:items,serial_number,".$request->segment(3),
             'price' => "required|numeric",
             'active' => "required",
             'unit' => "required",

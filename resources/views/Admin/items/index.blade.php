@@ -26,7 +26,7 @@
                                 <th>@lang('items.taxed_price')</th>
                                 <th>@lang('items.unit')</th>
                                 <th>@lang('items.category')</th>
-                                <th>@lang('general.active')</th>
+                                <th>@lang('general.availability')</th>
                                 <th>@lang('general.options')</th>
                             </tr>
                         </thead>
@@ -39,7 +39,7 @@
                                 <td>{{$item->taxed_price}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->category->name}}</td>
-                                <td>{{ $item->active==0 ? __('general.no') : __('general.no') }}</td>
+                                <td>{{ $item->active==0 ? __('general.not_available') : __('general.available') }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-primary dropdown-toggle"

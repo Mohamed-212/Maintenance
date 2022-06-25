@@ -23,7 +23,7 @@ class CreateSalesOrdersTable extends Migration
             $table->decimal('remaining', 10, 2);
             $table->decimal('total_amount', 10, 2);
             $table->unsignedBigInteger('user_id');
-            $table->enum('payment_type', ['cash', 'visa']);
+            $table->enum('payment_type', ['cash', 'check', 'wire_transfer']);
             $table->timestamps();
         });
     }

@@ -31,13 +31,9 @@
                             <div class="form-group">
                                 <label for="po_id">Payment Type</label>
                                 <select class="form-control" name="payment_type">
-                                    @if($payment->payment_type == "cash")
-                                    <option selected value="cash">Cash</option>
-                                    <option value="visa">Visa</option>
-                                    @else
-                                    <option value="cash">Cash</option>
-                                    <option selected value="visa">Visa</option>
-                                    @endif
+                                    <option @if($payment->payment_type == "cash") selected @endif value="cash">@lang('general.cash')</option>
+                                    <option @if($payment->payment_type == "check") selected @endif value="check">@lang('general.check')</option>
+                                    <option @if($payment->payment_type == "wire_transfer") selected @endif value="wire_transfer">@lang('general.wire_transfer')</option>
                                 </select>
                             </div>
                             @error('payment_type')
