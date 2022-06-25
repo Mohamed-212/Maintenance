@@ -18,7 +18,7 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('item_id');
             $table->decimal('price_after_discount', 10, 2);
-            $table->enum('discount_type', ['precentage', 'amount']);
+            $table->enum('discount_type', ['percentage', 'amount']);
             $table->decimal('discount_value', 10, 2);
             $table->timestamps();
         });
