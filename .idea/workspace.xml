@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17e7cf72-2c4d-43f6-bf6d-a5704edc46c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_04_122658_create_offers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_04_122658_create_offers_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +192,7 @@
       <workItem from="1654323594395" duration="409000" />
       <workItem from="1654324026909" duration="784000" />
       <workItem from="1654332023854" duration="614000" />
-      <workItem from="1655558684300" duration="1634000" />
+      <workItem from="1655558684300" duration="3436000" />
     </task>
     <servers />
   </component>
