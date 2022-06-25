@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17e7cf72-2c4d-43f6-bf6d-a5704edc46c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/User/UpdateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/User/UpdateUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/users/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +189,9 @@
       <workItem from="1647680553393" duration="378000" />
       <workItem from="1653724559726" duration="1195000" />
       <workItem from="1654323594395" duration="409000" />
-      <workItem from="1654324026909" duration="784000" />
+      <workItem from="1654324026909" duration="838000" />
+      <workItem from="1654440790557" duration="321000" />
+      <workItem from="1654441204472" duration="7000" />
     </task>
     <servers />
   </component>
